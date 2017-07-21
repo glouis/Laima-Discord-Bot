@@ -1,0 +1,11 @@
+# log files
+*.log
+
+# database
+laima.db
+
+# configuration file
+laima/config.py
+
+# python cache
+laima/__pycache__
