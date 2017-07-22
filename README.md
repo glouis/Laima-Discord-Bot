@@ -9,11 +9,14 @@ Laima is a [Discord](https://discordapp.com/) bot for the [Krosmaga](https://www
 
 #### No subcommand
 Calculate the earnings of the draft mode. Give the play number(s) where you lose.
+
     &draft 4 8
+
 If you reached the level four, you will be ask to indicate the play number(s) where you did an all-in. You need to give the play number(s) or one of the accepted key-words: none, 0, all.
 
 #### Table
 Display a table with the potential earnings. Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table.
+
     &draft table 4 5 6
 
 ### Twitter
@@ -21,18 +24,22 @@ Allow to subscribe or unsubscribe to the [twitter timeline of Krosmaga (fr)](htt
 
 #### Subscribe | On
 Subscribe the current channel
+
     &twitter on
 
 #### Unsubscribe | Off
 Unsubscribe the current channel
+
     &twitter off
 
 #### Status
 Indicate if the current channel is currently subscribed or not
+
     &twitter status
 
 #### Last
 Display the last tweet of Krosmaga
+
     &twitter last
 
 ## Developer guide
