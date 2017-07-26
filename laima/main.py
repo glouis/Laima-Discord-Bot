@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import about as _about
 import asyncio
 import config
 import discord
@@ -54,6 +55,11 @@ async def twitterAgent():
                     if(channel.twitter):
                         dest = bot.get_channel(channel.id)
                         await bot.send_message(dest, embed=tweet)
+
+@bot.command(description="Give information about Laima")
+async def about():
+    await bot.say(embed=_about.laima.embed)
+    await bot.say(embed=_about.fearei.embed)
 
 @bot.group(pass_context=True,
     invoke_without_command=True,
