@@ -4,8 +4,8 @@ Laima is a [Discord](https://discordapp.com/) bot for the [Krosmaga](https://www
 **[Click here](https://discordapp.com/oauth2/authorize?client_id=330684050736021506&scope=bot&permissions=0)** to add it to your Discord server!
 
 <div align="center">
-    <img src="http://pre00.deviantart.net/688f/th/pre/i/2013/005/5/7/joker_and_bow_meow_by_renajvi-d5qi3jx.jpg" alt="Joker and bow Meow" style="width: 250px;"/>
-    <p>Illustration by [FeaRei](http://fearei.deviantart.com/)</p>
+    <img src="http://pre00.deviantart.net/688f/th/pre/i/2013/005/5/7/joker_and_bow_meow_by_renajvi-d5qi3jx.jpg" alt="Joker and bow Meow" width="254">
+    <p>Illustration by <a href="http://fearei.deviantart.com/">FeaRei</a></p>
 </div>
 
 ## Commands
