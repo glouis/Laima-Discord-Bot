@@ -10,6 +10,9 @@ Laima is a [Discord](https://discordapp.com/) bot for the [Krosmaga](https://www
 
 ## Commands
 
+### About
+Give information about the bot.
+
 ### Draft
 
 #### No subcommand
@@ -23,6 +26,11 @@ If you reached the level four, you will be ask to indicate the play number(s) wh
 Display a table with the potential earnings. Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table.
 
     &draft table 4 5 6
+
+### Season
+Display the rewards of the ranked mode. Give the rank(s) for which you want to know the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.
+
+    &season 21
 
 ### Twitter
 Allow to subscribe or unsubscribe to the [twitter timeline of Krosmaga (fr)](https://twitter.com/krosmaga).
@@ -52,8 +60,11 @@ Here you will find some instruction to launch ***Laima Discord Bot***. It is rec
 1. Create a python virtual environnement and activate it
 2. Install the dependencies using the *requirements.txt* file
 3. Complete the *laima/config.py* file with your Discord & Twitter data
-4. For the first launch, uncomment the two lines under the **TODO** to create the database (comment them again after)
-5. Run the following command from the root folder of the project:
+4. Before the first launch, create the database running this command from the root folder of the project:
+```bash
+python laima/create_database.py
+```
+5. Run the following command (still in the root folder of the project):
 ```bash
 python laima/main.py
 ```

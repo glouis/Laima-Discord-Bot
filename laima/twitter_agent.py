@@ -63,7 +63,8 @@ def getTweet(tweet_id):
     tweet = discord.Embed(title=title, description=description, url=url, colour=colour, timestamp=timestamp)
     display_user_name = "{user_name} (@{user_screen_name})".format(user_name=user.name, user_screen_name=user.screen_name)
     tweet.set_author(name=display_user_name, url=user.url, icon_url=user.profile_image_url)
-    tweet.set_thumbnail(url="http://abs.twimg.com/favicons/favicon.ico")
+    tweet.set_footer(text="Twitter",
+        icon_url="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/16px-Twitter_bird_logo_2012.svg.png")
     try:
         image_url = status.media[0].media_url_https
         tweet.set_image(url=image_url)

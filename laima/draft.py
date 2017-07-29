@@ -21,7 +21,7 @@ import model
 import util
 
 # Read the database to retrieve the potentials earnings for a number of victories
-# Paramaters:
+# Parameters:
 #   - value: int, number of victories
 # Return:
 #   - msg: string, formatted text to include in a table
@@ -52,7 +52,7 @@ def getEarnings(value):
     return msg
 
 # Calculate the exact earnings of the first part of a draft (levels 1, 2 & 3)
-# Paramaters:
+# Parameters:
 #   - args: list, numbers of the matchs where the player lost
 # Return:
 #   - victories_number: int, number of victories on the draft
@@ -108,7 +108,7 @@ def calcResultsPartOne(args):
     return victories_number, defeats_number, chips, results[-3:]
 
 # Calculate the exact earnings of the second part of a draft (level 4)
-# Paramaters:
+# Parameters:
 #   - chips: int, number of chips won by the player so far
 #   - level_four: list, the results of the player on the fourth level
 #   - allins: list, indicate if the player choose to play normally or to bet his chips
@@ -132,7 +132,7 @@ def calcResultsPartTwo(chips, level_four, allins):
     return chips
 
 # Define what the player won during his draft
-# Paramaters:
+# Parameters:
 #   - victories: int, the number of victories of the player
 #   - chips: int, the number of chips earned by the player
 # Return:

@@ -25,6 +25,7 @@ from discord.ext import commands
 import draft as draft_lib
 import logging
 import model
+import season as _season
 import twitter_agent
 
 logger = logging.getLogger('discord')
@@ -32,11 +33,6 @@ logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
-
-# Create and initialize the database
-# TODO: Find a better way
-# model.create_tables()
-# model.init_draft()
 
 description = "This bot is dedicated to the Krosmaga CCG."
 bot = commands.Bot(command_prefix='&', description=description)
@@ -112,6 +108,12 @@ async def table(*args : str):
         for arg in args:
             msg = '\n'.join([msg, draft_lib.getEarnings(arg)])
     msg = '\n'.join([msg, "```"])
+    await bot.say(msg)
+
+@bot.command(description="Give the rewards of the ranked mode",
+    help="Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.")
+async def season(*args : str):
+    msg = _season.createTable(args)
     await bot.say(msg)
 
 @bot.group(pass_context=True,
