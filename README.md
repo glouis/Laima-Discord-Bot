@@ -52,8 +52,11 @@ Here you will find some instruction to launch ***Laima Discord Bot***. It is rec
 1. Create a python virtual environnement and activate it
 2. Install the dependencies using the *requirements.txt* file
 3. Complete the *laima/config.py* file with your Discord & Twitter data
-4. For the first launch, uncomment the two lines under the **TODO** to create the database (comment them again after)
-5. Run the following command from the root folder of the project:
+4. Before the first launch, create the database running this command from the root folder of the project:
+```bash
+python laima/create_database.py
+```
+5. Run the following command (still in the root folder of the project):
 ```bash
 python laima/main.py
 ```

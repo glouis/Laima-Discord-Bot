@@ -34,12 +34,6 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-# Create and initialize the database
-# TODO: Find a better way
-# model.create_tables()
-# model.init_draft()
-# model.init_rank()
-
 description = "This bot is dedicated to the Krosmaga CCG."
 bot = commands.Bot(command_prefix='&', description=description)
 
