@@ -25,6 +25,7 @@ from discord.ext import commands
 import draft as draft_lib
 import logging
 import model
+import season as _season
 import twitter_agent
 
 logger = logging.getLogger('discord')
@@ -37,6 +38,7 @@ logger.addHandler(handler)
 # TODO: Find a better way
 # model.create_tables()
 # model.init_draft()
+# model.init_rank()
 
 description = "This bot is dedicated to the Krosmaga CCG."
 bot = commands.Bot(command_prefix='&', description=description)
@@ -112,6 +114,11 @@ async def table(*args : str):
         for arg in args:
             msg = '\n'.join([msg, draft_lib.getEarnings(arg)])
     msg = '\n'.join([msg, "```"])
+    await bot.say(msg)
+
+@bot.command()
+async def season(*args : str):
+    msg = _season.createTable(args)
     await bot.say(msg)
 
 @bot.group(pass_context=True,

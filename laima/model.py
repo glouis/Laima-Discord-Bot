@@ -43,9 +43,23 @@ class Channel(BaseModel):
     class Meta:
         order_by = ('id',)
 
+class Rank(BaseModel):
+    number = CharField(unique=True)
+    common = IntegerField(default = 0)
+    uncommon = IntegerField(default = 0)
+    rare = IntegerField(default = 0)
+    krosmic = IntegerField(default = 0)
+    infinite = IntegerField(default = 0)
+    kamas = IntegerField()
+    pedestal = BooleanField(default = True)
+    trophy = CharField(default = None, null=True)
+
+    class Meta:
+        order_by = ('number',)
+
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([Draft, Channel])
+    laima_db.create_tables([Channel, Draft, Rank])
     laima_db.close()
 
 def init_draft():
@@ -114,3 +128,83 @@ def init_draft():
                 kamas=kamas,
                 chips=chips,
                 earnings=earnings)
+
+def init_rank():
+    for i in range(6, 31):
+        number = str(i)
+        if i < 18:
+            kamas = (i - 3) * 5
+            if i < 11:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        common=2,
+                        uncommon=1,
+                        kamas=kamas)
+            elif i < 16:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        common=2,
+                        rare=1,
+                        kamas=kamas)
+            else:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        uncommon=2,
+                        rare=1,
+                        kamas=kamas)
+        elif i < 26:
+            kamas = (i - 10) * 10
+            if i < 21:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        uncommon=2,
+                        rare=1,
+                        kamas=kamas)
+            else:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        uncommon=2,
+                        krosmic=1,
+                        kamas=kamas)
+        else:
+            if i == 30:
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        uncommon=2,
+                        infinite=1,
+                        kamas=300,
+                        trophy="Veteran")
+            else:
+                kamas = (i - 19) * 25
+                with laima_db.transaction():
+                    Rank.create(number=number,
+                        uncommon=2,
+                        infinite=1,
+                        kamas=kamas)
+
+    with laima_db.transaction():
+        Rank.create(number="Top 100",
+            uncommon=2,
+            infinite=1,
+            kamas=300,
+            trophy="Top 100")
+        Rank.create(number="Top 20",
+            uncommon=2,
+            infinite=1,
+            kamas=300,
+            trophy="Top 20")
+        Rank.create(number="3rd",
+            uncommon=2,
+            infinite=1,
+            kamas=300,
+            trophy="3rd place")
+        Rank.create(number="2nd",
+            uncommon=2,
+            infinite=1,
+            kamas=300,
+            trophy="2nd place")
+        Rank.create(number="1st",
+            uncommon=2,
+            infinite=1,
+            kamas=300,
+            trophy="1st place")
