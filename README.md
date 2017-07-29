@@ -10,6 +10,9 @@ Laima is a [Discord](https://discordapp.com/) bot for the [Krosmaga](https://www
 
 ## Commands
 
+### About
+Give information about the bot.
+
 ### Draft
 
 #### No subcommand
@@ -23,6 +26,11 @@ If you reached the level four, you will be ask to indicate the play number(s) wh
 Display a table with the potential earnings. Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table.
 
     &draft table 4 5 6
+
+### Season
+Display the rewards of the ranked mode. Give the rank(s) for which you want to know the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.
+
+    &season 21
 
 ### Twitter
 Allow to subscribe or unsubscribe to the [twitter timeline of Krosmaga (fr)](https://twitter.com/krosmaga).
