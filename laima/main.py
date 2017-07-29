@@ -110,7 +110,8 @@ async def table(*args : str):
     msg = '\n'.join([msg, "```"])
     await bot.say(msg)
 
-@bot.command()
+@bot.command(description="Give the rewards of the ranked mode",
+    help="Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.")
 async def season(*args : str):
     msg = _season.createTable(args)
     await bot.say(msg)

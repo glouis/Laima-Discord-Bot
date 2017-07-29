@@ -20,8 +20,11 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 import model
 import util
 
-msg = "```\tRank\t\t\t\t\tCards\tKamas\tPedestal\tTrophy"
-
+# Define the ligne with the rewards of a rank
+# Parameters:
+#   - rank: Rank, the rank to add
+# Return:
+#   - msg: str, the rewards
 def getMessage(rank):
     if rank.common == 2:
         two_cards = "Common"
@@ -43,6 +46,11 @@ def getMessage(rank):
     msg = "{number}{cards}\t{kamas}\t{pedestal}{trophy}".format(number=number, cards=cards, kamas=kamas, pedestal=pedestal, trophy=trophy)
     return msg
 
+# Define the message to add to the table
+# Parameters:
+#   - number: str, rank researched
+# Return:
+#   - msg: str, the message to add to the table
 def getRankEarnings(number):
     if number in ["top100", "top20", "3rd", "2nd", "1st"]:
         if number == "top100":
@@ -69,6 +77,11 @@ def getRankEarnings(number):
             msg = "Error, rank not recognized"
     return msg
 
+# Create the table of rewards
+# Parameters:
+#   - args: list, the arguments given to the season command
+# Return:
+#   - msg, str, the message to display
 def createTable(args):
     msg = "```\tRank\t\t\t\t\tCards\tKamas\tPedestal\tTrophy"
     if len(args) == 0:
