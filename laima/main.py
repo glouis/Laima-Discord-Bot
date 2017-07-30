@@ -27,6 +27,7 @@ import logging
 import model
 import season as _season
 import twitter_agent
+import util
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -35,7 +36,11 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 description = "This bot is dedicated to the Krosmaga CCG."
-bot = commands.Bot(command_prefix='&', description=description)
+bot = commands.Bot(command_prefix='&',
+    description=description,
+    command_not_found="No command called {} found.",
+    command_has_no_subcommands="Command {0.name} has no subcommands.",
+    formatter=util.CustomHelpFormatter())
 
 async def twitterAgent():
     await bot.wait_until_ready()
