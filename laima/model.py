@@ -17,7 +17,20 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import enum
 from peewee import *
+
+class PackColour(enum.Enum):
+    BRONZE = 3
+    SILVER = 2
+    GOLD = 1
+    NECROM_PALADIR = 4
+
+pack_colours = {}
+pack_colours[PackColour.BRONZE] = "Bronze"
+pack_colours[PackColour.SILVER] = "Silver"
+pack_colours[PackColour.GOLD] = "Gold"
+pack_colours[PackColour.NECROM_PALADIR] = "Necrom & Paladir"
 
 laima_db = SqliteDatabase("laima.db")
 
@@ -28,7 +41,7 @@ class BaseModel(Model):
 class Draft(BaseModel):
     victories_number = IntegerField(unique=True)
     level = IntegerField()
-    pack = CharField()
+    pack = IntegerField()
     kamas = CharField()
     chips = CharField()
     earnings = CharField()
@@ -65,7 +78,7 @@ def create_tables():
 def init_draft():
     for i in range(13):
         if i < 7:
-            pack = "Bronze"
+            pack = PackColour.BRONZE.value
             if i == 0:
                 level = 1
                 kamas = "15-25"
@@ -98,7 +111,7 @@ def init_draft():
         else:
             level = 4
             if i < 10:
-                pack = "Silver"
+                pack = PackColour.SILVER.value
                 kamas = "50-60"
                 if i == 7:
                     chips = "700-1100"
@@ -110,7 +123,7 @@ def init_draft():
                     chips = "1200-2300"
                     earnings = "170-290"
             else:
-                pack = "Gold"
+                pack = PackColour.GOLD.value
                 kamas = "200"
                 if i == 10:
                     chips = "1800-2900"

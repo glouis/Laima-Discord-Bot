@@ -44,11 +44,28 @@ def getEarnings(value):
 
     victories = util.align_right(str(draft.victories_number), 9)
     level = util.align_right(str(draft.level), 5)
-    pack = util.align_right(draft.pack, 8)
+    pack_colour = model.pack_colours[model.PackColour(draft.pack)]
+    pack = util.align_right(pack_colour, 8)
     kamas = util.align_right(draft.kamas, 5)
     chips = util.align_right(draft.chips, 9)
     earnings = util.align_right(draft.earnings, 8)
     msg = "{victories}\t{level}\t{pack}\t{kamas}\t{chips}\t{earnings}".format(victories=victories, level=level, pack=pack, kamas=kamas, chips=chips, earnings=earnings)
+    return msg
+
+# Create a table with the approximate earnings for numbers of victories
+# Parameters:
+#   - args: list, numbers of victories
+# Return:
+#   - msg: str, the table to display
+def createTable(args):
+    msg = "```Victories\tLevel\t\tPack\tKamas\t\tChips\tEarnings"
+    if len(args) == 0:
+        for i in range(13):
+            msg = '\n'.join([msg, getEarnings(i)])
+    else:
+        for arg in args:
+            msg = '\n'.join([msg, getEarnings(arg)])
+    msg = '\n'.join([msg, "```"])
     return msg
 
 # Calculate the exact earnings of the first part of a draft (levels 1, 2 & 3)
@@ -138,7 +155,7 @@ def calcResultsPartTwo(chips, level_four, allins):
 # Return:
 #   - msg: string, formatted text to include in a table
 def defineEarnings(victories, chips):
-    pack = "Bronze"
+    pack = model.PackColour.BRONZE
     if victories == 0:
         level = 1
         kamas = "15-25"
@@ -150,11 +167,11 @@ def defineEarnings(victories, chips):
         kamas = "35-45"
     elif victories < 10:
         level = 4
-        pack = "Silver"
+        pack = model.PackColour.SILVER
         kamas = "50-60"
     else:
         level = 4
-        pack = "Gold"
+        pack = model.PackColour.GOLD
         kamas = "200"
 
     interval = kamas.split('-')
@@ -169,7 +186,8 @@ def defineEarnings(victories, chips):
 
     victories_str = util.align_right(str(victories), 9)
     level_str = util.align_right(str(level), 5)
-    pack_str = util.align_right(str(pack), 8)
+    pack_colour = model.pack_colours[model.PackColour(pack)]
+    pack_str = util.align_right(str(pack_colour), 8)
     kamas_str = util.align_right(str(kamas), 5)
     chips_str = util.align_right(str(chips), 9)
     earnings_str = util.align_right(str(earnings), 8)

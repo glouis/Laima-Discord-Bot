@@ -22,7 +22,7 @@ import asyncio
 import config
 import discord
 from discord.ext import commands
-import draft as draft_lib
+import draft as _draft
 import logging
 import model
 import season as _season
@@ -70,10 +70,10 @@ async def draft(context, *args):
     if context.invoked_subcommand is None:
         msg = "```Victories\tLevel\t\tPack\tKamas\t\tChips\tEarnings"
         try:
-            victories, defeats, chips, level_four = draft_lib.calcResultsPartOne(args)
+            victories, defeats, chips, level_four = _draft.calcResultsPartOne(args)
             plays = victories + defeats
             if plays < 10:
-                msg = '\n'.join([msg, draft_lib.defineEarnings(victories, chips)])
+                msg = '\n'.join([msg, _draft.defineEarnings(victories, chips)])
                 msg = '\n'.join([msg, "```"])
             else:
                 allins = [0 for j in range(3)]
@@ -92,27 +92,20 @@ async def draft(context, *args):
                             ind = (int(arg) - 1) % 3
                             if ind <= ind_max:
                                 allins[ind] = 1
-                chips = draft_lib.calcResultsPartTwo(chips, level_four, allins)
-                msg = '\n'.join([msg, draft_lib.defineEarnings(victories, chips)])
+                chips = _draft.calcResultsPartTwo(chips, level_four, allins)
+                msg = '\n'.join([msg, _draft.defineEarnings(victories, chips)])
                 msg = '\n'.join([msg, "```"])
         except Exception as e:
             msg = e.args[0]
             if msg.startswith("invalid literal for int() with base 10"):
-                msg = "The number must be an integer"
+                msg = "The numbers must be integers"
         finally:
             await bot.say(msg)
 
 @draft.command(description="Display a table with the potential earnings",
     help="""Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table""")
 async def table(*args : str):
-    msg = "```Victories\tLevel\t\tPack\tKamas\t\tChips\tEarnings"
-    if len(args) == 0:
-        for i in range(13):
-            msg = '\n'.join([msg, draft_lib.getEarnings(i)])
-    else:
-        for arg in args:
-            msg = '\n'.join([msg, draft_lib.getEarnings(arg)])
-    msg = '\n'.join([msg, "```"])
+    msg = _draft.createTable(args)
     await bot.say(msg)
 
 @bot.command(description="Give the rewards of the ranked mode",
