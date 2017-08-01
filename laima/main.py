@@ -125,14 +125,20 @@ async def twitter(context):
     aliases=["on"],
     description="Subscribe the current channel")
 async def subscribe(context):
-    msg = twitter_agent.subscribe(context.message.channel.id)
+    if context.message.author.server_permissions.administrator:
+        msg = twitter_agent.subscribe(context.message.channel.id)
+    else:
+        msg = "Only administrators of the server can use this command"
     await bot.say(msg)
 
 @twitter.command(pass_context=True,
     aliases=["off"],
     description="Unsubscribe the current channel")
 async def unsubscribe(context):
-    msg = twitter_agent.unsubscribe(context.message.channel.id)
+    if context.message.author.server_permissions.administrator:
+        msg = twitter_agent.unsubscribe(context.message.channel.id)
+    else:
+        msg = "Only administrators of the server can use this command"
     await bot.say(msg)
 
 @twitter.command(pass_context=True,
