@@ -32,6 +32,22 @@ pack_colours[PackColour.SILVER] = "Silver"
 pack_colours[PackColour.GOLD] = "Gold"
 pack_colours[PackColour.NECROM_PALADIR] = "Necrom & Paladir"
 
+class Trophy(enum.Enum):
+    FIRST = 1
+    SECOND = 2
+    THIRD = 3
+    TOP20 = 20
+    TOP100 = 100
+    VETERAN = 30
+
+trophies = {}
+trophies[Trophy.FIRST] = "1st"
+trophies[Trophy.SECOND] = "2nd"
+trophies[Trophy.THIRD] = "3rd"
+trophies[Trophy.TOP20] = "Top 20"
+trophies[Trophy.TOP100] = "Top 100"
+trophies[Trophy.VETERAN] = "Veteran"
+
 laima_db = SqliteDatabase("laima.db")
 
 class BaseModel(Model):
@@ -65,7 +81,7 @@ class Rank(BaseModel):
     infinite = IntegerField(default = 0)
     kamas = IntegerField()
     pedestal = BooleanField(default = True)
-    trophy = CharField(default = None, null=True)
+    trophy = IntegerField(default = None, null=True)
 
     class Meta:
         order_by = ('number',)
@@ -186,7 +202,7 @@ def init_rank():
                         uncommon=2,
                         infinite=1,
                         kamas=300,
-                        trophy="Veteran")
+                        trophy=Trophy.VETERAN.value)
             else:
                 kamas = (i - 19) * 25
                 with laima_db.transaction():
@@ -200,24 +216,24 @@ def init_rank():
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="Top 100")
+            trophy=Trophy.TOP100.value)
         Rank.create(number="Top 20",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="Top 20")
+            trophy=Trophy.TOP20.value)
         Rank.create(number="3rd",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="3rd place")
+            trophy=Trophy.THIRD.value)
         Rank.create(number="2nd",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="2nd place")
+            trophy=Trophy.SECOND.value)
         Rank.create(number="1st",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="1st place")
+            trophy=Trophy.FIRST.value)

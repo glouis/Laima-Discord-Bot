@@ -42,7 +42,11 @@ def getMessage(rank):
     cards = util.align_right("2 {two_cards} & 1 {one_card}".format(two_cards=two_cards, one_card=one_card), 25)
     kamas = util.align_right(str(rank.kamas), 5)
     pedestal = util.align_right("Yes", 8)
-    trophy = util.align_right(rank.trophy or "None", 10)
+    if rank.trophy is None:
+        trophy = "None"
+    else:
+        trophy = model.trophies[model.Trophy(rank.trophy)]
+    trophy = util.align_right(trophy, 10)
     msg = "{number}{cards}\t{kamas}\t{pedestal}{trophy}".format(number=number, cards=cards, kamas=kamas, pedestal=pedestal, trophy=trophy)
     return msg
 
