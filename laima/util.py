@@ -19,6 +19,7 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 
 import itertools
 import inspect
+import model
 from discord.ext.commands.core import GroupMixin, Command
 from discord.ext.commands.errors import CommandError
 from discord.ext.commands.formatter import HelpFormatter, Paginator
@@ -74,3 +75,41 @@ class CustomHelpFormatter(HelpFormatter):
         ending_note = self.get_ending_note()
         self._paginator.add_line(ending_note)
         return self._paginator.pages
+
+# Change the bot command prefix of a server
+# Parameters:
+#   - prefix: str, the new prefix
+#   - server_id: str, id of the server
+# Return:
+#   - msg: str, response of the bot
+def change_prefix(prefix, server_id):
+    msg = "The prefix on this server has been successfully changed"
+    if len(prefix) > 3:
+        msg = "The prefix cannot exceed 3 characters"
+    else:
+        try:
+            with model.laima_db.transaction():
+                server = model.Server.get(model.Server.id == server_id)
+            server.prefix = prefix
+            with model.laima_db.transaction():
+                server.save()
+        except model.Server.DoesNotExist:
+            with model.laima_db.transaction():
+                model.Server.create(id=server_id, prefix=prefix)
+    return msg
+
+# Define the prefix to use as defined here: https://github.com/Rapptz/discord.py/blob/async/discord/ext/commands/bot.py#L158
+# Parameters:
+#   - bot: Laima
+#   - message: discord.Message, the message to get the prefix from
+# Return:
+#   - prefix: str, the prefix to use
+def prefix(bot, message):
+    try:
+        server_id = message.server.id
+        with model.laima_db.transaction():
+            server = model.Server.get(model.Server.id == server_id)
+        prefix = server.prefix
+    except model.Server.DoesNotExist:
+        prefix = "&"
+    return prefix

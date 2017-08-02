@@ -20,6 +20,8 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 import enum
 from peewee import *
 
+laima_db = SqliteDatabase("laima.db")
+
 class PackColour(enum.Enum):
     BRONZE = 3
     SILVER = 2
@@ -47,8 +49,6 @@ trophies[Trophy.THIRD] = "3rd"
 trophies[Trophy.TOP20] = "Top 20"
 trophies[Trophy.TOP100] = "Top 100"
 trophies[Trophy.VETERAN] = "Veteran"
-
-laima_db = SqliteDatabase("laima.db")
 
 class BaseModel(Model):
     class Meta:
@@ -86,9 +86,17 @@ class Rank(BaseModel):
     class Meta:
         order_by = ('number',)
 
+class Server(BaseModel):
+    id = CharField(unique=True)
+    lang = IntegerField(default=1)
+    prefix = CharField(default="&")
+
+    class Meta:
+        order_by = ('id',)
+
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([Channel, Draft, Rank])
+    laima_db.create_tables([Channel, Draft, Rank, Server])
     laima_db.close()
 
 def init_draft():

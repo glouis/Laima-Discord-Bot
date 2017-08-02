@@ -36,7 +36,7 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 description = "This bot is dedicated to the Krosmaga CCG."
-bot = commands.Bot(command_prefix='&',
+bot = commands.Bot(command_prefix=util.prefix,
     description=description,
     command_not_found="No command called {} found.",
     command_has_no_subcommands="Command {0.name} has no subcommands.",
@@ -106,6 +106,21 @@ async def draft(context, *args):
     help="""Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table""")
 async def table(*args : str):
     msg = _draft.createTable(args)
+    await bot.say(msg)
+
+@bot.command(pass_context=True,
+    description="Change the prefix to call Laima on the server",
+    help="Give the new prefix you want to use. Limited to 3 characters.")
+async def prefix(context, *args):
+    if context.message.author.server_permissions.administrator:
+        if(len(args) != 1):
+            msg = "This command takes one unique parameter"
+        else:
+            prefix = args[0]
+            server_id = context.message.server.id
+            msg = util.change_prefix(prefix, server_id)
+    else:
+        msg = "Only administrators of the server can use this command"
     await bot.say(msg)
 
 @bot.command(description="Give the rewards of the ranked mode",
