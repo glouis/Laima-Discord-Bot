@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import internationalization
 import model
 import util
 
@@ -27,27 +28,27 @@ import util
 #   - msg: str, the rewards
 def getMessage(rank):
     if rank.common == 2:
-        two_cards = "Common"
+        two_cards = _("Common")
     if rank.uncommon == 2:
-        two_cards = "Uncommon"
+        two_cards = _("Uncommon")
     if rank.uncommon == 1:
-        one_card = "Uncommon"
+        one_card = _("Uncommon")
     if rank.rare == 1:
-        one_card = "Rare"
+        one_card = _("Rare")
     if rank.krosmic == 1:
-        one_card = "Krosmic"
+        one_card = _("Krosmic")
     if rank.infinite == 1:
-        one_card = "Infinite"
-    number = util.align_right(rank.number, 8)
-    cards = util.align_right("2 {two_cards} & 1 {one_card}".format(two_cards=two_cards, one_card=one_card), 25)
-    kamas = util.align_right(str(rank.kamas), 5)
-    pedestal = util.align_right("Yes", 8)
+        one_card = _("Infinite")
+    number = util.align_right(rank.number, len(_("   Rank")))
+    cards = util.align_right("2 {two_cards} & 1 {one_card}".format(two_cards=two_cards, one_card=one_card), len(_("                    Cards")))
+    kamas = util.align_right(str(rank.kamas), len(_("  Kamas")))
+    pedestal = util.align_right(_("Yes"), len(_("  Pedestal")))
     if rank.trophy is None:
-        trophy = "None"
+        trophy = _("None")
     else:
-        trophy = model.trophies[model.Trophy(rank.trophy)]
-    trophy = util.align_right(trophy, 10)
-    msg = "{number}{cards}\t{kamas}\t{pedestal}{trophy}".format(number=number, cards=cards, kamas=kamas, pedestal=pedestal, trophy=trophy)
+        trophy = util.trophy_to_string(model.Trophy(rank.trophy))
+    trophy = util.align_right(trophy, len(_("   Trophy")))
+    msg = "{number}{cards}{kamas}{pedestal}{trophy}".format(number=number, cards=cards, kamas=kamas, pedestal=pedestal, trophy=trophy)
     return msg
 
 # Define the message to add to the table
@@ -68,17 +69,17 @@ def getRankEarnings(number):
         try:
             num = int(number)
             if num < 0:
-                msg = "Error, the rank cannot be negative"
+                msg = _("Error, the rank cannot be negative")
             elif num < 6:
-                msg = "Sorry, ranks under 6 do not earn anything"
+                msg = _("Sorry, ranks under 6 do not earn anything")
             elif num > 30:
-                msg = "Error, there are no rank above 30"
+                msg = _("Error, there are no rank above 30")
             else:
                 with model.laima_db.transaction():
                     rank = model.Rank.get(model.Rank.number == number)
                 msg = getMessage(rank)
         except:
-            msg = "Error, rank not recognized"
+            msg = _("Error, rank not recognized")
     return msg
 
 # Create the table of rewards
@@ -87,7 +88,7 @@ def getRankEarnings(number):
 # Return:
 #   - msg, str, the message to display
 def createTable(args):
-    msg = "```\tRank\t\t\t\t\tCards\tKamas\tPedestal\tTrophy"
+    msg = "```{rank}{cards}{kamas}{pedestal}{trophy}".format(rank=_("   Rank"), cards=_("                    Cards"), kamas=_("  Kamas"), pedestal=_("  Pedestal"), trophy=_("   Trophy"))
     if len(args) == 0:
         for number in range(6, 31):
             msg = '\n'.join([msg, getRankEarnings(str(number))])

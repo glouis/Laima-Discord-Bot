@@ -26,13 +26,7 @@ class PackColour(enum.Enum):
     BRONZE = 3
     SILVER = 2
     GOLD = 1
-    NECROM_PALADIR = 4
-
-pack_colours = {}
-pack_colours[PackColour.BRONZE] = "Bronze"
-pack_colours[PackColour.SILVER] = "Silver"
-pack_colours[PackColour.GOLD] = "Gold"
-pack_colours[PackColour.NECROM_PALADIR] = "Necrom & Paladir"
+    NECROM = 4
 
 class Trophy(enum.Enum):
     FIRST = 1
@@ -41,14 +35,6 @@ class Trophy(enum.Enum):
     TOP20 = 20
     TOP100 = 100
     VETERAN = 30
-
-trophies = {}
-trophies[Trophy.FIRST] = "1st"
-trophies[Trophy.SECOND] = "2nd"
-trophies[Trophy.THIRD] = "3rd"
-trophies[Trophy.TOP20] = "Top 20"
-trophies[Trophy.TOP100] = "Top 100"
-trophies[Trophy.VETERAN] = "Veteran"
 
 class BaseModel(Model):
     class Meta:

@@ -19,10 +19,35 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 
 import itertools
 import inspect
+import internationalization
 import model
 from discord.ext.commands.core import GroupMixin, Command
 from discord.ext.commands.errors import CommandError
 from discord.ext.commands.formatter import HelpFormatter, Paginator
+
+def pack_colour_to_string(pack_colour):
+    if pack_colour == model.PackColour.BRONZE:
+        return _("Bronze")
+    if pack_colour == model.PackColour.SILVER:
+        return _("Silver")
+    if pack_colour == model.PackColour.GOLD:
+        return _("Gold")
+    if pack_colour == model.PackColour.NECROM:
+        return _("Necroms")
+
+def trophy_to_string(trophy):
+    if trophy == model.Trophy.FIRST:
+        return _("1st")
+    if trophy == model.Trophy.SECOND:
+        return _("2nd")
+    if trophy == model.Trophy.THIRD:
+        return _("3rd")
+    if trophy == model.Trophy.TOP20:
+        return _("Top 20")
+    if trophy == model.Trophy.TOP100:
+        return _("Top 100")
+    if trophy == model.Trophy.VETERAN:
+        return _("Veteran")
 
 # Add spaces on the left of a string
 # Parameters:
@@ -38,7 +63,7 @@ def align_right(string, total_char):
 class CustomHelpFormatter(HelpFormatter):
     def get_ending_note(self):
         command_name = self.context.invoked_with
-        return "Type {0}{1} command for more info on a command.".format(self.clean_prefix, command_name)
+        return _("Type {0}{1} command for more info on a command.").format(self.clean_prefix, command_name)
 
     def format(self):
         self._paginator = Paginator()
@@ -67,7 +92,7 @@ class CustomHelpFormatter(HelpFormatter):
 
         max_width = self.max_name_size
 
-        self._paginator.add_line('Commands:')
+        self._paginator.add_line(_("Commands:"))
         self._add_subcommands_to_page(max_width, self.filter_command_list())
 
         # add the ending note
@@ -75,41 +100,3 @@ class CustomHelpFormatter(HelpFormatter):
         ending_note = self.get_ending_note()
         self._paginator.add_line(ending_note)
         return self._paginator.pages
-
-# Change the bot command prefix of a server
-# Parameters:
-#   - prefix: str, the new prefix
-#   - server_id: str, id of the server
-# Return:
-#   - msg: str, response of the bot
-def change_prefix(prefix, server_id):
-    msg = "The prefix on this server has been successfully changed"
-    if len(prefix) > 3:
-        msg = "The prefix cannot exceed 3 characters"
-    else:
-        try:
-            with model.laima_db.transaction():
-                server = model.Server.get(model.Server.id == server_id)
-            server.prefix = prefix
-            with model.laima_db.transaction():
-                server.save()
-        except model.Server.DoesNotExist:
-            with model.laima_db.transaction():
-                model.Server.create(id=server_id, prefix=prefix)
-    return msg
-
-# Define the prefix to use as defined here: https://github.com/Rapptz/discord.py/blob/async/discord/ext/commands/bot.py#L158
-# Parameters:
-#   - bot: Laima
-#   - message: discord.Message, the message to get the prefix from
-# Return:
-#   - prefix: str, the prefix to use
-def prefix(bot, message):
-    try:
-        server_id = message.server.id
-        with model.laima_db.transaction():
-            server = model.Server.get(model.Server.id == server_id)
-        prefix = server.prefix
-    except model.Server.DoesNotExist:
-        prefix = "&"
-    return prefix

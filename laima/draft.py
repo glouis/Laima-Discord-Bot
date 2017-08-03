@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import internationalization
 import model
 import util
 
@@ -26,30 +27,29 @@ import util
 # Return:
 #   - msg: string, formatted text to include in a table
 def getEarnings(value):
-    error_msg = None
     try:
         num = int(value)
     except:
-        msg = "{value} is not an integer".format(value=value)
+        msg = _("{value} is not an integer").format(value=value)
         return msg
     if(num < 0):
-        msg = "The number of victory cannot be negative"
+        msg = _("The number of victory cannot be negative")
         return msg
     if(num > 12):
-        msg = "The number of victory cannot be greater than 12"
+        msg = _("The number of victory cannot be greater than 12")
         return msg
 
     with model.laima_db.transaction():
         draft = model.Draft.get(model.Draft.victories_number == num)
 
-    victories = util.align_right(str(draft.victories_number), 9)
-    level = util.align_right(str(draft.level), 5)
-    pack_colour = model.pack_colours[model.PackColour(draft.pack)]
-    pack = util.align_right(pack_colour, 8)
-    kamas = util.align_right(draft.kamas, 5)
-    chips = util.align_right(draft.chips, 9)
-    earnings = util.align_right(draft.earnings, 8)
-    msg = "{victories}\t{level}\t{pack}\t{kamas}\t{chips}\t{earnings}".format(victories=victories, level=level, pack=pack, kamas=kamas, chips=chips, earnings=earnings)
+    victories = util.align_right(str(draft.victories_number), len(_("Victories")))
+    level = util.align_right(str(draft.level), len(_("  Level")))
+    pack_colour = util.pack_colour_to_string(model.PackColour(draft.pack))
+    pack = util.align_right(pack_colour, len(_("    Pack")))
+    kamas = util.align_right(draft.kamas, len(_("  Kamas")))
+    chips = util.align_right(draft.chips, len(_("      Chips")))
+    earnings = util.align_right(draft.earnings, len(_("  Earnings")))
+    msg = "{victories}{level}{pack}{kamas}{chips}{earnings}".format(victories=victories, level=level, pack=pack, kamas=kamas, chips=chips, earnings=earnings)
     return msg
 
 # Create a table with the approximate earnings for numbers of victories
@@ -58,7 +58,7 @@ def getEarnings(value):
 # Return:
 #   - msg: str, the table to display
 def createTable(args):
-    msg = "```Victories\tLevel\t\tPack\tKamas\t\tChips\tEarnings"
+    msg = "```{victories}{level}{pack}{kamas}{chips}{earnings}".format(victories=_("Victories"), level=_("  Level"), pack=_("    Pack"), kamas=_("  Kamas"), chips=_("      Chips"), earnings=_("  Earnings"))
     if len(args) == 0:
         for i in range(13):
             msg = '\n'.join([msg, getEarnings(i)])
@@ -78,7 +78,7 @@ def createTable(args):
 #   - results: list, the results of the player in the last part of the draft (level 4)
 def calcResultsPartOne(args):
     if(len(args) > 3):
-        raise Exception("Vous ne pouvez pas perdre plus de 3 fois !")
+        raise Exception(_("You cannot lose more than 3 times!"))
 
     i = 0
     chips = 0
@@ -90,13 +90,13 @@ def calcResultsPartOne(args):
         try:
             play = int(arg) - 1
         except:
-            error_msg = "{value} n'est pas un nombre".format(value=arg)
+            error_msg = _("{value} is not a number").format(value=arg)
             raise Exception(error_msg)
         if play < 0:
-            error_msg = "{value} n'est pas supérieur à 1".format(value=arg)
+            error_msg = _("{value} is not greater than 1").format(value=arg)
             raise Exception(error_msg)
         elif play > 11:
-            error_msg = "{value} n'est pas inférieur à 12".format(value=arg)
+            error_msg = _("{value} is not lesser than 12").format(value=arg)
             raise Exception(error_msg)
         results[play] = 0
 
@@ -184,13 +184,13 @@ def defineEarnings(victories, chips):
         value_max = int(interval[1]) + kamas_from_chips
         earnings="{min:n}-{max:n}".format(min=value_min, max=value_max)
 
-    victories_str = util.align_right(str(victories), 9)
-    level_str = util.align_right(str(level), 5)
-    pack_colour = model.pack_colours[model.PackColour(pack)]
-    pack_str = util.align_right(str(pack_colour), 8)
-    kamas_str = util.align_right(str(kamas), 5)
-    chips_str = util.align_right(str(chips), 9)
-    earnings_str = util.align_right(str(earnings), 8)
+    victories_str = util.align_right(str(victories), len(_("Victories")))
+    level_str = util.align_right(str(level), len(_("  Level")))
+    pack_colour = util.pack_colour_to_string(model.PackColour(pack))
+    pack_str = util.align_right(str(pack_colour), len(_("    Pack")))
+    kamas_str = util.align_right(str(kamas), len(_("  Kamas")))
+    chips_str = util.align_right(str(chips), len(_("      Chips")))
+    earnings_str = util.align_right(str(earnings), len(_("  Earnings")))
 
-    msg = "{victories}\t{level}\t{pack}\t{kamas}\t{chips}\t{earnings}".format(victories=victories_str, level=level_str, pack=pack_str, kamas=kamas_str, chips=chips_str, earnings=earnings_str)
+    msg = "{victories}{level}{pack}{kamas}{chips}{earnings}".format(victories=victories_str, level=level_str, pack=pack_str, kamas=kamas_str, chips=chips_str, earnings=earnings_str)
     return msg

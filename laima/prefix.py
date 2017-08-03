@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import internationalization
 import model
 import util
 
