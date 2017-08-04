@@ -27,6 +27,16 @@ Display a table with the potential earnings. Give the number(s) of victories for
 
     &draft table 4 5 6
 
+### Lang
+Allow to change the language used on the server. Indicate which language you want to use. Available: en, fr.
+
+    &lang fr
+
+### Prefix
+Change the prefix to call Laima on a server. Give the new prefix you want to use. Limited to 3 characters.
+
+    &prefix ß
+
 ### Season
 Display the rewards of the ranked mode. Give the rank(s) for which you want to know the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.
 
