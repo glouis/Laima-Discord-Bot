@@ -27,6 +27,16 @@ Display a table with the potential earnings. Give the number(s) of victories for
 
     &draft table 4 5 6
 
+### Lang
+Allow to change the language used on the server. Indicate which language you want to use. Available: en, fr.
+
+    &lang fr
+
+### Prefix
+Change the prefix to call Laima on a server. Give the new prefix you want to use. Limited to 3 characters.
+
+    &prefix ß
+
 ### Season
 Display the rewards of the ranked mode. Give the rank(s) for which you want to know the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table.
 
@@ -75,3 +85,6 @@ Laima
 481516234211235813
 ------
 ```
+
+## Translator guide
+If you want to use Laima in a language that is not yet supported, you can provide it! Simply clone the project, create a folder with your [language tag](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Code_langue) and a subfolder LC_MESSAGES under laima/i18n. Copy the laima.po in it, and translate it (see example of existing languages). You can use [Poedit](https://poedit.net/) to help you in the task. Finally, do a push request, your help will be very appreciated!

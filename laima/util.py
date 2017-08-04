@@ -17,6 +17,33 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import internationalization
+import model
+
+def pack_colour_to_string(pack_colour):
+    if pack_colour == model.PackColour.BRONZE:
+        return _("Bronze")
+    if pack_colour == model.PackColour.SILVER:
+        return _("Silver")
+    if pack_colour == model.PackColour.GOLD:
+        return _("Gold")
+    if pack_colour == model.PackColour.NECROM:
+        return _("Necroms")
+
+def trophy_to_string(trophy):
+    if trophy == model.Trophy.FIRST:
+        return _("1st")
+    if trophy == model.Trophy.SECOND:
+        return _("2nd")
+    if trophy == model.Trophy.THIRD:
+        return _("3rd")
+    if trophy == model.Trophy.TOP20:
+        return _("Top 20")
+    if trophy == model.Trophy.TOP100:
+        return _("Top 100")
+    if trophy == model.Trophy.VETERAN:
+        return _("Veteran")
+
 # Add spaces on the left of a string
 # Parameters:
 #   - string: str, the string to align

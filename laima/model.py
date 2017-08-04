@@ -17,9 +17,24 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import enum
 from peewee import *
 
 laima_db = SqliteDatabase("laima.db")
+
+class PackColour(enum.Enum):
+    BRONZE = 3
+    SILVER = 2
+    GOLD = 1
+    NECROM = 4
+
+class Trophy(enum.Enum):
+    FIRST = 1
+    SECOND = 2
+    THIRD = 3
+    TOP20 = 20
+    TOP100 = 100
+    VETERAN = 30
 
 class BaseModel(Model):
     class Meta:
@@ -28,7 +43,7 @@ class BaseModel(Model):
 class Draft(BaseModel):
     victories_number = IntegerField(unique=True)
     level = IntegerField()
-    pack = CharField()
+    pack = IntegerField()
     kamas = CharField()
     chips = CharField()
     earnings = CharField()
@@ -52,20 +67,28 @@ class Rank(BaseModel):
     infinite = IntegerField(default = 0)
     kamas = IntegerField()
     pedestal = BooleanField(default = True)
-    trophy = CharField(default = None, null=True)
+    trophy = IntegerField(default = None, null=True)
 
     class Meta:
         order_by = ('number',)
 
+class Server(BaseModel):
+    id = CharField(unique=True)
+    lang = IntegerField(default=1)
+    prefix = CharField(default="&")
+
+    class Meta:
+        order_by = ('id',)
+
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([Channel, Draft, Rank])
+    laima_db.create_tables([Channel, Draft, Rank, Server])
     laima_db.close()
 
 def init_draft():
     for i in range(13):
         if i < 7:
-            pack = "Bronze"
+            pack = PackColour.BRONZE.value
             if i == 0:
                 level = 1
                 kamas = "15-25"
@@ -98,7 +121,7 @@ def init_draft():
         else:
             level = 4
             if i < 10:
-                pack = "Silver"
+                pack = PackColour.SILVER.value
                 kamas = "50-60"
                 if i == 7:
                     chips = "700-1100"
@@ -110,7 +133,7 @@ def init_draft():
                     chips = "1200-2300"
                     earnings = "170-290"
             else:
-                pack = "Gold"
+                pack = PackColour.GOLD.value
                 kamas = "200"
                 if i == 10:
                     chips = "1800-2900"
@@ -173,7 +196,7 @@ def init_rank():
                         uncommon=2,
                         infinite=1,
                         kamas=300,
-                        trophy="Veteran")
+                        trophy=Trophy.VETERAN.value)
             else:
                 kamas = (i - 19) * 25
                 with laima_db.transaction():
@@ -187,24 +210,24 @@ def init_rank():
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="Top 100")
+            trophy=Trophy.TOP100.value)
         Rank.create(number="Top 20",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="Top 20")
+            trophy=Trophy.TOP20.value)
         Rank.create(number="3rd",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="3rd place")
+            trophy=Trophy.THIRD.value)
         Rank.create(number="2nd",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="2nd place")
+            trophy=Trophy.SECOND.value)
         Rank.create(number="1st",
             uncommon=2,
             infinite=1,
             kamas=300,
-            trophy="1st place")
+            trophy=Trophy.FIRST.value)

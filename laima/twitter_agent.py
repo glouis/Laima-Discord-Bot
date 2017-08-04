@@ -21,6 +21,7 @@ import config
 from datetime import datetime
 import discord
 import model
+import internationalization
 import twitter
 
 api = twitter.Api(consumer_key=config.twitter_consumer_key,
@@ -45,13 +46,13 @@ def getLastTweetId():
 #   - tweet: discord.Embed, the tweet
 def getTweet(tweet_id):
     status = api.GetStatus(tweet_id)
-    title = "Tweet de Krosmaga"
+    title = _("Tweet from Krosmaga")
     if status.quoted_status is not None:
         status = status.quoted_status
-        title = "Cité par Krosmaga"
+        title = _("Quoted by Krosmaga")
     elif status.retweeted_status is not None:
         status = status.retweeted_status
-        title = "Retweeté par Krosmaga"
+        title = _("Retweeted by Krosmaga")
     user = status.user
     description = status.text
     try:
@@ -78,7 +79,7 @@ def getTweet(tweet_id):
 # Return:
 #   - msg: str, a message to say the result of the function
 def subscribe(channel_id):
-    msg = "Ce salon est maintenant abonné au fil twitter de Krosmaga."
+    msg = _("This channel is now subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
             channel = model.Channel.get(model.Channel.id == channel_id)
@@ -87,7 +88,7 @@ def subscribe(channel_id):
             with model.laima_db.transaction():
                 channel.save()
         else:
-            msg = "Erreur, ce salon est déjà abonné au fil twitter de Krosmaga."
+            msg = _("Error, this channel is already subscribed to the twitter timeline of Krosmaga")
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
             model.Channel.create(id=channel_id, twitter=True)
@@ -99,18 +100,16 @@ def subscribe(channel_id):
 # Return:
 #   - msg: str, a message to say the result of the function
 def unsubscribe(channel_id):
-    msg = "Ce salon n'est maintenant plus abonné au fil twitter de Krosmaga."
+    msg = _("Error, this channel is already not subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
             channel = model.Channel.get(model.Channel.id == channel_id)
         if channel.twitter is True:
+            msg = _("This channel is now unsubscribed from the twitter timeline of Krosmaga")
             channel.twitter = False
             with model.laima_db.transaction():
                 channel.save()
-        else:
-            msg = "Erreur, ce salon n'est déjà pas abonné au fil twitter de Krosmaga."
     except model.Channel.DoesNotExist:
-        msg = "Erreur, ce salon n'est déjà pas abonné au fil twitter de Krosmaga."
         with model.laima_db.transaction():
             model.Channel.create(id=channel_id, twitter=False)
     return msg
@@ -121,12 +120,12 @@ def unsubscribe(channel_id):
 # Return:
 #   - msg: str, a message to say the status of the channel
 def getStatus(channel_id):
-    msg = "Ce salon n'est pas abonné au fil twitter de Krosmaga."
+    msg = _("This channel is not subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
             channel = model.Channel.get(model.Channel.id == channel_id)
         if channel.twitter is True:
-            msg = "Ce salon est abonné au fil twitter de Krosmaga."
+            msg = _("This channel is subscribed to the twitter timeline of Krosmaga")
     except model.Channel.DoesNotExist:
         pass
     return msg

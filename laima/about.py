@@ -18,6 +18,7 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import discord
+import internationalization
 
 class Presentation:
     def __init__(self, name, title, description, url=None, avatar=None, image=None, colour=None):
@@ -44,16 +45,25 @@ class Presentation:
             embed.set_image(url=image)
         return embed
 
+    def reset_title(self, new_title):
+        self.title = new_title
+
+    def reset_description(self, new_description):
+        self.description = new_description
+
+    def reset_embed(self):
+        self.embed = self._create_embed(name=self.name, title=self.title, description=self.description, url=self.url, avatar=self.avatar, image=self.image, colour=self.colour)
+
 laima = Presentation(name="Laima",
-    title="Discord bot dedicated to the Krosmaga CCG",
-    description="I aim to provide useful commands to the Krosmaga community!",
+    title=_("Discord bot dedicated to the Krosmaga CCG"),
+    description=_("I aim to provide useful commands to the Krosmaga community!"),
     url="https://github.com/glouis/Laima-Discord-Bot",
     avatar="https://cdn.discordapp.com/app-icons/330684050736021506/cec86350d6620ac4d16931a74f153bf3.jpg",
     colour=discord.Colour.dark_magenta())
 
 fearei = Presentation(name="FeaRei",
-    title="Author of the illustration",
-    description="Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!",
+    title=_("Author of the illustration"),
+    description=_("Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!"),
     url="http://fearei.deviantart.com/",
     avatar="http://a.deviantart.net/avatars/f/e/fearei.png",
     image="http://pre00.deviantart.net/688f/th/pre/i/2013/005/5/7/joker_and_bow_meow_by_renajvi-d5qi3jx.jpg",

@@ -1,0 +1,408 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-03 22:30+0200\n"
+"PO-Revision-Date: 2017-08-04 17:04+0200\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# This file is part of Laima Discord Bot.
+#
+# Copyright 2017 glouis
+#
+# Laima Discord Bot is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Laima Discord Bot is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
+#: laima/about.py:48 laima/about.py:58 laima/main.py:64
+msgid "Discord bot dedicated to the Krosmaga CCG"
+msgstr "Bot Discord pour le CCG Krosmaga"
+
+#: laima/about.py:49 laima/about.py:59 laima/main.py:65
+msgid "I aim to provide useful commands to the Krosmaga community!"
+msgstr ""
+"Mon but est de fournir des commandes utiles pour la communauté de Krosmaga !"
+
+#: laima/about.py:55 laima/about.py:65 laima/main.py:68
+msgid "Author of the illustration"
+msgstr "Auteur de l'illustration"
+
+#: laima/about.py:56 laima/about.py:66 laima/main.py:69
+msgid ""
+"Below is the complete illustration of Laima. You can visit the DeviantArt "
+"page of FeaRei by cliking on the title!"
+msgstr ""
+"Ci-dessous est l'illustration complète de Laima. Vous pouvez visiter la page "
+"DeviantArt de FeaRei en cliquant sur le titre !"
+
+#: laima/draft.py:32 laima/draft.py:33
+#, python-brace-format
+msgid "{value} is not an integer"
+msgstr "{value} n'est pas entier"
+
+#: laima/draft.py:35 laima/draft.py:36
+msgid "The number of victory cannot be negative"
+msgstr "Le nombre de victoire ne peut pas être négatif"
+
+#: laima/draft.py:38 laima/draft.py:39
+msgid "The number of victory cannot be greater than 12"
+msgstr "Le nombre de victoire ne peut être supérieur à 12"
+
+#: laima/draft.py:44 laima/draft.py:60 laima/draft.py:186 laima/main.py:71
+#: laima/draft.py:45 laima/draft.py:61 laima/draft.py:187 laima/main.py:80
+msgid "Victories"
+msgstr "Victoires"
+
+#: laima/draft.py:45 laima/draft.py:60 laima/draft.py:187 laima/main.py:71
+#: laima/draft.py:46 laima/draft.py:61 laima/draft.py:188 laima/main.py:80
+msgid "  Level"
+msgstr "  Niveau"
+
+#: laima/draft.py:47 laima/draft.py:60 laima/draft.py:189 laima/main.py:71
+#: laima/draft.py:48 laima/draft.py:61 laima/draft.py:190 laima/main.py:80
+msgid "    Pack"
+msgstr "  Paquet"
+
+#: laima/draft.py:48 laima/draft.py:60 laima/draft.py:190 laima/main.py:71
+#: laima/season.py:43 laima/season.py:90 laima/draft.py:49 laima/draft.py:61
+#: laima/draft.py:191 laima/main.py:80 laima/season.py:44 laima/season.py:91
+msgid "  Kamas"
+msgstr "  Kamas"
+
+#: laima/draft.py:49 laima/draft.py:60 laima/draft.py:191 laima/main.py:71
+#: laima/draft.py:50 laima/draft.py:61 laima/draft.py:192 laima/main.py:80
+msgid "      Chips"
+msgstr "     Jetons"
+
+#: laima/draft.py:50 laima/draft.py:60 laima/draft.py:192 laima/main.py:71
+#: laima/draft.py:51 laima/draft.py:61 laima/draft.py:193 laima/main.py:80
+msgid "  Earnings"
+msgstr "    Gains"
+
+#: laima/draft.py:80 laima/draft.py:81
+msgid "You cannot lose more than 3 times!"
+msgstr "Vous ne pouvez pas perdre plus de 3 fois !"
+
+#: laima/draft.py:92 laima/draft.py:93
+#, python-brace-format
+msgid "{value} is not a number"
+msgstr "{value} n'est pas un nombre"
+
+#: laima/draft.py:98 laima/draft.py:99
+#, python-brace-format
+msgid "{value} is not lesser than 12"
+msgstr "{value} n'est pas inférieur à 12"
+
+#: laima/draft.py:95 laima/draft.py:96
+#, python-brace-format
+msgid "{value} is not greater than 1"
+msgstr "{value} n'est pas supérieur à 1"
+
+#: laima/main.py:38 laima/main.py:40
+msgid "This bot is dedicated to the Krosmaga CCG."
+msgstr "Ce bot est dédié au CCG Krosmaga."
+
+#: laima/main.py:41 laima/main.py:43
+msgid "No command called {} found."
+msgstr "Aucune commande {} trouvée."
+
+#: laima/main.py:42 laima/main.py:44
+#, python-brace-format
+msgid "Command {0.name} has no subcommands."
+msgstr "La commande {0.name} n'a pas de sous-commandes."
+
+#: laima/main.py:60 laima/main.py:62
+msgid "Give information about Laima"
+msgstr "Donne des informations à propos de Laima"
+
+#: laima/main.py:67 laima/main.py:75
+msgid "Calculate the earnings of the draft mode"
+msgstr "Calcule les gains du mode draft"
+
+#: laima/main.py:68 laima/main.py:76
+msgid ""
+"Give the play number(s) where you lose. If you reached the level four, you "
+"will be ask to indicate the play(s) where you did an all-in."
+msgstr ""
+"Donnez le(s) numéro(s) de partie où vous avez perdu. Si vous avez atteint le "
+"niveau quatre, je vous demanderais de m'indiquer les parties où vous avez "
+"fait all-in."
+
+#: laima/main.py:80 laima/main.py:89
+msgid "Give the play number(s) where you did **all-in**"
+msgstr "Donnez le(s) numéro(s) de partie où vous avez fait **all-in**"
+
+#: laima/main.py:101 laima/main.py:110
+msgid "The numbers must be integers"
+msgstr "Les numéros doivent être entiers"
+
+#: laima/main.py:105 laima/main.py:114
+msgid "Display a table with the potential earnings"
+msgstr "Affiche un tableau avec les gains potentiels"
+
+#: laima/main.py:106 laima/main.py:115
+msgid ""
+"Give the number(s) of victories for which you want an estimation of the "
+"earnings. Without parameters, display the complete table"
+msgstr ""
+"Donnez le(s) nombre(s) de victoire pour lesquels vous voulez une estimation "
+"des gains. Sans paramètres, affiche tout le tableau."
+
+#: laima/main.py:112 laima/main.py:140
+msgid "Change the prefix to call Laima on the server"
+msgstr "Change le préfixe pour appeler Laima sur le serveur"
+
+#: laima/main.py:113 laima/main.py:141
+msgid "Give the new prefix you want to use. Limited to 3 characters."
+msgstr ""
+"Donnez le nouveau préfixe que vous voulez utiliser. Limité à 3 caractères."
+
+#: laima/main.py:117 laima/main.py:146
+msgid "This command takes one unique parameter"
+msgstr "Cette commande prend un unique paramètre"
+
+#: laima/main.py:123 laima/main.py:146 laima/main.py:156 laima/main.py:152
+#: laima/main.py:175 laima/main.py:185
+msgid "Only administrators of the server can use this command"
+msgstr "Seuls les administrateurs du serveur peuvent utiliser cette commande"
+
+#: laima/main.py:126 laima/main.py:155
+msgid "Give the rewards of the ranked mode"
+msgstr "Donne les récompenses du mode classé"
+
+#: laima/main.py:127 laima/main.py:156
+msgid ""
+"Give the rank(s) for which you want the rewards. Accepted values are number "
+"from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display "
+"the all table."
+msgstr ""
+"Donnez le(s) rang(s) pour le(s)quel(s) vous voulez les récompenses. Les "
+"valeurs acceptées sont les nombres de 6 à 30, top100, top20, 3rd, 2nd et "
+"1st. Si aucun rang n'est donné, affiche le tableau complet."
+
+#: laima/main.py:133 laima/main.py:162
+msgid ""
+"Allow to subscribe or unsubscribe to the twitter timeline of Krosmaga (fr)"
+msgstr "Permet de s'abonner ou se désabonner au fil twitter de Krosmaga"
+
+#: laima/main.py:134 laima/main.py:163
+msgid "Use one of the subcommands"
+msgstr "Utilisez une des sous-commandes"
+
+#: laima/main.py:137 laima/main.py:166
+#, python-brace-format
+msgid "No subcommand used. Run ```{prefix}help twitter``` for more help."
+msgstr ""
+"Aucune sous-commande utilisée. Faites ```{prefix}help twitter``` pour plus "
+"d'aide."
+
+#: laima/main.py:141 laima/main.py:170
+msgid "Subscribe the current channel"
+msgstr "Abonne le salon actuel"
+
+#: laima/main.py:151 laima/main.py:180
+msgid "Unsubscribe the current channel"
+msgstr "Désabonne le salon actuel"
+
+#: laima/main.py:160 laima/main.py:189
+msgid "Indicate if the current channel is currently subscribed or not"
+msgstr "Indique si le salon actuel est actuellement abonné ou non"
+
+#: laima/main.py:166 laima/main.py:195
+msgid "Display the last tweet of Krosmaga"
+msgstr "Affiche le dernier tweet de Krosmaga"
+
+#: laima/season.py:30 laima/season.py:31
+msgid "Common"
+msgstr "Commune"
+
+#: laima/season.py:32 laima/season.py:34 laima/season.py:33 laima/season.py:35
+msgid "Uncommon"
+msgstr "Peu commune"
+
+#: laima/season.py:36 laima/season.py:37
+msgid "Rare"
+msgstr "Rare"
+
+#: laima/season.py:38 laima/season.py:39
+msgid "Krosmic"
+msgstr "Krosmique"
+
+#: laima/season.py:40 laima/season.py:41
+msgid "Infinite"
+msgstr "Infinite"
+
+#: laima/season.py:41 laima/season.py:90 laima/season.py:42 laima/season.py:91
+msgid "   Rank"
+msgstr "    Rang"
+
+#: laima/season.py:42 laima/season.py:90 laima/season.py:43 laima/season.py:91
+msgid "                    Cards"
+msgstr "                       Cartes"
+
+#: laima/season.py:44 laima/season.py:45
+msgid "Yes"
+msgstr "Oui"
+
+#: laima/season.py:44 laima/season.py:90 laima/season.py:45 laima/season.py:91
+msgid "  Pedestal"
+msgstr "  Socle"
+
+#: laima/season.py:46 laima/season.py:47
+msgid "None"
+msgstr "Aucun"
+
+#: laima/season.py:49 laima/season.py:90 laima/season.py:50 laima/season.py:91
+msgid "   Trophy"
+msgstr "   Trophé"
+
+#: laima/season.py:71 laima/season.py:72
+msgid "Error, the rank cannot be negative"
+msgstr "Erreur, le rang ne peut être négatif"
+
+#: laima/season.py:73 laima/season.py:74
+msgid "Sorry, ranks under 6 do not earn anything"
+msgstr "Désolé, les rangs inférieurs à 6 ne gagnent rien"
+
+#: laima/season.py:75 laima/season.py:76
+msgid "Error, there are no rank above 30"
+msgstr "Erreur, il n'y a pas de rang au-dessus de 30"
+
+#: laima/season.py:81 laima/season.py:82
+msgid "Error, rank not recognized"
+msgstr "Erreur, rang non reconnu"
+
+#: laima/twitter_agent.py:48 laima/twitter_agent.py:49
+msgid "Tweet from Krosmaga"
+msgstr "Tweet de Krosmaga"
+
+#: laima/twitter_agent.py:51 laima/twitter_agent.py:52
+msgid "Quoted by Krosmaga"
+msgstr "Cité par Krosmaga"
+
+#: laima/twitter_agent.py:54 laima/twitter_agent.py:55
+msgid "Retweeted by Krosmaga"
+msgstr "Retweeté par Krosmaga"
+
+#: laima/twitter_agent.py:81 laima/twitter_agent.py:82
+msgid "This channel is now subscribed to the twitter timeline of Krosmaga"
+msgstr "Ce salon n'est pas abonné au fil twitter de Krosmaga"
+
+#: laima/twitter_agent.py:90 laima/twitter_agent.py:91
+msgid ""
+"Error, this channel is already subscribed to the twitter timeline of Krosmaga"
+msgstr "Erreur, ce salon est déjà abonné au fil twitter de Krosmaga"
+
+#: laima/twitter_agent.py:102 laima/twitter_agent.py:103
+msgid ""
+"Error, this channel is already not subscribed to the twitter timeline of "
+"Krosmaga"
+msgstr "Erreur, ce salon n'est déjà pas abonné au fil twitter de Krosmaga"
+
+#: laima/twitter_agent.py:107 laima/twitter_agent.py:108
+msgid "This channel is now unsubscribed from the twitter timeline of Krosmaga"
+msgstr "Ce salon est maintenant abonné au fil twitter de Krosmaga"
+
+#: laima/twitter_agent.py:123
+msgid "This channel is not subscribed to the twitter timeline of Krosmaga"
+msgstr "Ce salon n'est pas abonné au fil twitter de Krosmaga"
+
+#: laima/twitter_agent.py:128
+msgid "This channel is subscribed to the twitter timeline of Krosmaga"
+msgstr "Ce salon est abonné au fil twitter de Krosmaga"
+
+#: laima/util.py:46 laima/util.py:41
+#, python-brace-format
+msgid "Type {0}{1} command for more info on a command."
+msgstr "Utilisez {0}{1} commande pour plus d'information sur une commande."
+
+#: laima/util.py:75 laima/util.py:70
+msgid "Commands:"
+msgstr "Commandes:"
+
+#: laima/util.py:91 laima/prefix.py:31
+msgid "The prefix on this server has been successfully changed"
+msgstr "Le préfixe de ce serveur a été changé avec succès"
+
+#: laima/util.py:93 laima/prefix.py:33
+msgid "The prefix cannot exceed 3 characters"
+msgstr "Le préfixe ne peut pas avoir plus de 3 caractères"
+
+#: laima/internationalization.py:54
+msgid "The language on this server was successfully changed!"
+msgstr "Le langage sur ce serveur a été changé avec succès !"
+
+#: laima/internationalization.py:63
+msgid "Error, This language was already set"
+msgstr "Erreur, ce langage était déjà défini"
+
+#: laima/main.py:121
+msgid "Allow to change the language used on the server"
+msgstr "Permet de changer le langage utilisé sur le serveur"
+
+#: laima/main.py:122
+msgid "Indicate which language you want to use. Available: en, fr."
+msgstr "Indiquez quel langage vous voulez utiliser. Disponible : en, fr."
+
+#: laima/main.py:132
+msgid "Error, use either *en* or *fr* as parameter"
+msgstr "Erreur, utilisez soit *en* ou *fr* en paramètre"
+
+#: laima/model.py:32
+msgid "Bronze"
+msgstr "Bronze"
+
+#: laima/model.py:33
+msgid "Silver"
+msgstr "Argent"
+
+#: laima/model.py:34
+msgid "Gold"
+msgstr "Or"
+
+#: laima/model.py:35
+msgid "Necroms"
+msgstr "Nécromes"
+
+#: laima/model.py:46
+msgid "1st"
+msgstr "1er"
+
+#: laima/model.py:47
+msgid "2nd"
+msgstr "2ème"
+
+#: laima/model.py:48
+msgid "3rd"
+msgstr "3ème"
+
+#: laima/model.py:49
+msgid "Top 20"
+msgstr "Top 20"
+
+#: laima/model.py:50
+msgid "Top 100"
+msgstr "Top 100"
+
+#: laima/model.py:51
+msgid "Veteran"
+msgstr "Vétéran"
