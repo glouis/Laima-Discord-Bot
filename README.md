@@ -85,3 +85,6 @@ Laima
 481516234211235813
 ------
 ```
+
+## Translator guide
+If you want to use Laima in a language that is not yet supported, you can provide it! Simply clone the project, create a folder with your [language tag](https://fr.wikipedia.org/wiki/Mod%C3%A8le:Code_langue) and a subfolder LC_MESSAGES under laima/i18n. Copy the laima.po in it, and translate it (see example of existing languages). You can use [Poedit](https://poedit.net/) to help you in the task. Finally, do a push request, your help will be very appreciated!
