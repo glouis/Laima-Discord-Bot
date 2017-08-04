@@ -23,6 +23,7 @@ import config
 import discord
 from discord.ext import commands
 import draft as _draft
+import help_formatter as _help
 import logging
 import model
 import internationalization
@@ -37,12 +38,11 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-description = _("This bot is dedicated to the Krosmaga CCG.")
 bot = commands.Bot(command_prefix=_prefix.prefix,
-    description=description,
+    description=_("This bot is dedicated to the Krosmaga CCG."),
     command_not_found=_("No command called {} found."),
     command_has_no_subcommands=_("Command {0.name} has no subcommands."),
-    formatter=util.CustomHelpFormatter())
+    formatter=_help.CustomHelpFormatter())
 
 async def twitterAgent():
     await bot.wait_until_ready()
@@ -60,7 +60,7 @@ async def twitterAgent():
                         await bot.send_message(dest, embed=tweet)
 
 @bot.command(pass_context=True,
-    description=_("Give information about Laima"))
+    help=_("Give information about Laima"))
 async def about(context):
     internationalization.set_language(context.message.server.id)
     _about.laima.reset_title(_("Discord bot dedicated to the Krosmaga CCG"))
