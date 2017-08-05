@@ -216,6 +216,8 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+    invite = discord.Game(name="https://discord.gg/VsrbrYC", url=None, type=0)
+    await bot.change_presence(game=invite)
 
 bot.loop.create_task(twitterAgent())
 bot.run(config.discord_token)
