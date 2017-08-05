@@ -25,9 +25,21 @@ import inspect
 import internationalization
 import re
 
+help_help = _("Shows this message.")
+
 # Override HelpFormatter to remove indications about categories (which are not used) and allow internationalization
 class CustomHelpFormatter(HelpFormatter):
-    def get_ending_note(self):
+    def _custom_add_subcommands_to_page(self, max_width, commands):
+        for name, command in commands:
+            if name in command.aliases:
+                # skip aliases
+                continue
+
+            entry = '  {0:<{width}} {1}'.format(_(name), _(command.short_doc), width=max_width)
+            shortened = self.shorten(entry)
+            self._paginator.add_line(shortened)
+
+    def _custom_get_ending_note(self):
         command_name = self.context.invoked_with
         return _("Type {0}{1} command for more info on a command.").format(self.clean_prefix, command_name)
 
@@ -41,16 +53,16 @@ class CustomHelpFormatter(HelpFormatter):
 
         if description:
             # <description> portion
-            self._paginator.add_line(description, empty=True)
+            self._paginator.add_line(_(description), empty=True)
 
         if isinstance(self.command, Command):
             # <signature portion>
             signature = self.get_command_signature()
-            self._paginator.add_line(signature, empty=True)
+            self._paginator.add_line(_(signature), empty=True)
 
             # <long doc> section
             if self.command.help:
-                self._paginator.add_line(self.command.help, empty=True)
+                self._paginator.add_line(_(self.command.help), empty=True)
 
             # end it here if it's just a regular command
             if not self.has_subcommands():
@@ -60,10 +72,10 @@ class CustomHelpFormatter(HelpFormatter):
         max_width = self.max_name_size
 
         self._paginator.add_line(_("Commands:"))
-        self._add_subcommands_to_page(max_width, self.filter_command_list())
+        self._custom_add_subcommands_to_page(max_width, self.filter_command_list())
 
         # add the ending note
         self._paginator.add_line()
-        ending_note = self.get_ending_note()
+        ending_note = self._custom_get_ending_note()
         self._paginator.add_line(ending_note)
         return self._paginator.pages
