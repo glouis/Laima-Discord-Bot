@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-03 22:30+0200\n"
-"PO-Revision-Date: 2017-08-04 17:04+0200\n"
+"PO-Revision-Date: 2017-08-05 12:34+0200\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -305,7 +305,7 @@ msgstr "Retweeté par Krosmaga"
 
 #: laima/twitter_agent.py:81 laima/twitter_agent.py:82
 msgid "This channel is now subscribed to the twitter timeline of Krosmaga"
-msgstr "Ce salon n'est pas abonné au fil twitter de Krosmaga"
+msgstr "Ce salon est maintenant abonné au fil twitter de Krosmaga"
 
 #: laima/twitter_agent.py:90 laima/twitter_agent.py:91
 msgid ""
@@ -320,7 +320,7 @@ msgstr "Erreur, ce salon n'est déjà pas abonné au fil twitter de Krosmaga"
 
 #: laima/twitter_agent.py:107 laima/twitter_agent.py:108
 msgid "This channel is now unsubscribed from the twitter timeline of Krosmaga"
-msgstr "Ce salon est maintenant abonné au fil twitter de Krosmaga"
+msgstr "Ce salon n'est maintenant plus abonné au fil twitter de Krosmaga"
 
 #: laima/twitter_agent.py:123
 msgid "This channel is not subscribed to the twitter timeline of Krosmaga"
