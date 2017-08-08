@@ -170,11 +170,11 @@ async def season(context, *args : str):
 async def twitter(context):
     internationalization.set_language(context.message.server.id)
     if context.invoked_subcommand is None:
-        await bot.say(_("No subcommand used. Run ```{prefix}help twitter``` for more help.").format(prefix=bot.command_prefix))
+        await bot.say(_("No subcommand used. Run ```{prefix}help twitter``` for more help.").format(prefix=_prefix.prefix(bot, context.message)))
 
 @twitter.command(pass_context=True,
     aliases=["on"],
-    description=_("Subscribe the current channel"))
+    help=_("Subscribe the current channel"))
 async def subscribe(context):
     internationalization.set_language(context.message.server.id)
     if context.message.author.server_permissions.administrator:
@@ -185,7 +185,7 @@ async def subscribe(context):
 
 @twitter.command(pass_context=True,
     aliases=["off"],
-    description=_("Unsubscribe the current channel"))
+    help=_("Unsubscribe the current channel"))
 async def unsubscribe(context):
     internationalization.set_language(context.message.server.id)
     if context.message.author.server_permissions.administrator:
@@ -195,14 +195,14 @@ async def unsubscribe(context):
     await bot.say(msg)
 
 @twitter.command(pass_context=True,
-    description=_("Indicate if the current channel is currently subscribed or not"))
+    help=_("Indicate if the current channel is currently subscribed or not"))
 async def status(context):
     internationalization.set_language(context.message.server.id)
     msg = twitter_agent.getStatus(context.message.channel.id)
     await bot.say(msg)
 
 @twitter.command(pass_context=True,
-    description=_("Display the last tweet of Krosmaga"))
+    help=_("Display the last tweet of Krosmaga"))
 async def last(context):
     internationalization.set_language(context.message.server.id)
     tweet_id = twitter_agent.getLastTweetId()
