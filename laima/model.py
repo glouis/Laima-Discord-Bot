@@ -53,7 +53,8 @@ class Draft(BaseModel):
 
 class Channel(BaseModel):
     id = CharField(unique=True)
-    twitter = BooleanField()
+    twitter = BooleanField(default=False)
+    rss = BooleanField(default=False)
 
     class Meta:
         order_by = ('id',)

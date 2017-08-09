@@ -28,6 +28,7 @@ import logging
 import model
 import internationalization
 import prefix as _prefix
+import rss_agent
 import season as _season
 import twitter_agent
 import util
@@ -156,6 +157,43 @@ async def prefix(context, *args):
         msg = _("Only administrators of the server can use this command")
     await bot.say(msg)
 
+@bot.group(pass_context=True,
+    description=_("Allow to subscribe or unsubscribe to the rss feed of Krosmaga"),
+    help=_("Use one of the subcommands"))
+async def rss(context):
+    internationalization.set_language(context.message.server.id)
+    if context.invoked_subcommand is None:
+        await bot.say(_("No subcommand used. Run ```{prefix}help rss``` for more help.").format(prefix=_prefix.prefix(bot, context.message)))
+
+@rss.command(pass_context=True,
+    aliases=["on"],
+    help=_("Subscribe the current channel"))
+async def subscribe(context):
+    internationalization.set_language(context.message.server.id)
+    if context.message.author.server_permissions.administrator:
+        msg = rss_agent.subscribe(context.message.channel.id)
+    else:
+        msg = _("Only administrators of the server can use this command")
+    await bot.say(msg)
+
+@rss.command(pass_context=True,
+    aliases=["off"],
+    help=_("Unsubscribe the current channel"))
+async def unsubscribe(context):
+    internationalization.set_language(context.message.server.id)
+    if context.message.author.server_permissions.administrator:
+        msg = rss_agent.unsubscribe(context.message.channel.id)
+    else:
+        msg = _("Only administrators of the server can use this command")
+    await bot.say(msg)
+
+@rss.command(pass_context=True,
+    help=_("Indicate if the current channel is currently subscribed or not"))
+async def status(context):
+    internationalization.set_language(context.message.server.id)
+    msg = rss_agent.getStatus(context.message.channel.id)
+    await bot.say(msg)
+
 @bot.command(pass_context=True,
     description=_("Give the rewards of the ranked mode"),
     help=_("Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table."))
@@ -218,6 +256,9 @@ async def on_ready():
     print('------')
     invite = discord.Game(name="https://discord.gg/VsrbrYC", url=None, type=0)
     await bot.change_presence(game=invite)
+
+for lang in internationalization.Language:
+    bot.loop.create_task(rss_agent.rss_agent(bot, lang))
 
 bot.loop.create_task(twitterAgent())
 bot.run(config.discord_token)
