@@ -5,32 +5,35 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Laima v0.1.1\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-09 21:58+0200\n"
-"PO-Revision-Date: 2017-08-09 22:06+0200\n"
+"POT-Creation-Date: 2017-08-09 22:34+0200\n"
+"PO-Revision-Date: 2017-08-09 22:34+0200\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Last-Translator: \n"
-"Language-Team: LFV\n"
+"Language-Team: \n"
 "X-Generator: Poedit 1.8.7.1\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 
 #: laima/about.py:58 laima/main.py:64 about.py:58 main.py:66 laima/main.py:67
+#: laima/main.py:52
 msgid "Discord bot dedicated to the Krosmaga CCG"
 msgstr "Discord bot dedicated to the Krosmaga CCG"
 
 #: laima/about.py:59 laima/main.py:65 about.py:59 main.py:67 laima/main.py:68
+#: laima/main.py:53
 msgid "I aim to provide useful commands to the Krosmaga community!"
 msgstr "I aim to provide useful commands to the Krosmaga community!"
 
 #: laima/about.py:65 laima/main.py:68 about.py:65 main.py:70 laima/main.py:71
+#: laima/main.py:56
 msgid "Author of the illustration"
 msgstr "Author of the illustration"
 
 #: laima/about.py:66 laima/main.py:69 about.py:66 main.py:71 laima/main.py:72
+#: laima/main.py:57
 msgid ""
 "Below is the complete illustration of Laima. You can visit the DeviantArt "
 "page of FeaRei by cliking on the title!"
@@ -54,18 +57,21 @@ msgstr "The number of victory cannot be greater than 12"
 #: laima/draft.py:44 laima/draft.py:60 laima/draft.py:186 laima/main.py:71
 #: laima/draft.py:45 laima/draft.py:61 laima/draft.py:187 laima/main.py:80
 #: draft.py:45 draft.py:61 draft.py:187 main.py:82 laima/main.py:83
+#: laima/main.py:68
 msgid "Victories"
 msgstr "Victories"
 
 #: laima/draft.py:45 laima/draft.py:60 laima/draft.py:187 laima/main.py:71
 #: laima/draft.py:46 laima/draft.py:61 laima/draft.py:188 laima/main.py:80
 #: draft.py:46 draft.py:61 draft.py:188 main.py:82 laima/main.py:83
+#: laima/main.py:68
 msgid "  Level"
 msgstr "  Level"
 
 #: laima/draft.py:47 laima/draft.py:60 laima/draft.py:189 laima/main.py:71
 #: laima/draft.py:48 laima/draft.py:61 laima/draft.py:190 laima/main.py:80
 #: draft.py:48 draft.py:61 draft.py:190 main.py:82 laima/main.py:83
+#: laima/main.py:68
 msgid "    Pack"
 msgstr "    Pack"
 
@@ -73,19 +79,21 @@ msgstr "    Pack"
 #: laima/season.py:43 laima/season.py:90 laima/draft.py:49 laima/draft.py:61
 #: laima/draft.py:191 laima/main.py:80 laima/season.py:44 laima/season.py:91
 #: draft.py:49 draft.py:61 draft.py:191 main.py:82 season.py:44 season.py:91
-#: laima/main.py:83
+#: laima/main.py:83 laima/main.py:68
 msgid "  Kamas"
 msgstr "  Kamas"
 
 #: laima/draft.py:49 laima/draft.py:60 laima/draft.py:191 laima/main.py:71
 #: laima/draft.py:50 laima/draft.py:61 laima/draft.py:192 laima/main.py:80
 #: draft.py:50 draft.py:61 draft.py:192 main.py:82 laima/main.py:83
+#: laima/main.py:68
 msgid "      Chips"
 msgstr "      Chips"
 
 #: laima/draft.py:50 laima/draft.py:60 laima/draft.py:192 laima/main.py:71
 #: laima/draft.py:51 laima/draft.py:61 laima/draft.py:193 laima/main.py:80
 #: draft.py:51 draft.py:61 draft.py:193 main.py:82 laima/main.py:83
+#: laima/main.py:68
 msgid "  Earnings"
 msgstr "  Earnings"
 
@@ -122,14 +130,17 @@ msgid "Command {0.name} has no subcommands."
 msgstr "Command {0.name} has no subcommands."
 
 #: laima/main.py:60 laima/main.py:62 main.py:63 laima/main.py:64
+#: laima/main.py:49
 msgid "Give information about Laima"
 msgstr "Give information about Laima"
 
 #: laima/main.py:67 laima/main.py:75 main.py:77 laima/main.py:78
+#: laima/main.py:63
 msgid "Calculate the earnings of the draft mode"
 msgstr "Calculate the earnings of the draft mode"
 
 #: laima/main.py:68 laima/main.py:76 main.py:78 laima/main.py:79
+#: laima/main.py:64
 msgid ""
 "Give the play number(s) where you lose. If you reached the level four, you "
 "will be ask to indicate the play(s) where you did an all-in."
@@ -138,18 +149,22 @@ msgstr ""
 "will be ask to indicate the play(s) where you did an all-in."
 
 #: laima/main.py:80 laima/main.py:89 main.py:91 laima/main.py:92
+#: laima/main.py:77
 msgid "Give the play number(s) where you did **all-in**"
 msgstr "Give the play number(s) where you did **all-in**"
 
 #: laima/main.py:101 laima/main.py:110 main.py:112 laima/main.py:113
+#: laima/main.py:98
 msgid "The numbers must be integers"
 msgstr "The numbers must be integers"
 
 #: laima/main.py:105 laima/main.py:114 main.py:117 laima/main.py:118
+#: laima/main.py:103
 msgid "Display a table with the potential earnings"
 msgstr "Display a table with the potential earnings"
 
 #: laima/main.py:106 laima/main.py:115 main.py:118 laima/main.py:119
+#: laima/main.py:104
 msgid ""
 "Give the number(s) of victories for which you want an estimation of the "
 "earnings. Without parameters, display the complete table"
@@ -158,29 +173,36 @@ msgstr ""
 "earnings. Without parameters, display the complete table"
 
 #: laima/main.py:112 laima/main.py:140 main.py:144 laima/main.py:145
+#: laima/main.py:130
 msgid "Change the prefix to call Laima on the server"
 msgstr "Change the prefix to call Laima on the server"
 
 #: laima/main.py:113 laima/main.py:141 main.py:145 laima/main.py:146
+#: laima/main.py:131
 msgid "Give the new prefix you want to use. Limited to 3 characters."
 msgstr "Give the new prefix you want to use. Limited to 3 characters."
 
 #: laima/main.py:117 laima/main.py:146 main.py:150 laima/main.py:151
+#: laima/main.py:136
 msgid "This command takes one unique parameter"
 msgstr "This command takes one unique parameter"
 
 #: laima/main.py:123 laima/main.py:146 laima/main.py:156 laima/main.py:152
 #: laima/main.py:175 laima/main.py:185 main.py:140 main.py:156 main.py:183
 #: main.py:194 laima/main.py:141 laima/main.py:157 laima/main.py:176
-#: laima/main.py:187 laima/main.py:221 laima/main.py:232
+#: laima/main.py:187 laima/main.py:221 laima/main.py:232 laima/main.py:126
+#: laima/main.py:142 laima/main.py:161 laima/main.py:172 laima/main.py:206
+#: laima/main.py:217
 msgid "Only administrators of the server can use this command"
 msgstr "Only administrators of the server can use this command"
 
 #: laima/main.py:126 laima/main.py:155 main.py:160 laima/main.py:198
+#: laima/main.py:183
 msgid "Give the rewards of the ranked mode"
 msgstr "Give the rewards of the ranked mode"
 
 #: laima/main.py:127 laima/main.py:156 main.py:161 laima/main.py:199
+#: laima/main.py:184
 msgid ""
 "Give the rank(s) for which you want the rewards. Accepted values are number "
 "from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display "
@@ -191,36 +213,40 @@ msgstr ""
 "the all table."
 
 #: laima/main.py:133 laima/main.py:162 main.py:168 laima/main.py:206
+#: laima/main.py:191
 msgid ""
 "Allow to subscribe or unsubscribe to the twitter timeline of Krosmaga (fr)"
 msgstr ""
 "Allow to subscribe or unsubscribe to the twitter timeline of Krosmaga (fr)"
 
 #: laima/main.py:134 laima/main.py:163 main.py:169 laima/main.py:162
-#: laima/main.py:207
+#: laima/main.py:207 laima/main.py:147 laima/main.py:192
 msgid "Use one of the subcommands"
 msgstr "Use one of the subcommands"
 
 #: laima/main.py:137 laima/main.py:166 main.py:173 laima/main.py:211
+#: laima/main.py:196
 #, python-brace-format
 msgid "No subcommand used. Run ```{prefix}help twitter``` for more help."
 msgstr "No subcommand used. Run ```{prefix}help twitter``` for more help."
 
 #: laima/main.py:141 laima/main.py:170 main.py:177 laima/main.py:215
+#: laima/main.py:155 laima/main.py:200
 msgid "Subscribe the current channel"
 msgstr "Subscribe the current channel"
 
 #: laima/main.py:151 laima/main.py:180 main.py:188 laima/main.py:181
-#: laima/main.py:226
+#: laima/main.py:226 laima/main.py:166 laima/main.py:211
 msgid "Unsubscribe the current channel"
 msgstr "Unsubscribe the current channel"
 
 #: laima/main.py:160 laima/main.py:189 main.py:198 laima/main.py:191
-#: laima/main.py:236
+#: laima/main.py:236 laima/main.py:176 laima/main.py:221
 msgid "Indicate if the current channel is currently subscribed or not"
 msgstr "Indicate if the current channel is currently subscribed or not"
 
 #: laima/main.py:166 laima/main.py:195 main.py:205 laima/main.py:243
+#: laima/main.py:228
 msgid "Display the last tweet of Krosmaga"
 msgstr "Display the last tweet of Krosmaga"
 
@@ -290,28 +316,34 @@ msgid "Error, rank not recognized"
 msgstr "Error, rank not recognized"
 
 #: laima/twitter_agent.py:48 laima/twitter_agent.py:49 twitter_agent.py:49
+#: laima/twitter_agent.py:52
 msgid "Tweet from Krosmaga"
 msgstr "Tweet from Krosmaga"
 
 #: laima/twitter_agent.py:51 laima/twitter_agent.py:52 twitter_agent.py:52
+#: laima/twitter_agent.py:55
 msgid "Quoted by Krosmaga"
 msgstr "Quoted by Krosmaga"
 
 #: laima/twitter_agent.py:54 laima/twitter_agent.py:55 twitter_agent.py:55
+#: laima/twitter_agent.py:58
 msgid "Retweeted by Krosmaga"
 msgstr "Retweeted by Krosmaga"
 
 #: laima/twitter_agent.py:81 laima/twitter_agent.py:82 twitter_agent.py:82
+#: laima/twitter_agent.py:85
 msgid "This channel is now subscribed to the twitter timeline of Krosmaga"
 msgstr "This channel is now subscribed to the twitter timeline of Krosmaga"
 
 #: laima/twitter_agent.py:90 laima/twitter_agent.py:91 twitter_agent.py:91
+#: laima/twitter_agent.py:94
 msgid ""
 "Error, this channel is already subscribed to the twitter timeline of Krosmaga"
 msgstr ""
 "Error, this channel is already subscribed to the twitter timeline of Krosmaga"
 
 #: laima/twitter_agent.py:102 laima/twitter_agent.py:103 twitter_agent.py:103
+#: laima/twitter_agent.py:106
 msgid ""
 "Error, this channel is already not subscribed to the twitter timeline of "
 "Krosmaga"
@@ -320,14 +352,15 @@ msgstr ""
 "Krosmaga"
 
 #: laima/twitter_agent.py:107 laima/twitter_agent.py:108 twitter_agent.py:108
+#: laima/twitter_agent.py:111
 msgid "This channel is now unsubscribed from the twitter timeline of Krosmaga"
 msgstr "This channel is now unsubscribed from the twitter timeline of Krosmaga"
 
-#: laima/twitter_agent.py:123 twitter_agent.py:123
+#: laima/twitter_agent.py:123 twitter_agent.py:123 laima/twitter_agent.py:126
 msgid "This channel is not subscribed to the twitter timeline of Krosmaga"
 msgstr "This channel is not subscribed to the twitter timeline of Krosmaga"
 
-#: laima/twitter_agent.py:128 twitter_agent.py:128
+#: laima/twitter_agent.py:128 twitter_agent.py:128 laima/twitter_agent.py:131
 msgid "This channel is subscribed to the twitter timeline of Krosmaga"
 msgstr "This channel is subscribed to the twitter timeline of Krosmaga"
 
@@ -358,15 +391,15 @@ msgstr "The language on this server was successfully changed!"
 msgid "Error, This language was already set"
 msgstr "Error, This language was already set"
 
-#: laima/main.py:121 main.py:125 laima/main.py:126
+#: laima/main.py:121 main.py:125 laima/main.py:126 laima/main.py:111
 msgid "Allow to change the language used on the server"
 msgstr "Allow to change the language used on the server"
 
-#: laima/main.py:122 main.py:126 laima/main.py:127
+#: laima/main.py:122 main.py:126 laima/main.py:127 laima/main.py:112
 msgid "Indicate which language you want to use. Available: en, fr."
 msgstr "Indicate which language you want to use. Available: en, fr."
 
-#: laima/main.py:132 main.py:136 laima/main.py:137
+#: laima/main.py:132 main.py:136 laima/main.py:137 laima/main.py:122
 msgid "Error, use either *en* or *fr* as parameter"
 msgstr "Error, use either *en* or *fr* as parameter"
 
@@ -414,11 +447,11 @@ msgstr "Veteran"
 msgid "Shows this message."
 msgstr "Shows this message."
 
-#: laima/main.py:161
+#: laima/main.py:161 laima/main.py:146
 msgid "Allow to subscribe or unsubscribe to the rss feed of Krosmaga"
 msgstr "Allow to subscribe or unsubscribe to the rss feed of Krosmaga"
 
-#: laima/main.py:166
+#: laima/main.py:166 laima/main.py:151
 #, python-brace-format
 msgid "No subcommand used. Run ```{prefix}help rss``` for more help."
 msgstr "No subcommand used. Run ```{prefix}help rss``` for more help."
@@ -460,3 +493,7 @@ msgstr "This channel is not subscribed to the rss feed of Krosmaga"
 #: laima/rss_agent.py:144
 msgid "This channel is subscribed to the rss feed of Krosmaga"
 msgstr "This channel is subscribed to the rss feed of Krosmaga"
+
+#: laima/twitter_agent.py:33
+msgid "Krosmaga_EN"
+msgstr "Krosmaga_EN"

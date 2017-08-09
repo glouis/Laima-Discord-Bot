@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import asyncio
 import config
 from datetime import datetime
 import discord
@@ -29,11 +30,14 @@ api = twitter.Api(consumer_key=config.twitter_consumer_key,
     access_token_key=config.twitter_access_token_key,
     access_token_secret=config.twitter_access_token_secret)
 
+twitter_timeline = {}
+twitter_timeline["screen_name"] = _("Krosmaga_EN")
+
 # Get the id of the last tweet from krosmaga which is not a reply
 # Return:
 #   - id: str, the id of the tweet
-def getLastTweetId():
-    statuses = api.GetUserTimeline(screen_name="krosmaga")
+def getLastTweetId(screen_name):
+    statuses = api.GetUserTimeline(screen_name=screen_name)
     i = 0
     while(statuses[i].in_reply_to_user_id is not None):
         i += 1
@@ -129,3 +133,20 @@ def getStatus(channel_id):
     except model.Channel.DoesNotExist:
         pass
     return msg
+
+async def twitterAgent(bot, lang):
+    await bot.wait_until_ready()
+    internationalization.languages[lang].install()
+    last_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+    while not bot.is_closed:
+        await asyncio.sleep(300)
+        internationalization.languages[lang].install()
+        new_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+        if new_tweet_id != last_tweet_id:
+            tweet = getTweet(new_tweet_id)
+            last_tweet_id = new_tweet_id
+            with model.laima_db.transaction():
+                for channel in model.Channel.select():
+                    if(channel.twitter and channel.lang == lang.value):
+                        dest = bot.get_channel(channel.id)
+                        await bot.send_message(dest, embed=tweet)

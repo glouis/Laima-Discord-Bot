@@ -45,21 +45,6 @@ bot = commands.Bot(command_prefix=_prefix.prefix,
     command_has_no_subcommands=_("Command {0.name} has no subcommands."),
     formatter=_help.CustomHelpFormatter())
 
-async def twitterAgent():
-    await bot.wait_until_ready()
-    last_tweet_id = twitter_agent.getLastTweetId()
-    while not bot.is_closed:
-        await asyncio.sleep(300)
-        new_tweet_id = twitter_agent.getLastTweetId()
-        if new_tweet_id != last_tweet_id:
-            tweet = twitter_agent.getTweet(new_tweet_id)
-            last_tweet_id = new_tweet_id
-            with model.laima_db.transaction():
-                for channel in model.Channel.select():
-                    if(channel.twitter):
-                        dest = bot.get_channel(channel.id)
-                        await bot.send_message(dest, embed=tweet)
-
 @bot.command(pass_context=True,
     help=_("Give information about Laima"))
 async def about(context):
@@ -243,7 +228,7 @@ async def status(context):
     help=_("Display the last tweet of Krosmaga"))
 async def last(context):
     internationalization.set_language(context.message.server.id)
-    tweet_id = twitter_agent.getLastTweetId()
+    tweet_id = twitter_agent.getLastTweetId(_(twitter_agent.twitter_timeline["screen_name"]))
     tweet = twitter_agent.getTweet(tweet_id)
     channel = bot.get_channel(context.message.channel.id)
     await bot.send_message(channel, embed=tweet)
@@ -258,7 +243,7 @@ async def on_ready():
     await bot.change_presence(game=invite)
 
 for lang in internationalization.Language:
+    bot.loop.create_task(twitter_agent.twitterAgent(bot, lang))
     bot.loop.create_task(rss_agent.rss_agent(bot, lang))
 
-bot.loop.create_task(twitterAgent())
 bot.run(config.discord_token)
