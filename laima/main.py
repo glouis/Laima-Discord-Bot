@@ -111,7 +111,7 @@ async def table(context, *args : str):
     description=_("Allow to change the language used on the server"),
     help=_("Indicate which language you want to use. Available: en, fr."))
 async def lang(context, arg):
-    internationalization.set_language(context.message.server.id)
+    internationalization.languages[internationalization.Language.ENGLISH].install()
     if context.message.author.server_permissions.administrator:
         if arg == "en":
             lang = internationalization.Language.ENGLISH
@@ -124,7 +124,8 @@ async def lang(context, arg):
             msg = internationalization.switch_language(context.message.server.id, lang)
     else:
         msg = _("Only administrators of the server can use this command")
-    await bot.say(msg)
+    internationalization.set_language(context.message.server.id)
+    await bot.say(_(msg))
 
 @bot.command(pass_context=True,
     description=_("Change the prefix to call Laima on the server"),
