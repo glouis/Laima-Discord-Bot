@@ -51,9 +51,20 @@ class Draft(BaseModel):
     class Meta:
         order_by = ('victories_number',)
 
+class Server(BaseModel):
+    id = CharField(unique=True)
+    lang = IntegerField(default=1)
+    prefix = CharField(default="&")
+
+    class Meta:
+        order_by = ('id',)
+
 class Channel(BaseModel):
     id = CharField(unique=True)
-    twitter = BooleanField()
+    lang = IntegerField(default=None, null=True)
+    twitter = BooleanField(default=False)
+    rss = BooleanField(default=False)
+    server = ForeignKeyField(Server, related_name='channels')
 
     class Meta:
         order_by = ('id',)
@@ -71,14 +82,6 @@ class Rank(BaseModel):
 
     class Meta:
         order_by = ('number',)
-
-class Server(BaseModel):
-    id = CharField(unique=True)
-    lang = IntegerField(default=1)
-    prefix = CharField(default="&")
-
-    class Meta:
-        order_by = ('id',)
 
 def create_tables():
     laima_db.connect()

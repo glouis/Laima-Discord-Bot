@@ -28,6 +28,7 @@ import logging
 import model
 import internationalization
 import prefix as _prefix
+import rss_agent
 import season as _season
 import twitter_agent
 import util
@@ -44,25 +45,10 @@ bot = commands.Bot(command_prefix=_prefix.prefix,
     command_has_no_subcommands=_("Command {0.name} has no subcommands."),
     formatter=_help.CustomHelpFormatter())
 
-async def twitterAgent():
-    await bot.wait_until_ready()
-    last_tweet_id = twitter_agent.getLastTweetId()
-    while not bot.is_closed:
-        await asyncio.sleep(300)
-        new_tweet_id = twitter_agent.getLastTweetId()
-        if new_tweet_id != last_tweet_id:
-            tweet = twitter_agent.getTweet(new_tweet_id)
-            last_tweet_id = new_tweet_id
-            with model.laima_db.transaction():
-                for channel in model.Channel.select():
-                    if(channel.twitter):
-                        dest = bot.get_channel(channel.id)
-                        await bot.send_message(dest, embed=tweet)
-
 @bot.command(pass_context=True,
     help=_("Give information about Laima"))
 async def about(context):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     _about.laima.reset_title(_("Discord bot dedicated to the Krosmaga CCG"))
     _about.laima.reset_description(_("I aim to provide useful commands to the Krosmaga community!"))
     _about.laima.reset_embed()
@@ -77,7 +63,7 @@ async def about(context):
     description=_("Calculate the earnings of the draft mode"),
     help=_("Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) where you did an all-in."))
 async def draft(context, *args):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     if context.invoked_subcommand is None:
         msg = "```{victories}{level}{pack}{kamas}{chips}{earnings}".format(victories=_("Victories"), level=_("  Level"), pack=_("    Pack"), kamas=_("  Kamas"), chips=_("      Chips"), earnings=_("  Earnings"))
         try:
@@ -117,34 +103,43 @@ async def draft(context, *args):
     description=_("Display a table with the potential earnings"),
     help=_("Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"))
 async def table(context, *args : str):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     msg = _draft.createTable(args)
     await bot.say(msg)
 
 @bot.command(pass_context=True,
-    description=_("Allow to change the language used on the server"),
-    help=_("Indicate which language you want to use. Available: en, fr."))
-async def lang(context, arg):
-    internationalization.set_language(context.message.server.id)
-    if context.message.author.server_permissions.administrator:
-        if arg == "en":
+    description=_("Allow to change the language used on the server or in a channel"),
+    help=_("Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the language of the server."))
+async def lang(context, scope, language):
+    internationalization.languages[internationalization.Language.ENGLISH].install()
+    if True or context.message.author.server_permissions.administrator:
+        if language == "en":
             lang = internationalization.Language.ENGLISH
-        elif arg == "fr":
+        elif language == "fr":
             lang = internationalization.Language.FRENCH
-        else:
+        elif language == "0":
             lang = None
-            msg = _("Error, use either *en* or *fr* as parameter")
-        if lang is not None:
-            msg = internationalization.switch_language(context.message.server.id, lang)
+        else:
+            msg = _("Error, the language was not recognised")
+        if scope == "channel":
+            msg = internationalization.switch_language_channel(context.message, lang)
+        elif scope == "server":
+            if lang is None:
+                msg = _("Error, 0 cannot be used for a server")
+            else:
+                msg = internationalization.switch_language_server(context.message, lang)
+        else:
+            msg = _("Error, the scope was not recognised")
     else:
         msg = _("Only administrators of the server can use this command")
-    await bot.say(msg)
+    internationalization.set_language(context.message)
+    await bot.say(_(msg))
 
 @bot.command(pass_context=True,
     description=_("Change the prefix to call Laima on the server"),
     help=_("Give the new prefix you want to use. Limited to 3 characters."))
 async def prefix(context, *args):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     if context.message.author.server_permissions.administrator:
         if(len(args) != 1):
             msg = _("This command takes one unique parameter")
@@ -156,11 +151,48 @@ async def prefix(context, *args):
         msg = _("Only administrators of the server can use this command")
     await bot.say(msg)
 
+@bot.group(pass_context=True,
+    description=_("Allow to subscribe or unsubscribe to the rss feed of Krosmaga"),
+    help=_("Use one of the subcommands"))
+async def rss(context):
+    internationalization.set_language(context.message)
+    if context.invoked_subcommand is None:
+        await bot.say(_("No subcommand used. Run ```{prefix}help rss``` for more help.").format(prefix=_prefix.prefix(bot, context.message)))
+
+@rss.command(pass_context=True,
+    aliases=["on"],
+    help=_("Subscribe the current channel"))
+async def subscribe(context):
+    internationalization.set_language(context.message)
+    if context.message.author.server_permissions.administrator:
+        msg = rss_agent.subscribe(context.message)
+    else:
+        msg = _("Only administrators of the server can use this command")
+    await bot.say(msg)
+
+@rss.command(pass_context=True,
+    aliases=["off"],
+    help=_("Unsubscribe the current channel"))
+async def unsubscribe(context):
+    internationalization.set_language(context.message)
+    if context.message.author.server_permissions.administrator:
+        msg = rss_agent.unsubscribe(context.message)
+    else:
+        msg = _("Only administrators of the server can use this command")
+    await bot.say(msg)
+
+@rss.command(pass_context=True,
+    help=_("Indicate if the current channel is currently subscribed or not"))
+async def status(context):
+    internationalization.set_language(context.message)
+    msg = rss_agent.getStatus(context.message)
+    await bot.say(msg)
+
 @bot.command(pass_context=True,
     description=_("Give the rewards of the ranked mode"),
     help=_("Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table."))
 async def season(context, *args : str):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     msg = _season.createTable(args)
     await bot.say(msg)
 
@@ -168,7 +200,7 @@ async def season(context, *args : str):
     description=_("Allow to subscribe or unsubscribe to the twitter timeline of Krosmaga (fr)"),
     help=_("Use one of the subcommands"))
 async def twitter(context):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     if context.invoked_subcommand is None:
         await bot.say(_("No subcommand used. Run ```{prefix}help twitter``` for more help.").format(prefix=_prefix.prefix(bot, context.message)))
 
@@ -176,9 +208,9 @@ async def twitter(context):
     aliases=["on"],
     help=_("Subscribe the current channel"))
 async def subscribe(context):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     if context.message.author.server_permissions.administrator:
-        msg = twitter_agent.subscribe(context.message.channel.id)
+        msg = twitter_agent.subscribe(context.message)
     else:
         msg = _("Only administrators of the server can use this command")
     await bot.say(msg)
@@ -187,9 +219,9 @@ async def subscribe(context):
     aliases=["off"],
     help=_("Unsubscribe the current channel"))
 async def unsubscribe(context):
-    internationalization.set_language(context.message.server.id)
+    internationalization.set_language(context.message)
     if context.message.author.server_permissions.administrator:
-        msg = twitter_agent.unsubscribe(context.message.channel.id)
+        msg = twitter_agent.unsubscribe(context.message)
     else:
         msg = _("Only administrators of the server can use this command")
     await bot.say(msg)
@@ -197,15 +229,15 @@ async def unsubscribe(context):
 @twitter.command(pass_context=True,
     help=_("Indicate if the current channel is currently subscribed or not"))
 async def status(context):
-    internationalization.set_language(context.message.server.id)
-    msg = twitter_agent.getStatus(context.message.channel.id)
+    internationalization.set_language(context.message)
+    msg = twitter_agent.getStatus(context.message)
     await bot.say(msg)
 
 @twitter.command(pass_context=True,
     help=_("Display the last tweet of Krosmaga"))
 async def last(context):
-    internationalization.set_language(context.message.server.id)
-    tweet_id = twitter_agent.getLastTweetId()
+    internationalization.set_language(context.message)
+    tweet_id = twitter_agent.getLastTweetId(_(twitter_agent.twitter_timeline["screen_name"]))
     tweet = twitter_agent.getTweet(tweet_id)
     channel = bot.get_channel(context.message.channel.id)
     await bot.send_message(channel, embed=tweet)
@@ -219,5 +251,8 @@ async def on_ready():
     invite = discord.Game(name="https://discord.gg/VsrbrYC", url=None, type=0)
     await bot.change_presence(game=invite)
 
-bot.loop.create_task(twitterAgent())
+for lang in internationalization.Language:
+    bot.loop.create_task(twitter_agent.twitterAgent(bot, lang))
+    bot.loop.create_task(rss_agent.rss_agent(bot, lang))
+
 bot.run(config.discord_token)

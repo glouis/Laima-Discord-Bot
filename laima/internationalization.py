@@ -33,35 +33,74 @@ languages[Language.FRENCH] = gettext.translation('laima', localedir='laima/i18n'
 
 # Set the language to use when a command is called
 # Parameters:
-#   - server_id: str, the id of the current server
-def set_language(server_id):
+#   - message: discord message, the message which called a command
+def set_language(message):
     try:
         with model.laima_db.transaction():
-            server = model.Server.get(model.Server.id == server_id)
-        lang = server.lang
-    except model.Server.DoesNotExist:
-        lang = Language.ENGLISH.value
+            channel = model.Channel.get(model.Channel.id == message.channel.id)
+        if channel.lang is None:
+            try:
+                lang = channel.server.lang
+            except model.Server.DoesNotExist:
+                lang = Language.ENGLISH.value
+        else:
+            lang = channel.lang
+    except model.Channel.DoesNotExist:
+        try:
+            with model.laima_db.transaction():
+                server = model.Server.get(model.Server.id == message.server.id)
+            lang = server.lang
+        except model.Server.DoesNotExist:
+            lang = Language.ENGLISH.value
     finally:
         languages[Language(lang)].install()
 
 # Allow to change the language used on a server
 # Parameters:
-#   - server_id: str, the id of the server
+#   - message: discord message, the message which called this function
 #   - lang: Language, the language to set
 # Return:
 #   - msg: str, message returned by the bot
-def switch_language(server_id, lang):
+def switch_language_server(message, lang):
     msg = _("The language on this server was successfully changed!")
     try:
         with model.laima_db.transaction():
-            server = model.Server.get(model.Server.id == server_id)
+            server = model.Server.get(model.Server.id == message.server.id)
         if server.lang != lang.value:
             server.lang = lang.value
             with model.laima_db.transaction():
                 server.save()
         else:
-            msg = _("Error, This language was already set")
+            msg = _("Error, this language was already set on this server")
     except model.Server.DoesNotExist:
         with model.laima_db.transaction():
-            model.Server.create(id=server_id, lang=lang.value)
+            model.Server.create(id=message.server.id, lang=lang.value)
     return msg
+
+# Allow to change the language used on a channel
+# Parameters:
+#   - message: discord message, the message which called this function
+#   - lang: Language, the language to set
+# Return:
+#   - msg: str, message returned by the bot
+def switch_language_channel(message, lang):
+    msg = _("The language on this channel was successfully changed!")
+    try:
+        with model.laima_db.transaction():
+            channel = model.Channel.get(model.Channel.id == message.channel.id)
+        if lang is None and channel.lang is not None:
+            channel.lang = lang
+            with model.laima_db.transaction():
+                channel.save()
+        elif lang is not None and channel.lang != lang.value:
+            channel.lang = lang.value
+            with model.laima_db.transaction():
+                channel.save()
+        else:
+            msg = _("Error, this language was already set on this channel")
+    except model.Channel.DoesNotExist:
+        with model.laima_db.transaction():
+            server = model.Server.get_or_create(id=message.server.id)
+            model.Channel.create(id=message.channel.id, lang=lang.value, server=server)
+    finally:
+        return msg
