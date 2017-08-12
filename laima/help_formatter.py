@@ -44,7 +44,7 @@ class CustomHelpFormatter(HelpFormatter):
         return _("Type {0}{1} command for more info on a command.").format(self.clean_prefix, command_name)
 
     def format(self):
-        internationalization.set_language(self.context.message.server.id)
+        internationalization.set_language(self.context.message)
         self._paginator = Paginator()
 
         # we need a padding of ~80 or so

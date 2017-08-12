@@ -79,14 +79,14 @@ def getTweet(tweet_id):
 
 # Add a discord channel to the subscriber list
 # Parameters:
-#   - channel_id: str, the id of the channel
+#   - message: discord message, the message which called this function
 # Return:
 #   - msg: str, a message to say the result of the function
-def subscribe(channel_id):
+def subscribe(message):
     msg = _("This channel is now subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
-            channel = model.Channel.get(model.Channel.id == channel_id)
+            channel = model.Channel.get(model.Channel.id == message.channel.id)
         if channel.twitter is False:
             channel.twitter = True
             with model.laima_db.transaction():
@@ -95,19 +95,20 @@ def subscribe(channel_id):
             msg = _("Error, this channel is already subscribed to the twitter timeline of Krosmaga")
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
-            model.Channel.create(id=channel_id, twitter=True)
+            server = model.Server.get_or_create(id=message.server.id)
+            model.Channel.create(id=message.channel.id, twitter=True, server=server)
     return msg
 
 # Remove a discord channel to the subscriber list
 # Parameters:
-#   - channel_id: str, the id of the channel
+#   - message: discord message, the message which called this function
 # Return:
 #   - msg: str, a message to say the result of the function
-def unsubscribe(channel_id):
+def unsubscribe(message):
     msg = _("Error, this channel is already not subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
-            channel = model.Channel.get(model.Channel.id == channel_id)
+            channel = model.Channel.get(model.Channel.id == message.channel.id)
         if channel.twitter is True:
             msg = _("This channel is now unsubscribed from the twitter timeline of Krosmaga")
             channel.twitter = False
@@ -115,19 +116,20 @@ def unsubscribe(channel_id):
                 channel.save()
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
-            model.Channel.create(id=channel_id, twitter=False)
+            server = model.Server.get_or_create(id=message.server.id)
+            model.Channel.create(id=message.channel.id, twitter=False, server=server)
     return msg
 
 # Indicate if a discord channel is in the subscriber list
 # Parameters:
-#   - channel_id: str, the id of the channel
+#   - message: discord message, the message which called this function
 # Return:
 #   - msg: str, a message to say the status of the channel
-def getStatus(channel_id):
+def getStatus(message):
     msg = _("This channel is not subscribed to the twitter timeline of Krosmaga")
     try:
         with model.laima_db.transaction():
-            channel = model.Channel.get(model.Channel.id == channel_id)
+            channel = model.Channel.get(model.Channel.id == message.channel.id)
         if channel.twitter is True:
             msg = _("This channel is subscribed to the twitter timeline of Krosmaga")
     except model.Channel.DoesNotExist:
