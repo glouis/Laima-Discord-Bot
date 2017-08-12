@@ -112,7 +112,7 @@ async def table(context, *args : str):
     help=_("Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the language of the server."))
 async def lang(context, scope, language):
     internationalization.languages[internationalization.Language.ENGLISH].install()
-    if True or context.message.author.server_permissions.administrator:
+    if context.message.author.server_permissions.administrator:
         if language == "en":
             lang = internationalization.Language.ENGLISH
         elif language == "fr":
