@@ -28,9 +28,9 @@ Display a table with the potential earnings. Give the number(s) of victories for
     &draft table 4 5 6
 
 ### Lang
-Allow to change the language used on the server. Indicate which language you want to use. Available: en, fr.
+Allow to change the language used on the server or in a channel. Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the language of the server.
 
-    &lang fr
+    &lang server fr
 
 ### Prefix
 Change the prefix to call Laima on a server. Give the new prefix you want to use. Limited to 3 characters.
@@ -42,8 +42,26 @@ Display the rewards of the ranked mode. Give the rank(s) for which you want to k
 
     &season 21
 
+### Rss
+Allow to subscribe or unsubscribe to the rss feed of the [Krosmaga website](https://www.krosmaga.com). The news are displayed in the language of the channel (or server if not defined).
+
+#### Subscribe | On
+Subscribe the current channel
+
+    &rss on
+
+#### Unsubscribe | Off
+Unsubscribe the current channel
+
+    &rss off
+
+#### Status
+Indicate if the current channel is currently subscribed or not
+
+    &rss status
+
 ### Twitter
-Allow to subscribe or unsubscribe to the [twitter timeline of Krosmaga (fr)](https://twitter.com/krosmaga).
+Allow to subscribe or unsubscribe to one of the twitter timeline of Krosmaga. The tweets displayed are from the timeline of the same language as the one of the channel (or server if not defined).
 
 #### Subscribe | On
 Subscribe the current channel
