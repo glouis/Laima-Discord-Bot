@@ -149,6 +149,12 @@ async def twitterAgent(bot, lang):
             last_tweet_id = new_tweet_id
             with model.laima_db.transaction():
                 for channel in model.Channel.select():
-                    if(channel.twitter and channel.lang == lang.value):
-                        dest = bot.get_channel(channel.id)
-                        await bot.send_message(dest, embed=tweet)
+                    if channel.twitter:
+                        if channel.lang is None:
+                            if channel.server.lang == lang.value:
+                                dest = bot.get_channel(channel.id)
+                                await bot.send_message(dest, embed=tweet)
+                        else:
+                            if channel.lang == lang.value:
+                                dest = bot.get_channel(channel.id)
+                                await bot.send_message(dest, embed=tweet)
