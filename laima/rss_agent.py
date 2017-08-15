@@ -169,7 +169,14 @@ async def rss_agent(bot, lang):
             last_entry_id = new_entry_id
             with model.laima_db.transaction():
                 for channel in model.Channel.select():
-                    if(channel.rss and channel.lang == lang.value):
-                        dest = bot.get_channel(channel.id)
-                        for entry in last_entries:
-                            await bot.send_message(dest, embed=entry)
+                    if channel.rss:
+                        if channel.lang is None:
+                            if channel.server.lang == lang.value:
+                                dest = bot.get_channel(channel.id)
+                                for entry in last_entries:
+                                    await bot.send_message(dest, embed=entry)
+                        else:
+                            if channel.lang == lang.value:
+                                dest = bot.get_channel(channel.id)
+                                for entry in last_entries:
+                                    await bot.send_message(dest, embed=entry)
