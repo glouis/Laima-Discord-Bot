@@ -24,6 +24,7 @@ import discord
 import model
 import internationalization
 import twitter
+from twitter.error import TwitterError
 
 api = twitter.Api(consumer_key=config.twitter_consumer_key,
     consumer_secret=config.twitter_consumer_secret,
@@ -139,11 +140,20 @@ def getStatus(message):
 async def twitterAgent(bot, lang):
     await bot.wait_until_ready()
     internationalization.languages[lang].install()
-    last_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+    while not bot.is_closed:
+        try:
+            last_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+            break
+        except TwitterError:
+            await asyncio.sleep(1800)
     while not bot.is_closed:
         await asyncio.sleep(300)
         internationalization.languages[lang].install()
-        new_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+        try:
+            new_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+        except TwitterError:
+            await asyncio.sleep(1500)
+            continue
         if new_tweet_id != last_tweet_id:
             tweet = getTweet(new_tweet_id)
             last_tweet_id = new_tweet_id
