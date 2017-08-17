@@ -157,12 +157,19 @@ def getStatus(message):
 async def rss_agent(bot, lang):
     await bot.wait_until_ready()
     internationalization.languages[lang].install()
-    feed = get_feed(_(krosfeed["source"]))
-    last_entry_id = get_last_entry_id(feed)
+    while not bot.is_closed:
+        feed = get_feed(_(krosfeed["source"]))
+        if feed.entries == []:
+            await asyncio.sleep(1800)
+        else:
+            last_entry_id = get_last_entry_id(feed)
+            break
     while not bot.is_closed:
         await asyncio.sleep(1800)
         internationalization.languages[lang].install()
         feed = get_feed(_(krosfeed["source"]))
+        if feed.entries == []:
+            continue
         new_entry_id = get_last_entry_id(feed)
         if new_entry_id != last_entry_id:
             last_entries = get_last_entries(feed, last_entry_id)
