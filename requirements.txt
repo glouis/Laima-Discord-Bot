@@ -12,5 +12,6 @@ peewee==2.10.1
 python-twitter==3.3
 requests==2.18.1
 requests-oauthlib==0.8.0
+unidecode==0.4.21
 urllib3==1.21.1
 websockets==3.3
