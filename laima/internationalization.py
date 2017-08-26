@@ -31,10 +31,12 @@ languages = {}
 languages[Language.ENGLISH] = gettext.translation('laima', localedir='laima/i18n', languages=['en'])
 languages[Language.FRENCH] = gettext.translation('laima', localedir='laima/i18n', languages=['fr'])
 
-# Set the language to use when a command is called
+# Get the language to use on a channel
 # Parameters:
 #   - message: discord message, the message which called a command
-def set_language(message):
+# Return:
+#   - lang: int, the integer which represents the language to use
+def get_language(message):
     try:
         with model.laima_db.transaction():
             channel = model.Channel.get(model.Channel.id == message.channel.id)
@@ -53,7 +55,14 @@ def set_language(message):
         except model.Server.DoesNotExist:
             lang = Language.ENGLISH.value
     finally:
-        languages[Language(lang)].install()
+        return lang
+
+# Set the language to use when a command is called
+# Parameters:
+#   - message: discord message, the message which called a command
+def set_language(message):
+    lang = get_language(message)
+    languages[Language(lang)].install()
 
 # Allow to change the language used on a server
 # Parameters:

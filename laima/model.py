@@ -18,7 +18,11 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
 import enum
+import json
+import os
 from peewee import *
+import re
+import unidecode
 
 laima_db = SqliteDatabase("laima.db")
 
@@ -26,7 +30,7 @@ class PackColour(enum.Enum):
     BRONZE = 3
     SILVER = 2
     GOLD = 1
-    NECROM = 4
+    NECRO = 4
 
 class Trophy(enum.Enum):
     FIRST = 1
@@ -35,6 +39,118 @@ class Trophy(enum.Enum):
     TOP20 = 20
     TOP100 = 100
     VETERAN = 30
+
+class CardType(enum.Enum):
+    CREATURE = 0
+    SPELL = 1
+
+class Extension(enum.Enum):
+    BASE = 1
+    NECRO = 518
+
+class Family(enum.Enum):
+    NONE = 0
+    IOP = 1
+    CRA = 2
+    ENIRIPSA = 3
+    ENUTROF = 4
+    SRAM = 5
+    SACRIER = 6
+    FECA = 7
+    ECAFLIP = 8
+    XELOR = 9
+    OSAMODAS = 10
+    MULTIMAN = 11
+    ARACHNEE = 12
+    TOFU = 13
+    GOBBALL = 14
+    BOOWOLF = 15
+    LARVA = 16
+    TREECHNID = 17
+    WABBITS = 18
+    RAT = 19
+    DRHELLER = 20
+    VAMPIRE = 21
+    CRACKLER = 22
+    SCARALEAF = 23
+    PIWI = 24
+    BLIBLI = 25
+    STRICH = 26
+    MONK = 27
+    CHAFER = 28
+    CAWWOT = 29
+    JELLY = 30
+    WHISPERER = 31
+    SADIDA = 32
+    BROTHERHOOD_OF_THE_TOFU = 33
+    UNKNOW = 34
+    HUPPERMAGE = 35
+    BOW_MEOW = 36
+    RIKTUS = 37
+    KOKOKO = 38
+    MOOGRR = 39
+    SNAPPER = 40
+    SCHNEK = 41
+    CROBAK = 42
+    DOLL = 43
+    OUGINAK = 44
+    MASQUERAIDER = 45
+    ROGUE = 46
+    BANDIT = 47
+    BELLAPHONE = 48
+    MUSHD = 49
+    BWORK = 50
+    PIG = 51
+    CASTUC = 52
+    TOAD = 53
+    KWISMAS_CREATURE = 54
+    DRAGON = 55
+    ELIATROPE = 56
+    SCARECROW = 57
+    PUDDLY = 58
+    GRAMBO = 59
+    VIGILANTE = 60
+    KRALOVE = 61
+    MOSKITO = 62
+    PRINCESS = 63
+    PRESPIC = 64
+    PLANT = 65
+    POLTER = 66
+    FLEA = 67
+    SHARK = 68
+    ALBATROCIOUS = 69
+    SHUSHU = 70
+    FOGGERNAUT = 71
+    TAUR = 72
+    TROOL = 73
+    MIDGINS = 74
+    LOOT = 75
+    CHEST = 76
+    PALADIR = 77
+    NECRO = 78
+    TRAP = 79
+    SNOOFLE = 80
+    DRHELLZERKER = 81
+
+class God(enum.Enum):
+    NEUTRAL = 0
+    IOP = 1
+    CRA = 2
+    ENIRIPSA = 3
+    ECAFLIP = 4
+    ENUTROF = 5
+    SRAM = 6
+    XELOR = 7
+    SACRIER = 8
+    SADIDA = 10
+    RUSHU = 17
+
+class Rarity(enum.Enum):
+    COMMON = 0
+    UNCOMMON = 1
+    RARE = 2
+    KROSMIC = 3
+    INFINITE = 4
 
 class BaseModel(Model):
     class Meta:
@@ -83,9 +199,45 @@ class Rank(BaseModel):
     class Meta:
         order_by = ('number',)
 
+class CardData(BaseModel):
+    card_id = CharField(unique=True)
+    card_type = IntegerField()
+    ap_cost = IntegerField()
+    life = IntegerField()
+    attack = IntegerField()
+    movement_point = IntegerField()
+    extension = IntegerField()
+    families = CharField(default="0")
+    god = IntegerField(default=0)
+    rarity = IntegerField()
+    infinite_level = IntegerField(null=True, default=None)
+    is_token = BooleanField(default=False)
+
+    class Meta:
+        order_by = ('card_id',)
+
+class CardText(BaseModel):
+    card_data = ForeignKeyField(CardData, related_name='texts')
+    name = CharField()
+    description = TextField()
+    lang = IntegerField()
+
+    class Meta:
+        order_by = ('name',)
+
+class Tag(BaseModel):
+    name = CharField(unique=True)
+
+    class Meta:
+        order_by = ('name',)
+
+class CardTextTag(BaseModel):
+    cardtext = ForeignKeyField(CardText, related_name='tags')
+    tag = ForeignKeyField(Tag, related_name='cardtexts')
+
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([Channel, Draft, Rank, Server])
+    laima_db.create_tables([CardData, CardText, CardTextTag, Channel, Draft, File, Rank, Server, Tag])
     laima_db.close()
 
 def init_draft():
@@ -234,3 +386,57 @@ def init_rank():
             infinite=1,
             kamas=300,
             trophy=Trophy.FIRST.value)
+
+def init_card_and_tag(directory):
+    for filename in os.listdir(directory):
+        print(filename)
+        filepath = directory + "/" + filename
+        json_to_card_and_tag(filepath)
+
+def json_to_card_and_tag(filepath):
+    inf_lvl_regex = re.compile(r"\d$")
+    bold_regex = re.compile(r"<.?b>")
+    with open(filepath, 'r') as file_data:
+        data = json.load(file_data)
+        families = ','.join([str(fam) for fam in data["Families"]])
+        nameFR = data["Texts"]["NameFR"]
+        nameEN = data["Texts"]["NameEN"]
+        tagsFR = unidecode.unidecode(nameFR).lower().split()
+        tagsEN = unidecode.unidecode(nameEN).lower().split()
+        infinite_level = None
+        if data["Rarity"] == 4:
+            inf_lvl = inf_lvl_regex.search(data["Name"]).group(0)
+            infinite_level = int(inf_lvl)
+            tagsFR.append(inf_lvl)
+            tagsEN.append(inf_lvl)
+        descFR = ' '.join(data["Texts"]["DescFR"].split())
+        descFR = bold_regex.subn("**", descFR)[0]
+        descEN = ' '.join(data["Texts"]["DescEN"].split())
+        descEN = bold_regex.subn("**", descEN)[0]
+        with laima_db.transaction():
+            card_data = CardData.create(card_id=data["Name"],
+                card_type=data["CardType"],
+                ap_cost=data["CostAP"],
+                life=data["Life"],
+                attack=data["Attack"],
+                movement_point=data["MovementPoint"],
+                extension=data["Extension"],
+                families=families,
+                god=data["GodType"],
+                rarity=data["Rarity"],
+                infinite_level=infinite_level,
+                is_token=data["IsToken"])
+            card_text_fr = CardText.create(card_data=card_data,
+                name=nameFR,
+                description=descFR,
+                lang = 2)
+            card_text_en = CardText.create(card_data=card_data,
+                name=nameEN,
+                description=descEN,
+                lang = 1)
+            for tag in tagsFR:
+                tagFR = Tag.get_or_create(name=tag)[0]
+                card_tagFR = CardTextTag.create(cardtext=card_text_fr, tag=tagFR)
+            for tag in tagsEN:
+                tagEN = Tag.get_or_create(name=tag)[0]
+                card_tagEN = CardTextTag.create(cardtext=card_text_en, tag=tagEN)

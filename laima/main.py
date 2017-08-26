@@ -19,13 +19,13 @@ along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 
 import about as _about
 import asyncio
+import card as _card
 import config
 import discord
 from discord.ext import commands
 import draft as _draft
 import help_formatter as _help
 import logging
-import model
 import internationalization
 import prefix as _prefix
 import rss_agent
@@ -57,6 +57,45 @@ async def about(context):
     _about.fearei.reset_description(_("Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!"))
     _about.fearei.reset_embed()
     await bot.say(embed=_about.fearei.embed)
+
+@bot.command(pass_context=True,
+    description=_("Display a card"),
+    help=_("Give keywords in order to find the card you want to see."))
+async def card(context, *args):
+    lang = internationalization.get_language(context.message)
+    internationalization.languages[internationalization.Language(lang)].install()
+    if len(args) == 0:
+        await bot.say(_("You must provide at least a keyword!"))
+    else:
+        cards, count = _card.search(args, lang)
+        if count == 0:
+            await bot.say(_("Sorry, no card found."))
+        elif count == 1:
+            embed = _card.to_embed(cards[0])
+            await bot.say(embed=embed)
+        elif count > 9:
+            await bot.say(_("Sorry, too many card found."))
+        else:
+            msg = _("Choose the card you want to see:")
+            i = 1
+            for card in cards:
+                name = card.name
+                inf_lvl = card.card_data.infinite_level
+                if inf_lvl is not None:
+                    name = ' '.join([name, ":star2:" * inf_lvl])
+                msg = '\n'.join([msg, str(i) + " > " + name])
+                i += 1
+            await bot.say(msg)
+            answer = await bot.wait_for_message(timeout=10, author=context.message.author, channel=context.message.channel)
+            if answer is not None:
+                try:
+                    ind = int(answer.content) - 1
+                    embed = _card.to_embed(cards[ind])
+                    await bot.say(embed=embed)
+                except:
+                    await bot.say(_("Sorry, your answer do not correspond to a choice."))
+            else:
+                await bot.say(_("Sorry, you were too long to answer."))
 
 @bot.group(pass_context=True,
     invoke_without_command=True,

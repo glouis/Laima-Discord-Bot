@@ -13,6 +13,13 @@ Laima is a [Discord](https://discordapp.com/) bot for the [Krosmaga](https://www
 ### About
 Give information about the bot.
 
+### Card
+Display a card. Give keywords in order to find the card you want to see.
+
+    &card cleophee 3
+
+If there are several result, you will be asked to choose the one you want to see.
+
 ### Draft
 
 #### No subcommand
