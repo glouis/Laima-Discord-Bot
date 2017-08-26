@@ -49,6 +49,402 @@ msgid ""
 "page of FeaRei by cliking on the title!"
 msgstr ""
 
+#: laima/card.py:27
+msgid "Creature"
+msgstr ""
+
+#: laima/card.py:28
+msgid "Spell"
+msgstr ""
+
+#: laima/card.py:31
+msgid "Base"
+msgstr ""
+
+#: laima/card.py:32 laima/card.py:113
+msgid "Necro"
+msgstr ""
+
+#: laima/card.py:35 laima/season.py:47
+msgid "None"
+msgstr ""
+
+#: laima/card.py:36 laima/card.py:120
+msgid "Iop"
+msgstr ""
+
+#: laima/card.py:37 laima/card.py:121
+msgid "Cra"
+msgstr ""
+
+#: laima/card.py:38 laima/card.py:122
+msgid "Eniripsa"
+msgstr ""
+
+#: laima/card.py:39 laima/card.py:124
+msgid "Enutrof"
+msgstr ""
+
+#: laima/card.py:40 laima/card.py:125
+msgid "Sram"
+msgstr ""
+
+#: laima/card.py:41 laima/card.py:127
+msgid "Sacrier"
+msgstr ""
+
+#: laima/card.py:42
+msgid "Feca"
+msgstr ""
+
+#: laima/card.py:43 laima/card.py:123
+msgid "Ecaflip"
+msgstr ""
+
+#: laima/card.py:44 laima/card.py:126
+msgid "Xelor"
+msgstr ""
+
+#: laima/card.py:45
+msgid "Osamodas"
+msgstr ""
+
+#: laima/card.py:46
+msgid "Multiman"
+msgstr ""
+
+#: laima/card.py:47
+msgid "Arachnee"
+msgstr ""
+
+#: laima/card.py:48
+msgid "Tofu"
+msgstr ""
+
+#: laima/card.py:49
+msgid "Gobball"
+msgstr ""
+
+#: laima/card.py:50
+msgid "Boowolf"
+msgstr ""
+
+#: laima/card.py:51
+msgid "Larva"
+msgstr ""
+
+#: laima/card.py:52
+msgid "Treechnid"
+msgstr ""
+
+#: laima/card.py:53
+msgid "Wabbits"
+msgstr ""
+
+#: laima/card.py:54
+msgid "Rat"
+msgstr ""
+
+#: laima/card.py:55
+msgid "Drheller"
+msgstr ""
+
+#: laima/card.py:56
+msgid "Vampire"
+msgstr ""
+
+#: laima/card.py:57
+msgid "Crackler"
+msgstr ""
+
+#: laima/card.py:58
+msgid "Scaraleaf"
+msgstr ""
+
+#: laima/card.py:59
+msgid "Piwi"
+msgstr ""
+
+#: laima/card.py:60
+msgid "Blibli"
+msgstr ""
+
+#: laima/card.py:61
+msgid "Strich"
+msgstr ""
+
+#: laima/card.py:62
+msgid "Monk"
+msgstr ""
+
+#: laima/card.py:63
+msgid "Chafer"
+msgstr ""
+
+#: laima/card.py:64
+msgid "Cawwot"
+msgstr ""
+
+#: laima/card.py:65
+msgid "Jelly"
+msgstr ""
+
+#: laima/card.py:66
+msgid "Whisperer"
+msgstr ""
+
+#: laima/card.py:67 laima/card.py:128
+msgid "Sadida"
+msgstr ""
+
+#: laima/card.py:68
+msgid "Brotherhood of the Tofu"
+msgstr ""
+
+#: laima/card.py:69
+msgid "Unknow"
+msgstr ""
+
+#: laima/card.py:70
+msgid "Huppermage"
+msgstr ""
+
+#: laima/card.py:71
+msgid "Bow Meow"
+msgstr ""
+
+#: laima/card.py:72
+msgid "Riktus"
+msgstr ""
+
+#: laima/card.py:73
+msgid "Kokoko"
+msgstr ""
+
+#: laima/card.py:74
+msgid "Moogrr"
+msgstr ""
+
+#: laima/card.py:75
+msgid "Snapper"
+msgstr ""
+
+#: laima/card.py:76
+msgid "Schnek"
+msgstr ""
+
+#: laima/card.py:77
+msgid "Crobak"
+msgstr ""
+
+#: laima/card.py:78
+msgid "Doll"
+msgstr ""
+
+#: laima/card.py:79
+msgid "Ouginak"
+msgstr ""
+
+#: laima/card.py:80
+msgid "Masqueraider"
+msgstr ""
+
+#: laima/card.py:81
+msgid "Rogue"
+msgstr ""
+
+#: laima/card.py:82
+msgid "Bandit"
+msgstr ""
+
+#: laima/card.py:83
+msgid "Bellaphone"
+msgstr ""
+
+#: laima/card.py:84
+msgid "Mushd"
+msgstr ""
+
+#: laima/card.py:85
+msgid "Bwork"
+msgstr ""
+
+#: laima/card.py:86
+msgid "Pig"
+msgstr ""
+
+#: laima/card.py:87
+msgid "Castuc"
+msgstr ""
+
+#: laima/card.py:88
+msgid "Toad"
+msgstr ""
+
+#: laima/card.py:89
+msgid "Kwismas creature"
+msgstr ""
+
+#: laima/card.py:90
+msgid "Dragon"
+msgstr ""
+
+#: laima/card.py:91
+msgid "Eliatrope"
+msgstr ""
+
+#: laima/card.py:92
+msgid "Scarecrow"
+msgstr ""
+
+#: laima/card.py:93
+msgid "Puddly"
+msgstr ""
+
+#: laima/card.py:94
+msgid "Grambo"
+msgstr ""
+
+#: laima/card.py:95
+msgid "Vigilante"
+msgstr ""
+
+#: laima/card.py:96
+msgid "Kralove"
+msgstr ""
+
+#: laima/card.py:97
+msgid "Moskito"
+msgstr ""
+
+#: laima/card.py:98
+msgid "Princess"
+msgstr ""
+
+#: laima/card.py:99
+msgid "Prespic"
+msgstr ""
+
+#: laima/card.py:100
+msgid "Plant"
+msgstr ""
+
+#: laima/card.py:101
+msgid "Polter"
+msgstr ""
+
+#: laima/card.py:102
+msgid "Flea"
+msgstr ""
+
+#: laima/card.py:103
+msgid "Shark"
+msgstr ""
+
+#: laima/card.py:104
+msgid "Albatrocious"
+msgstr ""
+
+#: laima/card.py:105
+msgid "Shushu"
+msgstr ""
+
+#: laima/card.py:106
+msgid "Foggernaut"
+msgstr ""
+
+#: laima/card.py:107
+msgid "Taur"
+msgstr ""
+
+#: laima/card.py:108
+msgid "Trool"
+msgstr ""
+
+#: laima/card.py:109
+msgid "Midgins"
+msgstr ""
+
+#: laima/card.py:110
+msgid "Loot"
+msgstr ""
+
+#: laima/card.py:111
+msgid "Chest"
+msgstr ""
+
+#: laima/card.py:112
+msgid "Paladir"
+msgstr ""
+
+#: laima/card.py:114
+msgid "Trap"
+msgstr ""
+
+#: laima/card.py:115
+msgid "Snoofle"
+msgstr ""
+
+#: laima/card.py:116
+msgid "Drhellzerker"
+msgstr ""
+
+#: laima/card.py:119
+msgid "Neutral"
+msgstr ""
+
+#: laima/card.py:129
+msgid "Rushu"
+msgstr ""
+
+#: laima/card.py:132 laima/season.py:31
+msgid "Common"
+msgstr ""
+
+#: laima/card.py:133 laima/season.py:33 laima/season.py:35
+msgid "Uncommon"
+msgstr ""
+
+#: laima/card.py:134 laima/season.py:37
+msgid "Rare"
+msgstr ""
+
+#: laima/card.py:135 laima/season.py:39
+msgid "Krosmic"
+msgstr ""
+
+#: laima/card.py:136 laima/season.py:41
+msgid "Infinite"
+msgstr ""
+
+#: laima/card.py:164
+msgid "Type"
+msgstr ""
+
+#: laima/card.py:165
+msgid "Rarity"
+msgstr ""
+
+#: laima/card.py:166
+msgid "AP Cost"
+msgstr ""
+
+#: laima/card.py:168
+msgid "Life"
+msgstr ""
+
+#: laima/card.py:169
+msgid "Attack"
+msgstr ""
+
+#: laima/card.py:170
+msgid "Movement Point"
+msgstr ""
+
+#: laima/card.py:171
+msgid "Extension"
+msgstr ""
+
 #: laima/draft.py:33
 #, python-brace-format
 msgid "{value} is not an integer"
@@ -62,28 +458,27 @@ msgstr ""
 msgid "The number of victory cannot be greater than 12"
 msgstr ""
 
-#: laima/draft.py:45 laima/draft.py:61 laima/draft.py:187 laima/main.py:68
+#: laima/draft.py:45 laima/draft.py:61 laima/draft.py:187 laima/main.py:107
 msgid "Victories"
 msgstr ""
 
-#: laima/draft.py:46 laima/draft.py:61 laima/draft.py:188 laima/main.py:68
+#: laima/draft.py:46 laima/draft.py:61 laima/draft.py:188 laima/main.py:107
 msgid "  Level"
 msgstr ""
 
-#: laima/draft.py:48 laima/draft.py:61 laima/draft.py:190 laima/main.py:68
+#: laima/draft.py:48 laima/draft.py:61 laima/draft.py:190 laima/main.py:107
 msgid "    Pack"
 msgstr ""
 
-#: laima/draft.py:49 laima/draft.py:61 laima/draft.py:191 laima/main.py:68
-#: laima/season.py:44 laima/season.py:91
+#: laima/draft.py:49 laima/draft.py:61 laima/draft.py:191 laima/main.py:107 laima/season.py:44 laima/season.py:91
 msgid "  Kamas"
 msgstr ""
 
-#: laima/draft.py:50 laima/draft.py:61 laima/draft.py:192 laima/main.py:68
+#: laima/draft.py:50 laima/draft.py:61 laima/draft.py:192 laima/main.py:107
 msgid "      Chips"
 msgstr ""
 
-#: laima/draft.py:51 laima/draft.py:61 laima/draft.py:193 laima/main.py:68
+#: laima/draft.py:51 laima/draft.py:61 laima/draft.py:193 laima/main.py:107
 msgid "  Earnings"
 msgstr ""
 
@@ -119,19 +514,19 @@ msgstr ""
 msgid "Commands:"
 msgstr ""
 
-#: laima/internationalization.py:65
+#: laima/internationalization.py:74
 msgid "The language on this server was successfully changed!"
 msgstr ""
 
-#: laima/internationalization.py:74
+#: laima/internationalization.py:83
 msgid "Error, this language was already set on this server"
 msgstr ""
 
-#: laima/internationalization.py:87
+#: laima/internationalization.py:96
 msgid "The language on this channel was successfully changed!"
 msgstr ""
 
-#: laima/internationalization.py:96
+#: laima/internationalization.py:109
 msgid "Error, this language was already set on this channel"
 msgstr ""
 
@@ -152,29 +547,61 @@ msgstr ""
 msgid "Give information about Laima"
 msgstr ""
 
-#: laima/main.py:63
+#: laima/main.py:62
+msgid "Display a card"
+msgstr ""
+
+#: laima/main.py:63 laima/main.py:102
 msgid "Calculate the earnings of the draft mode"
 msgstr ""
 
-#: laima/main.py:64
+#: laima/main.py:63
+msgid "Give keywords in order to find the card you want to see."
+msgstr ""
+
+#: laima/main.py:64 laima/main.py:103
 msgid ""
 "Give the play number(s) where you lose. If you reached the level four, you "
 "will be ask to indicate the play(s) where you did an all-in."
 msgstr ""
 
-#: laima/main.py:77
+#: laima/main.py:68
+msgid "You must provide at least a keyword!"
+msgstr ""
+
+#: laima/main.py:72
+msgid "Sorry, no card found."
+msgstr ""
+
+#: laima/main.py:77 laima/main.py:116
 msgid "Give the play number(s) where you did **all-in**"
 msgstr ""
 
+#: laima/main.py:77
+msgid "Sorry, too many card found."
+msgstr ""
+
+#: laima/main.py:79
+msgid "Choose the card you want to see:"
+msgstr ""
+
+#: laima/main.py:96
+msgid "Sorry, your answer do not correspond to a choice."
+msgstr ""
+
 #: laima/main.py:98
+msgid "Sorry, you were too long to answer."
+msgstr ""
+
+#: laima/main.py:98 laima/main.py:137
 msgid "The numbers must be integers"
 msgstr ""
 
-#: laima/main.py:103
+#: laima/main.py:142
 msgid "Display a table with the potential earnings"
 msgstr ""
 
-#: laima/main.py:104
+#: laima/main.py:143
 msgid ""
 "Give the number(s) of victories for which you want an estimation of the "
 "earnings. Without parameters, display the complete table"
@@ -184,7 +611,7 @@ msgstr ""
 msgid "Allow to change the language used on the server"
 msgstr ""
 
-#: laima/main.py:112
+#: laima/main.py:151
 msgid ""
 "Takes two paramaters. First is to precise where you want to change the "
 "language (channel or server). Second is to indicate which language you want "
@@ -192,82 +619,87 @@ msgid ""
 "of the server."
 msgstr ""
 
-#: laima/main.py:123
+#: laima/main.py:162
 msgid "Error, the language was not recognised"
 msgstr ""
 
-#: laima/main.py:128
+#: laima/main.py:167
 msgid "Error, 0 cannot be used for a server"
 msgstr ""
 
-#: laima/main.py:132
+#: laima/main.py:171
 msgid "Error, the scope was not recognised"
 msgstr ""
 
-#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:181
-#: laima/main.py:215 laima/main.py:226
+#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173
+#: laima/main.py:181 laima/main.py:190 laima/main.py:209 laima/main.py:215
+#: laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
 msgid "Only administrators of the server can use this command"
 msgstr ""
 
-#: laima/main.py:139
+#: laima/main.py:178
 msgid "Change the prefix to call Laima on the server"
 msgstr ""
 
-#: laima/main.py:140
+#: laima/main.py:179
 msgid "Give the new prefix you want to use. Limited to 3 characters."
 msgstr ""
 
-#: laima/main.py:145
+#: laima/main.py:184
 msgid "This command takes one unique parameter"
 msgstr ""
 
-#: laima/main.py:155
+#: laima/main.py:150
+msgid "Allow to change the language used on the server or in a channel"
+msgstr ""
+
+#: laima/main.py:194
 msgid "Allow to subscribe or unsubscribe to the rss feed of Krosmaga"
 msgstr ""
 
-#: laima/main.py:156 laima/main.py:201
+#: laima/main.py:201 laima/main.py:240
 msgid "Use one of the subcommands"
 msgstr ""
 
-#: laima/main.py:160
+#: laima/main.py:199
 #, python-brace-format
 msgid "No subcommand used. Run ```{prefix}help rss``` for more help."
 msgstr ""
 
-#: laima/main.py:164 laima/main.py:209
+#: laima/main.py:209 laima/main.py:248
 msgid "Subscribe the current channel"
 msgstr ""
 
-#: laima/main.py:175 laima/main.py:220
+#: laima/main.py:220 laima/main.py:259
 msgid "Unsubscribe the current channel"
 msgstr ""
 
-#: laima/main.py:185 laima/main.py:230
+#: laima/main.py:230 laima/main.py:269
 msgid "Indicate if the current channel is currently subscribed or not"
 msgstr ""
 
-#: laima/main.py:192
+#: laima/main.py:231
 msgid "Give the rewards of the ranked mode"
 msgstr ""
 
-#: laima/main.py:193
+#: laima/main.py:232
 msgid ""
 "Give the rank(s) for which you want the rewards. Accepted values are number "
 "from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display "
 "the all table."
 msgstr ""
 
-#: laima/main.py:200
+#: laima/main.py:239
 msgid ""
 "Allow to subscribe or unsubscribe to the twitter timeline of Krosmaga (fr)"
 msgstr ""
 
-#: laima/main.py:205
+#: laima/main.py:244
 #, python-brace-format
 msgid "No subcommand used. Run ```{prefix}help twitter``` for more help."
 msgstr ""
 
-#: laima/main.py:237
+#: laima/main.py:276
 msgid "Display the last tweet of Krosmaga"
 msgstr ""
 
@@ -316,26 +748,6 @@ msgstr ""
 msgid "This channel is subscribed to the rss feed of Krosmaga"
 msgstr ""
 
-#: laima/season.py:31
-msgid "Common"
-msgstr ""
-
-#: laima/season.py:33 laima/season.py:35
-msgid "Uncommon"
-msgstr ""
-
-#: laima/season.py:37
-msgid "Rare"
-msgstr ""
-
-#: laima/season.py:39
-msgid "Krosmic"
-msgstr ""
-
-#: laima/season.py:41
-msgid "Infinite"
-msgstr ""
-
 #: laima/season.py:42 laima/season.py:91
 msgid "   Rank"
 msgstr ""
@@ -344,16 +756,12 @@ msgstr ""
 msgid "                    Cards"
 msgstr ""
 
-#: laima/season.py:45
-msgid "Yes"
-msgstr ""
-
 #: laima/season.py:45 laima/season.py:91
 msgid "  Pedestal"
 msgstr ""
 
-#: laima/season.py:47
-msgid "None"
+#: laima/season.py:45
+msgid "Yes"
 msgstr ""
 
 #: laima/season.py:50 laima/season.py:91
@@ -376,46 +784,46 @@ msgstr ""
 msgid "Error, rank not recognized"
 msgstr ""
 
-#: laima/twitter_agent.py:34
+#: laima/twitter_agent.py:35
 msgid "Krosmaga_EN"
 msgstr ""
 
-#: laima/twitter_agent.py:53
+#: laima/twitter_agent.py:54
 msgid "Tweet from Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:56
+#: laima/twitter_agent.py:57
 msgid "Quoted by Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:59
+#: laima/twitter_agent.py:60
 msgid "Retweeted by Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:86
+#: laima/twitter_agent.py:87
 msgid "This channel is now subscribed to the twitter timeline of Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:95
+#: laima/twitter_agent.py:96
 msgid ""
 "Error, this channel is already subscribed to the twitter timeline of Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:108
+#: laima/twitter_agent.py:109
 msgid ""
 "Error, this channel is already not subscribed to the twitter timeline of "
 "Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:113
+#: laima/twitter_agent.py:114
 msgid "This channel is now unsubscribed from the twitter timeline of Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:129
+#: laima/twitter_agent.py:130
 msgid "This channel is not subscribed to the twitter timeline of Krosmaga"
 msgstr ""
 
-#: laima/twitter_agent.py:134
+#: laima/twitter_agent.py:135
 msgid "This channel is subscribed to the twitter timeline of Krosmaga"
 msgstr ""
 
