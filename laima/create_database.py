@@ -17,9 +17,11 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
+import config
 import model
 
 # Create and initialize the database
 model.create_tables()
 model.init_draft()
 model.init_rank()
+model.init_card_and_tag(config.cards_folder)

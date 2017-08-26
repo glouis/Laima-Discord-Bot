@@ -17,9 +17,12 @@ You should have received a copy of the GNU General Public License
 along with Laima Discord Bot. If not, see <http://www.gnu.org/licenses/>.
 """
 
-# Define CONFIDENTIAL configuration variable
+# Define STRICTLY CONFIDENTIAL configuration variables
 discord_token = ""
 twitter_consumer_key = ""
 twitter_consumer_secret = ""
 twitter_access_token_key = ""
 twitter_access_token_secret = ""
+
+# Define less-confidential configuration variables
+cards_folder = ""
