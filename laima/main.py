@@ -156,6 +156,8 @@ async def lang(context, scope, language):
             lang = internationalization.Language.ENGLISH
         elif language == "fr":
             lang = internationalization.Language.FRENCH
+        elif language == "es":
+            lang = internationalization.Language.SPANISH
         elif language == "0":
             lang = None
         else:

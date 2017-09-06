@@ -25,6 +25,7 @@ import re
 import unidecode
 
 laima_db = SqliteDatabase("laima.db")
+languages = [("EN", 1), ("FR", 2), ("ES", 3)]
 
 class PackColour(enum.Enum):
     BRONZE = 3
@@ -398,21 +399,21 @@ def json_to_card_and_tag(filepath):
     bold_regex = re.compile(r"<.?b>")
     with open(filepath, 'r') as file_data:
         data = json.load(file_data)
+        name = {}
+        tags = {}
+        desc = {}
         families = ','.join([str(fam) for fam in data["Families"]])
-        nameFR = data["Texts"]["NameFR"]
-        nameEN = data["Texts"]["NameEN"]
-        tagsFR = unidecode.unidecode(nameFR).lower().split()
-        tagsEN = unidecode.unidecode(nameEN).lower().split()
         infinite_level = None
         if data["Rarity"] == 4:
             inf_lvl = inf_lvl_regex.search(data["Name"]).group(0)
             infinite_level = int(inf_lvl)
-            tagsFR.append(inf_lvl)
-            tagsEN.append(inf_lvl)
-        descFR = ' '.join(data["Texts"]["DescFR"].split())
-        descFR = bold_regex.subn("**", descFR)[0]
-        descEN = ' '.join(data["Texts"]["DescEN"].split())
-        descEN = bold_regex.subn("**", descEN)[0]
+        for language, __ in languages:
+            name[language] = data["Texts"]["Name" + language]
+            tags[language] = unidecode.unidecode(name[language]).lower().split()
+            desc[language] = ' '.join(data["Texts"]["Desc" + language].split())
+            desc[language] = bold_regex.subn("**", desc[language])[0]
+            if data["Rarity"] == 4:
+                tags[language].append(inf_lvl)
         with laima_db.transaction():
             card_data = CardData.create(card_id=data["Name"],
                 card_type=data["CardType"],
@@ -426,17 +427,11 @@ def json_to_card_and_tag(filepath):
                 rarity=data["Rarity"],
                 infinite_level=infinite_level,
                 is_token=data["IsToken"])
-            card_text_fr = CardText.create(card_data=card_data,
-                name=nameFR,
-                description=descFR,
-                lang = 2)
-            card_text_en = CardText.create(card_data=card_data,
-                name=nameEN,
-                description=descEN,
-                lang = 1)
-            for tag in tagsFR:
-                tagFR = Tag.get_or_create(name=tag)[0]
-                card_tagFR = CardTextTag.create(cardtext=card_text_fr, tag=tagFR)
-            for tag in tagsEN:
-                tagEN = Tag.get_or_create(name=tag)[0]
-                card_tagEN = CardTextTag.create(cardtext=card_text_en, tag=tagEN)
+            for language, lang_id in languages:
+                card_text = CardText.create(card_data=card_data,
+                    name=name[language],
+                    description=desc[language],
+                    lang = lang_id)
+                for tag in tags[language]:
+                    tag_row = Tag.get_or_create(name=tag)[0]
+                    card_tag = CardTextTag.create(cardtext=card_text, tag=tag_row)
