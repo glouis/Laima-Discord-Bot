@@ -237,7 +237,7 @@ class CardTextTag(BaseModel):
 
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([CardData, CardText, CardTextTag, Channel, Draft, File, Rank, Server, Tag])
+    laima_db.create_tables([CardData, CardText, CardTextTag, Channel, Draft, Rank, Server, Tag])
     laima_db.close()
 
 def init_draft():
