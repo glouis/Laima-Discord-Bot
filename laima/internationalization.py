@@ -26,10 +26,12 @@ gettext.install('laima', 'laima/i18n')
 class Language(enum.Enum):
     ENGLISH = 1
     FRENCH = 2
+    SPANISH = 3
 
 languages = {}
 languages[Language.ENGLISH] = gettext.translation('laima', localedir='laima/i18n', languages=['en'])
 languages[Language.FRENCH] = gettext.translation('laima', localedir='laima/i18n', languages=['fr'])
+languages[Language.SPANISH] = gettext.translation('laima', localedir='laima/i18n', languages=['es'])
 
 # Get the language to use on a channel
 # Parameters:

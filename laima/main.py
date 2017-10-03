@@ -148,7 +148,7 @@ async def table(context, *args : str):
 
 @bot.command(pass_context=True,
     description=_("Allow to change the language used on the server or in a channel"),
-    help=_("Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the language of the server."))
+    help=_("Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the language of the server."))
 async def lang(context, scope, language):
     internationalization.languages[internationalization.Language.ENGLISH].install()
     if context.message.author.server_permissions.administrator:
@@ -156,6 +156,8 @@ async def lang(context, scope, language):
             lang = internationalization.Language.ENGLISH
         elif language == "fr":
             lang = internationalization.Language.FRENCH
+        elif language == "es":
+            lang = internationalization.Language.SPANISH
         elif language == "0":
             lang = None
         else:
