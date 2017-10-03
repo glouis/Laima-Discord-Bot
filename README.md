@@ -35,7 +35,7 @@ Display a table with the potential earnings. Give the number(s) of victories for
     &draft table 4 5 6
 
 ### Lang
-Allow to change the language used on the server or in a channel. Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the language of the server.
+Allow to change the language used on the server or in a channel. Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the language of the server.
 
     &lang server fr
 
