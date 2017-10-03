@@ -111,7 +111,7 @@ def switch_language_channel(message, lang):
             msg = _("Error, this language was already set on this channel")
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
-            server = model.Server.get_or_create(id=message.server.id)
+            server = model.Server.get_or_create(id=message.server.id)[0]
             model.Channel.create(id=message.channel.id, lang=lang.value, server=server)
     finally:
         return msg
