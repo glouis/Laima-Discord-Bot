@@ -107,7 +107,7 @@ def subscribe(message):
             msg = _("Error, this channel is already subscribed to the rss feed of Krosmaga")
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
-            server = model.Server.get_or_create(id=message.server.id)
+            server = model.Server.get_or_create(id=message.server.id)[0]
             model.Channel.create(id=message.channel.id, rss=True, server=server)
     return msg
 
@@ -128,7 +128,7 @@ def unsubscribe(message):
                 channel.save()
     except model.Channel.DoesNotExist:
         with model.laima_db.transaction():
-            server = model.Server.get_or_create(id=message.server.id)
+            server = model.Server.get_or_create(id=message.server.id)[0]
             model.Channel.create(id=message.channel.id, rss=False, server=server)
     return msg
 
