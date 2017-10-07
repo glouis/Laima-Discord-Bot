@@ -26,6 +26,7 @@ import unidecode
 card_types = {}
 card_types[model.CardType.CREATURE] = _("Creature")
 card_types[model.CardType.SPELL] = _("Spell")
+card_types[model.CardType.OBJECT] = _("Object")
 
 extensions = {}
 extensions[model.Extension.BASE] = _("Base")

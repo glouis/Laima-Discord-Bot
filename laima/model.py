@@ -44,6 +44,7 @@ class Trophy(enum.Enum):
 class CardType(enum.Enum):
     CREATURE = 0
     SPELL = 1
+    OBJECT = 2
 
 class Extension(enum.Enum):
     BASE = 1
