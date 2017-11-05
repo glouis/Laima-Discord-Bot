@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Laima Discord Bot - v0.3.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 16:11+0200\n"
-"PO-Revision-Date: 2017-08-26 16:47+0200\n"
+"PO-Revision-Date: 2017-11-05 17:30+0100\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,6 +57,10 @@ msgstr "Creature"
 #: laima/card.py:28
 msgid "Spell"
 msgstr "Spell"
+
+#: laima/card.py:29
+msgid "Object"
+msgstr "Object"
 
 #: laima/card.py:31
 msgid "Base"
@@ -390,6 +394,10 @@ msgstr "Snoofle"
 msgid "Drhellzerker"
 msgstr "Drhellzerker"
 
+#: laima/card.py:117
+msgid "Ghoul"
+msgstr "Ghoul"
+
 #: laima/card.py:119
 msgid "Neutral"
 msgstr "Neutral"
@@ -617,22 +625,22 @@ msgid "Allow to change the language used on the server or in a channel"
 msgstr "Allow to change the language used on the server or in a channel"
 
 #: laima/main.py:112
-msgid "Indicate which language you want to use. Available: en, fr."
-msgstr "Indicate which language you want to use. Available: en, fr."
+msgid "Indicate which language you want to use. Available: en, fr, es."
+msgstr "Indicate which language you want to use. Available: en, fr, es."
 
 #: laima/main.py:151
 msgid ""
-"Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is "
-"to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the "
+"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is "
+"to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the "
 "language of the server."
 msgstr ""
-"Takes two paramaters. First is to precise where you want to change the language (channel or server). Second is "
-"to indicate which language you want to use (available: en, fr) ; use 0 for a channel to make it use the "
+"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is "
+"to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the "
 "language of the server."
 
 #: laima/main.py:122
-msgid "Error, use either *en* or *fr* as parameter"
-msgstr "Error, use either *en* or *fr* as parameter"
+msgid "Error, use either *en*, *fr* or *es* as parameter"
+msgstr "Error, use either *en*, *fr* or *es* as parameter"
 
 #: laima/main.py:162
 msgid "Error, the language was not recognised"

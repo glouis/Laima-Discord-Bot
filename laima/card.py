@@ -26,6 +26,7 @@ import unidecode
 card_types = {}
 card_types[model.CardType.CREATURE] = _("Creature")
 card_types[model.CardType.SPELL] = _("Spell")
+card_types[model.CardType.OBJECT] = _("Object")
 
 extensions = {}
 extensions[model.Extension.BASE] = _("Base")
@@ -114,6 +115,7 @@ families[model.Family.NECRO] = _("Necro")
 families[model.Family.TRAP] = _("Trap")
 families[model.Family.SNOOFLE] = _("Snoofle")
 families[model.Family.DRHELLZERKER] = _("Drhellzerker")
+families[model.Family.GHOUL] = _("Ghoul")
 
 gods = {}
 gods[model.God.NEUTRAL] = _("Neutral")

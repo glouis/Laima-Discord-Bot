@@ -44,6 +44,7 @@ class Trophy(enum.Enum):
 class CardType(enum.Enum):
     CREATURE = 0
     SPELL = 1
+    OBJECT = 2
 
 class Extension(enum.Enum):
     BASE = 1
@@ -132,6 +133,7 @@ class Family(enum.Enum):
     TRAP = 79
     SNOOFLE = 80
     DRHELLZERKER = 81
+    GHOUL = 82
 
 class God(enum.Enum):
     NEUTRAL = 0
