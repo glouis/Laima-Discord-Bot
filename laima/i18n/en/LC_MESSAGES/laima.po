@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Laima Discord Bot - v0.3.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 16:11+0200\n"
-"PO-Revision-Date: 2017-10-07 15:54+0200\n"
+"PO-Revision-Date: 2017-11-05 17:30+0100\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -393,6 +393,10 @@ msgstr "Snoofle"
 #: laima/card.py:116
 msgid "Drhellzerker"
 msgstr "Drhellzerker"
+
+#: laima/card.py:117
+msgid "Ghoul"
+msgstr "Ghoul"
 
 #: laima/card.py:119
 msgid "Neutral"

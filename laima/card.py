@@ -115,6 +115,7 @@ families[model.Family.NECRO] = _("Necro")
 families[model.Family.TRAP] = _("Trap")
 families[model.Family.SNOOFLE] = _("Snoofle")
 families[model.Family.DRHELLZERKER] = _("Drhellzerker")
+families[model.Family.GHOUL] = _("Ghoul")
 
 gods = {}
 gods[model.God.NEUTRAL] = _("Neutral")

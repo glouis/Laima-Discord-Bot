@@ -133,6 +133,7 @@ class Family(enum.Enum):
     TRAP = 79
     SNOOFLE = 80
     DRHELLZERKER = 81
+    GHOUL = 82
 
 class God(enum.Enum):
     NEUTRAL = 0
