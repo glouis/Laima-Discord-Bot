@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Laima Discord Bot - v0.2.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 15:51+0200\n"
-"PO-Revision-Date: 2017-11-05 17:30+0100\n"
+"PO-Revision-Date: 2017-12-02 17:41+0100\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,9 +43,7 @@ msgid "Author of the illustration"
 msgstr ""
 
 #: laima/about.py:66 laima/main.py:57
-msgid ""
-"Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the "
-"title!"
+msgid "Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!"
 msgstr ""
 
 #: laima/card.py:27
@@ -567,9 +565,7 @@ msgid "Give keywords in order to find the card you want to see."
 msgstr ""
 
 #: laima/main.py:64 laima/main.py:103
-msgid ""
-"Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) "
-"where you did an all-in."
+msgid "Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) where you did an all-in."
 msgstr ""
 
 #: laima/main.py:68
@@ -604,14 +600,29 @@ msgstr ""
 msgid "The numbers must be integers"
 msgstr ""
 
+#: laima/main.py
+msgid "Choose an element in a list"
+msgstr ""
+
+#: laima/main.py
+msgid "Give the different choices as parameters."
+msgstr ""
+
+#: laima/main.py
+msgid "You must provide at least a choice!"
+msgstr ""
+
+#: laima/main.py
+#, python-brace-format
+msgid "I choose... {0}!"
+msgstr ""
+
 #: laima/main.py:142
 msgid "Display a table with the potential earnings"
 msgstr ""
 
 #: laima/main.py:143
-msgid ""
-"Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display "
-"the complete table"
+msgid "Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"
 msgstr ""
 
 #: laima/main.py:111
@@ -620,9 +631,8 @@ msgstr ""
 
 #: laima/main.py:151
 msgid ""
-"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is "
-"to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the "
-"language of the server."
+"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use "
+"(available: en, fr, es) ; use 0 for a channel to make it use the language of the server."
 msgstr ""
 
 #: laima/main.py:162
@@ -637,8 +647,8 @@ msgstr ""
 msgid "Error, the scope was not recognised"
 msgstr ""
 
-#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190
-#: laima/main.py:209 laima/main.py:215 laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
+#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190 laima/main.py:209 laima/main.py:215
+#: laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
 msgid "Only administrators of the server can use this command"
 msgstr ""
 
@@ -671,7 +681,8 @@ msgstr ""
 msgid "No subcommand used. Run ```{prefix}help rss``` for more help."
 msgstr ""
 
-#: laima/main.py:209 laima/main.py:248
+#: laima/main.py laima/main.py:209 laima/main.py:248
+#, python-brace-format
 msgid "Subscribe the current channel"
 msgstr ""
 
@@ -689,8 +700,8 @@ msgstr ""
 
 #: laima/main.py:232
 msgid ""
-"Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, "
-"2nd and 1st. If no rank are given, display the all table."
+"Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all "
+"table."
 msgstr ""
 
 #: laima/main.py:239
