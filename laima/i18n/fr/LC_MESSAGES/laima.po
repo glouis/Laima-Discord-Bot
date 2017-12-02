@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Laima Discord Bot - v0.3.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 16:28+0200\n"
-"PO-Revision-Date: 2017-11-05 17:30+0100\n"
+"PO-Revision-Date: 2017-12-02 17:41+0100\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,11 +43,8 @@ msgid "Author of the illustration"
 msgstr "Auteur de l'illustration"
 
 #: laima/about.py:66
-msgid ""
-"Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!"
-msgstr ""
-"Ci-dessous est l'illustration complète de Laima. Vous pouvez visiter la page DeviantArt de FeaRei en cliquant sur "
-"le titre !"
+msgid "Below is the complete illustration of Laima. You can visit the DeviantArt page of FeaRei by cliking on the title!"
+msgstr "Ci-dessous est l'illustration complète de Laima. Vous pouvez visiter la page DeviantArt de FeaRei en cliquant sur le titre !"
 
 #: laima/card.py:27
 msgid "Creature"
@@ -572,12 +569,10 @@ msgid "Give keywords in order to find the card you want to see."
 msgstr "Donne des mots clés pour trouver la carte que tu veux voir."
 
 #: laima/main.py:64 laima/main.py:103
-msgid ""
-"Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) "
-"where you did an all-in."
+msgid "Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) where you did an all-in."
 msgstr ""
-"Donnez le(s) numéro(s) de partie où vous avez perdu. Si vous avez atteint le niveau quatre, je vous demanderais "
-"de m'indiquer les parties où vous avez fait all-in."
+"Donnez le(s) numéro(s) de partie où vous avez perdu. Si vous avez atteint le niveau quatre, je vous demanderais de m'indiquer les parties où vous avez fait all-"
+"in."
 
 #: laima/main.py:68
 msgid "You must provide at least a keyword!"
@@ -607,6 +602,23 @@ msgstr "Désolé, ta réponse ne correspond pas à un choix."
 msgid "Sorry, you were too long to answer."
 msgstr "Désolé, le temps pour choisir est écoulé."
 
+#: laima/main.py
+msgid "Choose an element in a list"
+msgstr "Choisi un élément dans une liste"
+
+#: laima/main.py
+msgid "Give the different choices as parameters."
+msgstr "Donnez les différents choix en paramètres."
+
+#: laima/main.py
+msgid "You must provide at least a choice!"
+msgstr "Il faut donner au moins un choix !"
+
+#: laima/main.py
+#, python-brace-format
+msgid "I choose... {0}!"
+msgstr "Je choisi... {0} !"
+
 #: laima/main.py:137
 msgid "The numbers must be integers"
 msgstr "Les numéros doivent être entiers"
@@ -616,12 +628,8 @@ msgid "Display a table with the potential earnings"
 msgstr "Affiche un tableau avec les gains potentiels"
 
 #: laima/main.py:143
-msgid ""
-"Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the "
-"complete table"
-msgstr ""
-"Donnez le(s) nombre(s) de victoire pour lesquels vous voulez une estimation des gains. Sans paramètres, affiche "
-"tout le tableau."
+msgid "Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"
+msgstr "Donnez le(s) nombre(s) de victoire pour lesquels vous voulez une estimation des gains. Sans paramètres, affiche tout le tableau."
 
 #: laima/main.py:150
 msgid "Allow to change the language used on the server or in a channel"
@@ -633,13 +641,11 @@ msgstr "Indiquez quel langage vous voulez utiliser. Disponible : en, fr, es."
 
 #: laima/main.py:151
 msgid ""
-"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to "
-"indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the language "
-"of the server."
+"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use "
+"(available: en, fr, es) ; use 0 for a channel to make it use the language of the server."
 msgstr ""
-"Prend deux paramètres. Le premier est le périmètre où le langage doit être changé (channel ou server). Le "
-"deuxième est le langage que vous voulez utilisé (disponible: en, fr, es) ; utilisez 0 sur un salon pour lui faire "
-"utiliser le langage du serveur."
+"Prend deux paramètres. Le premier est le périmètre où le langage doit être changé (channel ou server). Le deuxième est le langage que vous voulez utilisé "
+"(disponible: en, fr, es) ; utilisez 0 sur un salon pour lui faire utiliser le langage du serveur."
 
 #: laima/main.py:122
 msgid "Error, use either *en* or *fr* as parameter"
@@ -657,8 +663,8 @@ msgstr "Erreur, 0 ne peut pas être utilisé pour un serveur"
 msgid "Error, the scope was not recognised"
 msgstr "Erreur, le périmètre n'a pas été reconnu"
 
-#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190
-#: laima/main.py:209 laima/main.py:215 laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
+#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190 laima/main.py:209 laima/main.py:215
+#: laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
 msgid "Only administrators of the server can use this command"
 msgstr "Seuls les administrateurs du serveur peuvent utiliser cette commande"
 
@@ -687,6 +693,27 @@ msgstr "Utilisez une des sous-commandes"
 msgid "No subcommand used. Run ```{prefix}help rss``` for more help."
 msgstr "Aucune sous-commande utilisée. Faites ```{prefix}help rss``` pour plus d'aide."
 
+#: laima/main.py
+msgid "Roll one or several dice amongst the most commons"
+msgstr "Lance un ou plusieurs dés parmis les plus communs"
+
+#: laima/main.py
+msgid "With no parameters, roll a six-sided dice; otherwise, the first parameter define the number of dice to roll and the second the number of side of the dices."
+msgstr "Sans paramètres, lance un dé à six face; sinon, le premier paramètre défini le nombre de dé à lancer et le second le nombre de face des dés."
+
+#: laima/main.py
+#, python-brace-format
+msgid "You obtained a {0}!"
+msgstr "Tu as obtenu {0} !"
+
+#: laima/main.py
+msgid "I only have 4, 6, 8, 10, 12 or 20 -sided dices, sorry!"
+msgstr "Je n'ai que des dés avec 4, 6, 8, 10 ,12 ou 20 faces, désolé !"
+
+#: laima/main.py
+msgid "The number of dice must be between 1 and 100!"
+msgstr "Le nombre de dé doit être entre 1 et 100 !"
+
 #: laima/main.py:209 laima/main.py:248
 msgid "Subscribe the current channel"
 msgstr "Abonne le salon actuel"
@@ -705,11 +732,11 @@ msgstr "Donne les récompenses du mode classé"
 
 #: laima/main.py:232
 msgid ""
-"Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd "
-"and 1st. If no rank are given, display the all table."
+"Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all "
+"table."
 msgstr ""
-"Donnez le(s) rang(s) pour le(s)quel(s) vous voulez les récompenses. Les valeurs acceptées sont les nombres de 6 à "
-"30, top100, top20, 3rd, 2nd et 1st. Si aucun rang n'est donné, affiche le tableau complet."
+"Donnez le(s) rang(s) pour le(s)quel(s) vous voulez les récompenses. Les valeurs acceptées sont les nombres de 6 à 30, top100, top20, 3rd, 2nd et 1st. Si aucun "
+"rang n'est donné, affiche le tableau complet."
 
 #: laima/main.py:244
 #, python-brace-format

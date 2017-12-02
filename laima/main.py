@@ -26,6 +26,7 @@ from discord.ext import commands
 import draft as _draft
 import help_formatter as _help
 import logging
+import miscellaneous
 import internationalization
 import prefix as _prefix
 import rss_agent
@@ -96,6 +97,18 @@ async def card(context, *args):
                     await bot.say(_("Sorry, your answer do not correspond to a choice."))
             else:
                 await bot.say(_("Sorry, you were too long to answer."))
+
+@bot.command(pass_context=True,
+    description=_("Choose an element in a list"),
+    help=_("Give the different choices as parameters."))
+async def choose(context, *args):
+    lang = internationalization.get_language(context.message)
+    internationalization.languages[internationalization.Language(lang)].install()
+    if len(args) == 0:
+        await bot.say(_("You must provide at least a choice!"))
+    else:
+        result = miscellaneous.choose(args)
+        await bot.say(_("I choose... {0}!").format(result))
 
 @bot.group(pass_context=True,
     invoke_without_command=True,
@@ -191,6 +204,30 @@ async def prefix(context, *args):
     else:
         msg = _("Only administrators of the server can use this command")
     await bot.say(msg)
+
+@bot.command(pass_context=True,
+    description=_("Roll one or several dice amongst the most commons"),
+    help=_("With no parameters, roll a six-sided dice; otherwise, the first parameter define the number of dice to roll and the second the number of side of the dices."))
+async def roll(context, dices=1, sides=6):
+    lang = internationalization.get_language(context.message)
+    internationalization.languages[internationalization.Language(lang)].install()
+    try:
+        d = int(dices)
+        s = int(sides)
+        if d > 0 and d < 101:
+            if s in [4, 6, 8, 10 ,12, 20]:
+                result = miscellaneous.roll(d, s)
+                msg = _("You obtained a {0}!").format(result)
+            else:
+                msg = _("I only have 4, 6, 8, 10, 12 or 20 -sided dices, sorry!")
+        else:
+            msg = _("The number of dice must be between 1 and 100!")
+    except Exception as e:
+        msg = e.args[0]
+        if msg.startswith("invalid literal for int() with base 10"):
+            msg = _("The numbers must be integers")
+    finally:
+        await bot.say(msg)
 
 @bot.group(pass_context=True,
     description=_("Allow to subscribe or unsubscribe to the rss feed of Krosmaga"),
