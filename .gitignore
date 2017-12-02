@@ -1,6 +1,9 @@
 # log files
 *.log
 
+# binary files
+*.mo
+
 # database
 laima.db
 
