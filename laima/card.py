@@ -30,6 +30,7 @@ card_types[model.CardType.OBJECT] = _("Object")
 
 extensions = {}
 extensions[model.Extension.BASE] = _("Base")
+extensions[model.Extension.OROPO] = _("Brotherhood of Oropo")
 extensions[model.Extension.NECRO] = _("Necro")
 
 families = {}
@@ -116,6 +117,9 @@ families[model.Family.TRAP] = _("Trap")
 families[model.Family.SNOOFLE] = _("Snoofle")
 families[model.Family.DRHELLZERKER] = _("Drhellzerker")
 families[model.Family.GHOUL] = _("Ghoul")
+families[model.Family.BROTHERHOOD_OF_THE_FORGOTTEN] = _("Brotherhood of the Forgotten")
+families[model.Family.PANDAWA] = _("Pandawa")
+families[model.Family.ELIOTROPE] = _("Eliotrope")
 
 gods = {}
 gods[model.God.NEUTRAL] = _("Neutral")
@@ -127,6 +131,7 @@ gods[model.God.ENUTROF] = _("Enutrof")
 gods[model.God.SRAM] = _("Sram")
 gods[model.God.XELOR] = _("Xelor")
 gods[model.God.SACRIER] = _("Sacrier")
+gods[model.God.FECA] = _("Feca")
 gods[model.God.SADIDA] = _("Sadida")
 gods[model.God.RUSHU] = _("Rushu")
 
@@ -147,6 +152,7 @@ colours[model.God.ENUTROF] = discord.Colour.gold()
 colours[model.God.SRAM] = discord.Colour.dark_teal()
 colours[model.God.XELOR] = discord.Colour.dark_blue()
 colours[model.God.SACRIER] = discord.Colour.dark_red()
+colours[model.God.FECA] = discord.Colour.dark_gold()
 colours[model.God.SADIDA] = discord.Colour.dark_green()
 colours[model.God.RUSHU] = discord.Colour.dark_orange()
 
