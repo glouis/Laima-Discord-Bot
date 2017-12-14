@@ -32,6 +32,7 @@ class PackColour(enum.Enum):
     SILVER = 2
     GOLD = 1
     NECRO = 4
+    OROPO = 5
 
 class Trophy(enum.Enum):
     FIRST = 1
@@ -48,6 +49,7 @@ class CardType(enum.Enum):
 
 class Extension(enum.Enum):
     BASE = 1
+    OROPO = 281
     NECRO = 518
 
 class Family(enum.Enum):
@@ -134,6 +136,9 @@ class Family(enum.Enum):
     SNOOFLE = 80
     DRHELLZERKER = 81
     GHOUL = 82
+    BROTHERHOOD_OF_THE_FORGOTTEN = 83
+    PANDAWA = 84
+    ELIOTROPE = 85
 
 class God(enum.Enum):
     NEUTRAL = 0
@@ -145,6 +150,7 @@ class God(enum.Enum):
     SRAM = 6
     XELOR = 7
     SACRIER = 8
+    FECA = 9
     SADIDA = 10
     RUSHU = 17
 
