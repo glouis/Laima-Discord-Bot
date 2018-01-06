@@ -6,6 +6,7 @@ discord.py==0.16.8
 feedparser==5.2.1
 future==0.16.0
 idna==2.5
+lxml=4.1.1
 multidict==2.1.6
 oauthlib==2.0.2
 peewee==2.10.1
