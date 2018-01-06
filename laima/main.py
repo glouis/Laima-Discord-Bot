@@ -25,6 +25,7 @@ import discord
 from discord.ext import commands
 import draft as _draft
 import help_formatter as _help
+import ladder as _ladder
 import logging
 import miscellaneous
 import internationalization
@@ -158,6 +159,52 @@ async def table(context, *args : str):
     internationalization.set_language(context.message)
     msg = _draft.createTable(args)
     await bot.say(msg)
+
+@bot.command(pass_context=True,
+    description=_("Display the seasonal or eternal ladder"),
+    help=_("The first parameter, optional, can be a nickname, a place between 1 and 100 or a range of place (e.g. 1-32). The second one, also optional, is the season number (0 for eternal). If no parameters are given, the top 20 players of the current season are displayed."))
+async def ladder(context, search=None, season=None):
+    try:
+        if search is None:
+            ladder = _ladder.get_ladder(season)
+            msg = _ladder.create_message(ladder, 1, 20)
+        else:
+            places = search.split('-')
+            if len(places) == 1:
+                place = int(places[0])
+                if place in range(1, 101):
+                    ladder = _ladder.get_ladder(season)
+                    msg = _ladder.create_message(ladder, place, place)
+                else:
+                    msg = _("Sorry, the place asked is not between 1 and 100.")
+            elif len(places) == 2:
+                first = int(places[0])
+                last = int(places[1])
+                if first not in range(1, 101):
+                    msg = _("Sorry, the first place is not between 1 and 100.")
+                elif last not in range(1, 101):
+                    msg = _("Sorry, the last place is not between 1 and 100.")
+                else:
+                    if first > last:
+                        first, last = last, first
+                    ladder = _ladder.get_ladder(season)
+                    if last - first < 20:
+                        msg = _ladder.create_message(ladder, first, last)
+                    else:
+                        msg = None
+                        msgs = _ladder.create_messages(ladder, first, last)
+            else:
+                ladder = _ladder.get_ladder(season, search)
+                msg = _ladder.create_message(ladder)
+    except:
+        ladder = _ladder.get_ladder(season, search)
+        msg = _ladder.create_message(ladder)
+    finally:
+        if msg is not None:
+            await bot.say(msg)
+        else:
+            for msg in msgs:
+                await bot.say(msg)
 
 @bot.command(pass_context=True,
     description=_("Allow to change the language used on the server or in a channel"),

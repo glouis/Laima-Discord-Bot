@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Laima Discord Bot - v0.3.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 16:28+0200\n"
-"PO-Revision-Date: 2017-12-14 20:23+0100\n"
+"PO-Revision-Date: 2018-01-06 18:00+0100\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -551,6 +551,38 @@ msgstr "Erreur, ce langage était déjà défini sur ce serveur"
 msgid "The language on this channel was successfully changed!"
 msgstr "Le langage sur ce salon a été changé avec succès !"
 
+#: laima/ladder.py
+msgid "https://www.krosmaga.com/en/community/leaderboard"
+msgstr "https://www.krosmaga.com/fr/communaute/ladder"
+
+#: laima/ladder.py
+msgid "eternal"
+msgstr "eternel"
+
+#: laima/ladder.py
+msgid "seasonal"
+msgstr "saisonnier"
+
+#: laima/ladder.py
+msgid "   Elo"
+msgstr "   Elo"
+
+#: laima/ladder.py
+msgid "  Rank"
+msgstr "  Rang"
+
+#: laima/ladder.py
+msgid "Nickname"
+msgstr "Pseudo"
+
+#: laima/ladder.py
+msgid "  Victories/Defeats"
+msgstr "  Victoires/Défaites"
+
+#: laima/ladder.py
+msgid "Sorry, I did not find anyone."
+msgstr "Désolé, je n'ai trouvé personne."
+
 #: laima/internationalization.py:109
 msgid "Error, this language was already set on this channel"
 msgstr "Erreur, ce langage était déjà défini sur ce salon"
@@ -586,9 +618,7 @@ msgstr "Donne des mots clés pour trouver la carte que tu veux voir."
 
 #: laima/main.py:64 laima/main.py:103
 msgid "Give the play number(s) where you lose. If you reached the level four, you will be ask to indicate the play(s) where you did an all-in."
-msgstr ""
-"Donnez le(s) numéro(s) de partie où vous avez perdu. Si vous avez atteint le niveau quatre, je vous demanderais de m'indiquer les parties où vous avez fait all-"
-"in."
+msgstr "Donnez le(s) numéro(s) de partie où vous avez perdu. Si vous avez atteint le niveau quatre, je vous demanderais de m'indiquer les parties où vous avez fait all-in."
 
 #: laima/main.py:68
 msgid "You must provide at least a keyword!"
@@ -647,6 +677,18 @@ msgstr "Affiche un tableau avec les gains potentiels"
 msgid "Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"
 msgstr "Donnez le(s) nombre(s) de victoire pour lesquels vous voulez une estimation des gains. Sans paramètres, affiche tout le tableau."
 
+#: laima/main.py
+msgid "Display the seasonal or eternal ladder"
+msgstr "Affiche le ladder saisonnier ou global"
+
+#: laima/main.py
+msgid "The first parameter, optional, can be a nickname, a place between 1 and 100 or a range of place (e.g. 1-32). The second one, also optional, is the season number (0 for eternal). If no parameters are given, the top 20 players of the current season are displayed."
+msgstr "Le premier paramètre, facultatif, peut-être un pseudo, une place entre 1 et 100 ou un intervalle (e.g. 1-32). Le deuxième, également facultatif, est le numéro de la saison (0 pour global). Si aucun paramètre n'est donné, le top 20 des joueurs de la saison en cours est affiché"
+
+#: laima/main.py
+msgid "Sorry, the place asked is not between 1 and 100."
+msgstr "Désolé, la place demandée n'est pas entre 1 et 100."
+
 #: laima/main.py:150
 msgid "Allow to change the language used on the server or in a channel"
 msgstr "Permet de changer le langage utilisé sur le serveur ou dans un salon"
@@ -656,12 +698,8 @@ msgid "Indicate which language you want to use. Available: en, fr, es."
 msgstr "Indiquez quel langage vous voulez utiliser. Disponible : en, fr, es."
 
 #: laima/main.py:151
-msgid ""
-"Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use "
-"(available: en, fr, es) ; use 0 for a channel to make it use the language of the server."
-msgstr ""
-"Prend deux paramètres. Le premier est le périmètre où le langage doit être changé (channel ou server). Le deuxième est le langage que vous voulez utilisé "
-"(disponible: en, fr, es) ; utilisez 0 sur un salon pour lui faire utiliser le langage du serveur."
+msgid "Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the language of the server."
+msgstr "Prend deux paramètres. Le premier est le périmètre où le langage doit être changé (channel ou server). Le deuxième est le langage que vous voulez utilisé (disponible: en, fr, es) ; utilisez 0 sur un salon pour lui faire utiliser le langage du serveur."
 
 #: laima/main.py:122
 msgid "Error, use either *en* or *fr* as parameter"
@@ -679,8 +717,7 @@ msgstr "Erreur, 0 ne peut pas être utilisé pour un serveur"
 msgid "Error, the scope was not recognised"
 msgstr "Erreur, le périmètre n'a pas été reconnu"
 
-#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190 laima/main.py:209 laima/main.py:215
-#: laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
+#: laima/main.py:134 laima/main.py:151 laima/main.py:170 laima/main.py:173 laima/main.py:181 laima/main.py:190 laima/main.py:209 laima/main.py:215 laima/main.py:220 laima/main.py:226 laima/main.py:254 laima/main.py:265
 msgid "Only administrators of the server can use this command"
 msgstr "Seuls les administrateurs du serveur peuvent utiliser cette commande"
 
@@ -747,12 +784,8 @@ msgid "Give the rewards of the ranked mode"
 msgstr "Donne les récompenses du mode classé"
 
 #: laima/main.py:232
-msgid ""
-"Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all "
-"table."
-msgstr ""
-"Donnez le(s) rang(s) pour le(s)quel(s) vous voulez les récompenses. Les valeurs acceptées sont les nombres de 6 à 30, top100, top20, 3rd, 2nd et 1st. Si aucun "
-"rang n'est donné, affiche le tableau complet."
+msgid "Give the rank(s) for which you want the rewards. Accepted values are number from 6 to 30, top100, top20, 3rd, 2nd and 1st. If no rank are given, display the all table."
+msgstr "Donnez le(s) rang(s) pour le(s)quel(s) vous voulez les récompenses. Les valeurs acceptées sont les nombres de 6 à 30, top100, top20, 3rd, 2nd et 1st. Si aucun rang n'est donné, affiche le tableau complet."
 
 #: laima/main.py:244
 #, python-brace-format
