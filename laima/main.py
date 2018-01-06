@@ -164,6 +164,7 @@ async def table(context, *args : str):
     description=_("Display the seasonal or eternal ladder"),
     help=_("The first parameter, optional, can be a nickname, a place between 1 and 100 or a range of place (e.g. 1-32). The second one, also optional, is the season number (0 for eternal). If no parameters are given, the top 20 players of the current season are displayed."))
 async def ladder(context, search=None, season=None):
+    internationalization.set_language(context.message)
     try:
         if search is None:
             ladder = _ladder.get_ladder(season)
