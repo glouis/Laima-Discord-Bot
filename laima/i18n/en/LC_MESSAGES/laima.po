@@ -685,6 +685,14 @@ msgstr "The first parameter, optional, can be a nickname, a place between 1 and 
 msgid "Sorry, the place asked is not between 1 and 100."
 msgstr "Sorry, the place asked is not between 1 and 100."
 
+#: laima/main.py
+msgid "Sorry, the first place is not between 1 and 100."
+msgstr "Sorry, the first place is not between 1 and 100."
+
+#: laima/main.py
+msgid "Sorry, the last place is not between 1 and 100."
+msgstr "Sorry, the last place is not between 1 and 100."
+
 #: laima/main.py:150
 msgid "Allow to change the language used on the server or in a channel"
 msgstr "Allow to change the language used on the server or in a channel"

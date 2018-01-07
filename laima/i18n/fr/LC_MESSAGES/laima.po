@@ -689,6 +689,14 @@ msgstr "Le premier paramètre, facultatif, peut-être un pseudo, une place entre
 msgid "Sorry, the place asked is not between 1 and 100."
 msgstr "Désolé, la place demandée n'est pas entre 1 et 100."
 
+#: laima/main.py
+msgid "Sorry, the first place is not between 1 and 100."
+msgstr "Désolé, la première place n'est pas entre 1 et 100."
+
+#: laima/main.py
+msgid "Sorry, the last place is not between 1 and 100."
+msgstr "Désolé, la dernière place n'est pas entre 1 et 100."
+
 #: laima/main.py:150
 msgid "Allow to change the language used on the server or in a channel"
 msgstr "Permet de changer le langage utilisé sur le serveur ou dans un salon"
