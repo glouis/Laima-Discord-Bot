@@ -685,6 +685,14 @@ msgstr ""
 msgid "Sorry, the place asked is not between 1 and 100."
 msgstr ""
 
+#: laima/main.py
+msgid "Sorry, the first place is not between 1 and 100."
+msgstr ""
+
+#: laima/main.py
+msgid "Sorry, the last place is not between 1 and 100."
+msgstr ""
+
 #: laima/main.py:111
 msgid "Allow to change the language used on the server"
 msgstr ""
