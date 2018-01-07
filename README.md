@@ -34,6 +34,11 @@ Display a table with the potential earnings. Give the number(s) of victories for
 
     &draft table 4 5 6
 
+### Ladder
+Display the seasonal or eternal ladder. The first parameter, optional, can be a nickname, a place between 1 and 100 or a range of place (e.g. 1-32). The second one, also optional, is the season number (0 for eternal). If no parameters are given, the top 20 players of the current season are displayed.
+
+    &ladder 1-10 0
+
 ### Lang
 Allow to change the language used on the server or in a channel. Takes two parameters. First is to precise where you want to change the language (channel or server). Second is to indicate which language you want to use (available: en, fr, es) ; use 0 for a channel to make it use the language of the server.
 
