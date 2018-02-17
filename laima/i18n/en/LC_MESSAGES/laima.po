@@ -410,6 +410,10 @@ msgstr "Pandawa"
 msgid "Eliotrope"
 msgstr "Eliotrope"
 
+#: laima/card.py
+msgid "Fan"
+msgstr "Fan"
+
 #: laima/card.py:119
 msgid "Neutral"
 msgstr "Neutral"

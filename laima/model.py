@@ -139,6 +139,7 @@ class Family(enum.Enum):
     BROTHERHOOD_OF_THE_FORGOTTEN = 83
     PANDAWA = 84
     ELIOTROPE = 85
+    FAN = 86
 
 class God(enum.Enum):
     NEUTRAL = 0
