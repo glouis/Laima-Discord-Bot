@@ -17,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Laima Discord Bot - v0.2.0\n"
+"Project-Id-Version: Laima Discord Bot - v0.6.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 15:51+0200\n"
-"PO-Revision-Date: 2018-01-06 18:00+0100\n"
+"PO-Revision-Date: 2018-02-18 14:50+0100\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -526,6 +526,22 @@ msgstr ""
 msgid "{value} is not lesser than 12"
 msgstr ""
 
+#: laima/esport.py
+msgid "https://www.krosmaga.com/en/esport"
+msgstr "https://www.krosmaga.com/es/esport"
+
+#: laima/esport.py
+msgid "Points"
+msgstr "Puntos"
+
+#: laima/esport.py
+msgid "Tournament"
+msgstr "Torneo"
+
+#: laima/esport.py
+msgid "Dates"
+msgstr "Fechas"
+
 #: laima/help_formatter.py:28
 msgid "Shows this message."
 msgstr ""
@@ -575,7 +591,7 @@ msgstr "   Elo"
 msgid "  Rank"
 msgstr "  Rango"
 
-#: laima/ladder.py
+#: laima/ladder.py laima/esport.py
 msgid "Nickname"
 msgstr "Apodo"
 
@@ -675,6 +691,41 @@ msgstr ""
 
 #: laima/main.py:143
 msgid "Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"
+msgstr ""
+
+#: laima/main.py
+msgid "Give information about the Krosmaga's esport"
+msgstr ""
+
+#: laima/main.py
+#, python-brace-format
+msgid "No subcommand used. Run ```{prefix}help esport``` for more help."
+msgstr ""
+
+#: laima/main.py
+msgid "Display the esport calendar"
+msgstr ""
+
+#: laima/main.py
+msgid "Display the ladder of the esport competition"
+msgstr ""
+
+#: laima/main.py
+msgid "The parameter, optional, can be the last place you want to see, a range of places (e.g. 23-42) or 0 to see the complete ladder. If no parameter is given, the top 20 players are displayed"
+msgstr ""
+
+#: laima/main.py
+msgid "Sorry a place cannot be negative."
+msgstr ""
+
+#: laima/main.py
+#, python-brace-format
+msgid "Sorry, the first place is not between 1 and {last_place} (last place)."
+msgstr ""
+
+#: laima/main.py
+#, python-brace-format
+msgid "Sorry, bad request. Run ```{prefix}help esport ladder``` for more help."
 msgstr ""
 
 #: laima/main.py
