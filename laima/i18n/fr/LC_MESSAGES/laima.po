@@ -17,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Laima Discord Bot - v0.3.0\n"
+"Project-Id-Version: Laima Discord Bot - v0.6.0\n"
 "Report-Msgid-Bugs-To: glouis\n"
 "POT-Creation-Date: 2017-08-12 16:28+0200\n"
-"PO-Revision-Date: 2018-01-06 18:00+0100\n"
+"PO-Revision-Date: 2018-02-18 14:52+0100\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -410,6 +410,10 @@ msgstr "Pandawa"
 msgid "Eliotrope"
 msgstr "Eliotrope"
 
+#: laima/card.py
+msgid "Fan"
+msgstr "Fan"
+
 #: laima/card.py:119
 msgid "Neutral"
 msgstr "Neutre"
@@ -522,6 +526,22 @@ msgstr "{value} n'est pas supérieur à 1"
 msgid "{value} is not lesser than 12"
 msgstr "{value} n'est pas inférieur à 12"
 
+#: laima/esport.py
+msgid "https://www.krosmaga.com/en/esport"
+msgstr "https://www.krosmaga.com/fr/esport"
+
+#: laima/esport.py
+msgid "Points"
+msgstr "Points"
+
+#: laima/esport.py
+msgid "Tournament"
+msgstr "Tournois"
+
+#: laima/esport.py
+msgid "Dates"
+msgstr "Dates"
+
 #: laima/help_formatter.py:28
 msgid "Shows this message."
 msgstr "Affiche ce message."
@@ -571,7 +591,7 @@ msgstr "   Elo"
 msgid "  Rank"
 msgstr "  Rang"
 
-#: laima/ladder.py
+#: laima/ladder.py laima/esport.py
 msgid "Nickname"
 msgstr "Pseudo"
 
@@ -676,6 +696,41 @@ msgstr "Affiche un tableau avec les gains potentiels"
 #: laima/main.py:143
 msgid "Give the number(s) of victories for which you want an estimation of the earnings. Without parameters, display the complete table"
 msgstr "Donnez le(s) nombre(s) de victoire pour lesquels vous voulez une estimation des gains. Sans paramètres, affiche tout le tableau."
+
+#: laima/main.py
+msgid "Give information about the Krosmaga's esport"
+msgstr "Donne des informations sur l'esport Krosmaga"
+
+#: laima/main.py
+#, python-brace-format
+msgid "No subcommand used. Run ```{prefix}help esport``` for more help."
+msgstr "Aucune sous-commande utilisée. Faites ```{prefix}help esport``` pour plus d'aide."
+
+#: laima/main.py
+msgid "Display the esport calendar"
+msgstr "Affiche le calendrier esport"
+
+#: laima/main.py
+msgid "Display the ladder of the esport competition"
+msgstr "Affiche le classement de la compétition esport"
+
+#: laima/main.py
+msgid "The parameter, optional, can be the last place you want to see, a range of places (e.g. 23-42) or 0 to see the complete ladder. If no parameter is given, the top 20 players are displayed"
+msgstr "Le paramètre, optionel, est soit la dernière place à afficher, un intervalle de places (e.g. 23-42) ou 0 pour voir le classement complet. Si aucun paramètre n'est donné, les 20 premiers joueurs sont affichés"
+
+#: laima/main.py
+msgid "Sorry a place cannot be negative."
+msgstr "Désolé, une place ne peut pas être négative."
+
+#: laima/main.py
+#, python-brace-format
+msgid "Sorry, the first place is not between 1 and {last_place} (last place)."
+msgstr "Désolé, la première n'est pas entre 1 et {last_place} (dernière place)."
+
+#: laima/main.py
+#, python-brace-format
+msgid "Sorry, bad request. Run ```{prefix}help esport ladder``` for more help."
+msgstr "Désolé, mauvaise requête. Faites ```{prefix}help esport ladder``` pour plus d'aide."
 
 #: laima/main.py
 msgid "Display the seasonal or eternal ladder"

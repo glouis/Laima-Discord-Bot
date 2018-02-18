@@ -120,6 +120,7 @@ families[model.Family.GHOUL] = _("Ghoul")
 families[model.Family.BROTHERHOOD_OF_THE_FORGOTTEN] = _("Brotherhood of the Forgotten")
 families[model.Family.PANDAWA] = _("Pandawa")
 families[model.Family.ELIOTROPE] = _("Eliotrope")
+families[model.Family.FAN] = _("Fan")
 
 gods = {}
 gods[model.God.NEUTRAL] = _("Neutral")

@@ -34,6 +34,19 @@ Display a table with the potential earnings. Give the number(s) of victories for
 
     &draft table 4 5 6
 
+### Esport
+Give information about the Krosmaga's esport.
+
+#### Calendar
+Display the esport calendar.
+
+    &esport calendar
+
+#### Ladder
+Display the ladder of the esport competition. The parameter, optional, can be the last place you want to see, a range of places (e.g. 23-42) or 0 to see the complete ladder. If no parameter is given, the top 20 players are displayed.
+
+    &esport ladder 42
+
 ### Ladder
 Display the seasonal or eternal ladder. The first parameter, optional, can be a nickname, a place between 1 and 100 or a range of place (e.g. 1-32). The second one, also optional, is the season number (0 for eternal). If no parameters are given, the top 20 players of the current season are displayed.
 

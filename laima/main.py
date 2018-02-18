@@ -24,6 +24,7 @@ import config
 import discord
 from discord.ext import commands
 import draft as _draft
+import esport as _esport
 import help_formatter as _help
 import ladder as _ladder
 import logging
@@ -159,6 +160,64 @@ async def table(context, *args : str):
     internationalization.set_language(context.message)
     msg = _draft.createTable(args)
     await bot.say(msg)
+
+@bot.group(pass_context=True,
+    invoke_without_command=True,
+    description=_("Give information about the Krosmaga's esport"),
+    help=_("Use one of the subcommands"))
+async def esport(context, *args):
+    internationalization.set_language(context.message)
+    if context.invoked_subcommand is None:
+        await bot.say(_("No subcommand used. Run ```{prefix}help esport``` for more help.").format(prefix=_prefix.prefix(bot, context.message)))
+
+@esport.command(pass_context=True,
+    help=_("Display the esport calendar"))
+async def calendar(context, search=None):
+    internationalization.set_language(context.message)
+    calendar = _esport.get_calendar()
+    msg = _esport.create_calendar(calendar)
+    await bot.say(msg)
+
+@esport.command(pass_context=True,
+    description=_("Display the ladder of the esport competition"),
+    help=_("The parameter, optional, can be the last place you want to see, a range of places (e.g. 23-42) or 0 to see the complete ladder. If no parameter is given, the top 20 players are displayed"))
+async def ladder(context, search=None):
+    internationalization.set_language(context.message)
+    error_msg = None
+    ladder = _esport.get_ladder()
+    try:
+        last_place = len(ladder["places"])
+        if search is None:
+            msgs = _esport.create_ladder(ladder)
+        else:
+            places = search.split('-')
+            if len(places) == 1:
+                place = int(places[0])
+                if place < 0:
+                    error_msg = _("Sorry a place cannot be negative.")
+                elif place == 0:
+                    msgs = _esport.create_ladder(ladder, 1, last_place)
+                else:
+                    place = min(place, last_place)
+                    msgs = _esport.create_ladder(ladder, 1, place)
+            elif len(places) == 2:
+                first = int(places[0])
+                last = int(places[1])
+                if first > last:
+                    first, last = last, first
+                if first not in range(1, last_place+1):
+                    error_msg = _("Sorry, the first place is not between 1 and {last_place} (last place).").format(last_place=last_place)
+                else:
+                    last = min(last, last_place)
+                    msgs = _esport.create_ladder(ladder, first, last)
+    except:
+        error_msg = _("Sorry, bad request. Run ```{prefix}help esport ladder``` for more help.").format(prefix=_prefix.prefix(bot, context.message))
+    finally:
+        if error_msg is not None:
+            await bot.say(error_msg)
+        else:
+            for msg in msgs:
+                await bot.say(msg)
 
 @bot.command(pass_context=True,
     description=_("Display the seasonal or eternal ladder"),
