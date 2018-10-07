@@ -245,9 +245,17 @@ class CardTextTag(BaseModel):
     cardtext = ForeignKeyField(CardText, related_name='tags')
     tag = ForeignKeyField(Tag, related_name='cardtexts')
 
+class RssFeeder(BaseModel):
+    lang = IntegerField(unique=True)
+    last_entry_id = CharField(default=None)
+
+class TwitterFeeder(BaseModel):
+    lang = IntegerField(unique=True)
+    last_tweet_id = CharField(default=None)
+
 def create_tables():
     laima_db.connect()
-    laima_db.create_tables([CardData, CardText, CardTextTag, Channel, Draft, Rank, Server, Tag])
+    laima_db.create_tables([CardData, CardText, CardTextTag, Channel, Draft, Rank, RssFeeder, Server, Tag, TwitterFeeder])
     laima_db.close()
 
 def init_draft():
@@ -444,3 +452,13 @@ def json_to_card_and_tag(filepath):
                 for tag in tags[language]:
                     tag_row = Tag.get_or_create(name=tag)[0]
                     card_tag = CardTextTag.create(cardtext=card_text, tag=tag_row)
+
+def init_rss_feeder():
+    with laima_db.transaction():
+        for __, lang_id in languages:
+            RssFeeder.create(lang=lang_id)
+
+def init_twitter_feeder():
+    with laima_db.transaction():
+        for __, lang_id in languages:
+            TwitterFeeder.create(lang=lang_id)

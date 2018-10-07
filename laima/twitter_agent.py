@@ -31,8 +31,7 @@ api = twitter.Api(consumer_key=config.twitter_consumer_key,
     access_token_key=config.twitter_access_token_key,
     access_token_secret=config.twitter_access_token_secret)
 
-twitter_timeline = {}
-twitter_timeline["screen_name"] = _("Krosmaga_EN")
+twitter_timeline = _("Krosmaga_EN")
 
 # Get the id of the last tweet from krosmaga which is not a reply
 # Return:
@@ -50,7 +49,10 @@ def getLastTweetId(screen_name):
 # Return:
 #   - tweet: discord.Embed, the tweet
 def getTweet(tweet_id):
-    status = api.GetStatus(tweet_id)
+    try:
+        status = api.GetStatus(tweet_id)
+    except:
+        return None
     title = _("Tweet from Krosmaga")
     if status.quoted_status is not None:
         status = status.quoted_status
@@ -139,32 +141,39 @@ def getStatus(message):
 
 async def twitterAgent(bot, lang):
     await bot.wait_until_ready()
+    new_tweet_id = dict()
+    twitter_feeder = dict()
     internationalization.languages[lang].install()
-    while not bot.is_closed:
-        try:
-            last_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
-            break
-        except TwitterError:
-            await asyncio.sleep(1800)
+    with model.laima_db.transaction():
+        twitter_feeder[lang] = model.TwitterFeeder.get(lang==lang.value)
     while not bot.is_closed:
         await asyncio.sleep(300)
         internationalization.languages[lang].install()
         try:
-            new_tweet_id = getLastTweetId(_(twitter_timeline["screen_name"]))
+            new_tweet_id[lang] = getLastTweetId(_(twitter_timeline))
         except TwitterError:
             await asyncio.sleep(1500)
             continue
-        if new_tweet_id != last_tweet_id:
-            tweet = getTweet(new_tweet_id)
-            last_tweet_id = new_tweet_id
+        if new_tweet_id[lang] != twitter_feeder[lang].last_tweet_id:
+            tweet = getTweet(new_tweet_id[lang])
+            twitter_feeder[lang].last_tweet_id = new_tweet_id[lang]
             with model.laima_db.transaction():
+                twitter_feeder[lang].save()
                 for channel in model.Channel.select():
                     if channel.twitter:
                         if channel.lang is None:
                             if channel.server.lang == lang.value:
                                 dest = bot.get_channel(channel.id)
-                                await bot.send_message(dest, embed=tweet)
+                                if dest is not None and tweet is not None:
+                                    try:
+                                        await bot.send_message(dest, embed=tweet)
+                                    except:
+                                        pass
                         else:
                             if channel.lang == lang.value:
                                 dest = bot.get_channel(channel.id)
-                                await bot.send_message(dest, embed=tweet)
+                                if dest is not None and tweet is not None:
+                                    try:
+                                        await bot.send_message(dest, embed=tweet)
+                                    except:
+                                        pass

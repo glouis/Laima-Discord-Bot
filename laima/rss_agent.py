@@ -155,35 +155,44 @@ def getStatus(message):
 # Return
 #   - send embed in subscribed channels corresponding to the feed language
 async def rss_agent(bot, lang):
+    feed = dict()
+    rss_feeder = dict()
+    new_entry_id = dict()
+    last_entries = dict()
     await bot.wait_until_ready()
     internationalization.languages[lang].install()
-    while not bot.is_closed:
-        feed = get_feed(_(krosfeed["source"]))
-        if feed.entries == []:
-            await asyncio.sleep(1800)
-        else:
-            last_entry_id = get_last_entry_id(feed)
-            break
+    feed[lang] = get_feed(_(krosfeed["source"]))
+    with model.laima_db.transaction():
+        rss_feeder[lang] = model.RssFeeder.get(lang==lang.value)
     while not bot.is_closed:
         await asyncio.sleep(1800)
         internationalization.languages[lang].install()
-        feed = get_feed(_(krosfeed["source"]))
-        if feed.entries == []:
+        feed[lang] = get_feed(_(krosfeed["source"]))
+        if feed[lang].entries == []:
             continue
-        new_entry_id = get_last_entry_id(feed)
-        if new_entry_id != last_entry_id:
-            last_entries = get_last_entries(feed, last_entry_id)
-            last_entry_id = new_entry_id
+        new_entry_id[lang] = get_last_entry_id(feed[lang])
+        if new_entry_id[lang] != rss_feeder[lang].last_entry_id:
+            last_entries[lang] = get_last_entries(feed[lang], rss_feeder[lang].last_entry_id)
+            rss_feeder[lang].last_entry_id = new_entry_id[lang]
             with model.laima_db.transaction():
+                rss_feeder[lang].save()
                 for channel in model.Channel.select():
                     if channel.rss:
                         if channel.lang is None:
                             if channel.server.lang == lang.value:
                                 dest = bot.get_channel(channel.id)
-                                for entry in last_entries:
-                                    await bot.send_message(dest, embed=entry)
+                                if dest is not None:
+                                    for entry in last_entries[lang]:
+                                        try:
+                                            await bot.send_message(dest, embed=entry)
+                                        except:
+                                            pass
                         else:
                             if channel.lang == lang.value:
                                 dest = bot.get_channel(channel.id)
-                                for entry in last_entries:
-                                    await bot.send_message(dest, embed=entry)
+                                if dest is not None:
+                                    for entry in last_entries[lang]:
+                                        try:
+                                            await bot.send_message(dest, embed=entry)
+                                        except:
+                                            pass
